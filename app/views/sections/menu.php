@@ -21,7 +21,7 @@
             <a href="#" class="header__logo">
                 <span>MyControl School</span>
                 <i class="ri-school-fill"></i>
-    
+
             </a>
 
             <button class="header__toggle" id="header-toggle">
@@ -49,10 +49,23 @@
                 <div>
                     <h3 class="sidebar__title">MANAGE</h3>
 
+                    <?php
+                    // Función que determina si la URL actual corresponde a la página activa
+                    function isActive($page)
+                    {
+                        return (strpos($_SERVER['REQUEST_URI'], $page) !== false) ? 'active-link' : '';
+                    }
+                    ?>
+
                     <div class="sidebar__list">
-                        <a href="#" class="sidebar__link active-link">
+                        <a href="<?php echo URL; ?>dashboard" class="sidebar__link <?php echo isActive('dashboard'); ?>">
                             <i class="ri-pie-chart-2-fill"></i>
                             <span>Dashboard</span>
+                        </a>
+
+                        <a href="<?php echo URL; ?>usuarios" class="sidebar__link <?php echo isActive('usuarios'); ?>">
+                            <i class="ri-group-line"></i>
+                            <span>Usuarios</span>
                         </a>
 
                         <a href="#" class="sidebar__link">

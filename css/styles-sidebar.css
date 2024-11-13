@@ -94,6 +94,7 @@ body.dark-theme {
 
 .main {
   padding-top: 5rem;
+  max-width: 196vh;
 }
 
 /*=============== HEADER ===============*/

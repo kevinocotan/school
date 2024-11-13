@@ -9,7 +9,7 @@
     <title>Usuarios - Iveth´s Beauty Salón Spa & Nails</title>
 </head>
 <body>
-    <div class="container">
+    <div class="main container" id="main">
         <!--Todos los elementos del encabezado-->
         <section id="encabezado">
             <?php include_once "app/views/sections/header.php"; ?>
