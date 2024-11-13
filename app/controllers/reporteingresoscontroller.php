@@ -80,7 +80,7 @@ class ReporteIngresosController extends Controller {
        
         $htmlFooter = '<div style="text-align: center;">
         <p style="font-size: 12px;">Página {PAGENO} de {nb}</p>
-        <p style="font-size: 12px;">© 2023 Iveth´s Beauty Salón Spa & Nails. Todos los derechos reservados.</p>
+        <p style="font-size: 12px;">© 2024 MyControl School. Todos los derechos reservados.</p>
         </div>';
 
         $mpdfConfig=array(

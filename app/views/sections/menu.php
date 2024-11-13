@@ -18,10 +18,9 @@
     <!--=============== HEADER ===============-->
     <header class="header" id="header">
         <div class="header__container">
-            <a href="#" class="header__logo">
+            <a href="<?php echo URL; ?>dashboard" class="header__logo">
                 <span>MyControl School</span>
                 <i class="ri-school-fill"></i>
-
             </a>
 
             <button class="header__toggle" id="header-toggle">

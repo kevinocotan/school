@@ -93,7 +93,7 @@ body.dark-theme {
 }
 
 .main {
-  padding-top: 5rem;
+  padding-top: 3rem;
   max-width: 196vh;
 }
 
@@ -373,7 +373,7 @@ body.dark-theme {
 
   .main {
     padding-left: 340px;
-    padding-top: 8rem;
+    padding-top: 5rem;
     transition: padding .4s;
   }
 

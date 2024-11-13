@@ -8,13 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-<title>Iveth´s Beauty Salón Spa & Nails</title>
+<title>MyControl School</title>
 </head>
 <body>
 <div class="wrapper1">
     <div class="container1">
       
-        <h1>Iveth´s Beauty Salón Spa & Nails</h1>
+        <h1>MyControl School</h1>
         
         <form action="login.php" id="formlogin">
             <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="usuario">
