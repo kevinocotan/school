@@ -181,7 +181,6 @@ body.dark-theme {
   position: relative;
   width: 50px;
   height: 50px;
-  background-color: var(--first-color);
   border-radius: 50%;
   overflow: hidden;
   display: grid;
@@ -190,7 +189,7 @@ body.dark-theme {
 
 .sidebar__img img {
   position: absolute;
-  width: 36px;
+  width: 55px;
   bottom: -1px;
 }
 
