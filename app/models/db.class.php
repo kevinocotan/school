@@ -5,7 +5,7 @@ class BaseDeDatos {
     protected $isConnected=false;
     //Metodos
     public function conectar()   {
-        $this->conexion=new mysqli("localhost","usersalon","Catolica10@","salondebelleza");
+        $this->conexion=new mysqli("localhost","userschool","catolica","school");
         if ($this->conexion->connect_errno) {
             echo "Error en conexion:".$this->conexion->connect_error;
             $this->isConnected=false;
