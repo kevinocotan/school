@@ -1,4 +1,4 @@
-const BASE_API="/salondebelleza/";
+const BASE_API="/school/";
 
 class Api {
     async post(data,url) {
