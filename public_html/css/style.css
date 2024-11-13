@@ -1,0 +1,12 @@
+.btncolor {
+    background-color: #8C52FF;
+    color: #fff;
+    border-color: rgb(119, 49, 165);
+    
+}
+
+.btncolor:hover {
+    background-color: rgb(174, 192, 16);
+}
+
+
