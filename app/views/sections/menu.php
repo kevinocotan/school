@@ -1,84 +1,108 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                    <li class="nav-item dropdown" >
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Mantenimientos
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="<?php echo URL;?>usuarios">Usuarios</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>empleados">Empleados</a></li>
-                            <li><hr class="dropdown-divider bg-white"></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>citas">Citas</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>clientes">Clientes</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>servicios">Servicios</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>proveedores">Proveedores</a></li>                                                                
-                        </ul>                     
-                    </li>
+   <!--=============== REMIXICONS ===============-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Productos
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="<?php echo URL;?>productos">Productos</a></li>                           
-                            <li><a class="dropdown-item" href="<?php echo URL;?>categoria">Categoría de Producto</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>subcategoria">Subcategoría de Producto</a></li>
-                            <li><hr class="dropdown-divider bg-white"></li>   
-                            <li><a class="dropdown-item" href="<?php echo URL;?>compraproductos">Compras de Producto</a></li> 
-                        </ul>
-                    </li>
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="css/styles-sidebar.css">  
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Registros
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="<?php echo URL;?>ingresos">Ingresos</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>egresos">Egresos</a></li>
-                        </ul>
-                    </li>
-                
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Reportes
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="<?php echo URL;?>reporteingresos">Reporte General de Ingresos</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>reporteegresos">Reporte de Egresos</a></li>
-                            <!--<li><hr class="dropdown-divider bg-white"></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>reporteproductos">Reporte de Productos</a></li> 
-                            <li><a class="dropdown-item" href="<?php echo URL;?>reporteservicios">Reporte de Servicios</a></li> -->
-                            <!-- <li><a class="dropdown-item" href="<?php echo URL;?>reportediario">Reporte Diario</a></li> -->                        
-                            <!-- <li><a class="dropdown-item" href="<?php echo URL;?>facturas">Facturación</a></li> -->                            
-                        </ul>                   
-                    </li>
+   <title>Responsive Sidebar Menu | Dark/Light Mode - Bedimcode</title>
+</head>
+<body>
+   <!--=============== HEADER ===============-->
+   <header class="header" id="header">
+      <div class="header__container">
+         <a href="#" class="header__logo">
+            <i class="ri-cloud-fill"></i>
+            <span>Cloud</span>
+         </a>
+         
+         <button class="header__toggle" id="header-toggle">
+            <i class="ri-menu-line"></i>
+         </button>
+      </div>
+   </header>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Ayuda
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="" onclick="mostrarPDF()">Manual de Usuario</a></li>
-                            <script>
-                            function mostrarPDF() {
-                            window.open('pdf/Manual.pdf', '_blank');
-                            }
-                            </script>
-                             <li><a class="dropdown-item" href="<?php echo URL;?>main/getPreguntasFrecuentes" tabindex="-1" aria-disabled="true">Preguntas Frecuentes</a></li>                       
-                        </ul>
-                    </li>              
-                    <li class="nav-item">
-                    <a class="nav-link" href="<?php echo URL;?>login/cerrar" tabindex="-1" aria-disabled="true">Cerrar sesión</a>
-                    </li>
-                </ul>
-                <img src="<?php echo URL;?>public_html/images/logotransparente.png" alt="" style="width:40px; margin-right:10px;">
-                <span class="text-white"><?php echo $_SESSION["nuser"];?></span>
-                </div>
+   <!--=============== SIDEBAR ===============-->
+   <nav class="sidebar" id="sidebar">
+      <div class="sidebar__container">
+         <div class="sidebar__user">
+            <div class="sidebar__img">
+               <img src="assets/img/perfil.png" alt="User Image">
             </div>
-        </nav>
+
+            <div class="sidebar__info">
+               <!-- Display the username dynamically -->
+               <h3><?php echo $_SESSION["nuser"]; ?></h3>
+               <span><?php echo $_SESSION["nuser"]; ?>@example.com</span> <!-- Or customize this as needed -->
+            </div>
+         </div>
+
+         <div class="sidebar__content">
+            <div>
+               <h3 class="sidebar__title">MANAGE</h3>
+
+               <div class="sidebar__list">
+                  <a href="#" class="sidebar__link active-link">
+                     <i class="ri-pie-chart-2-fill"></i>
+                     <span>Dashboard</span>
+                  </a>
+                  
+                  <a href="#" class="sidebar__link">
+                     <i class="ri-wallet-3-fill"></i>
+                     <span>Escuelas</span>
+                  </a>
+
+                  <a href="#" class="sidebar__link">
+                     <i class="ri-calendar-fill"></i>
+                     <span>Padres</span>
+                  </a>
+
+                  <a href="#" class="sidebar__link">
+                     <i class="ri-arrow-up-down-line"></i>
+                     <span>Alumnos</span>
+                  </a>
+               </div>
+            </div>
+
+            <div>
+               <h3 class="sidebar__title">INFORMES</h3>
+
+               <div class="sidebar__list">
+                  <a href="#" class="sidebar__link">
+                     <i class="ri-settings-3-fill"></i>
+                     <span>Reportes</span>
+                  </a>
+               </div>
+            </div>
+         </div>
+
+         <div class="sidebar__actions">
+            <button>
+               <i class="ri-moon-clear-fill sidebar__link sidebar__theme" id="theme-button">
+                  <span>Theme</span>
+               </i>
+            </button>
+
+            <!-- Log Out button linked to logout URL -->
+            <a href="<?php echo URL;?>login/cerrar" class="sidebar__link">
+               <i class="ri-logout-box-r-fill"></i>
+               <span>Log Out</span>
+            </a>
+         </div>
+      </div>
+   </nav>
+
+   <!--=============== MAIN ===============-->
+   <main class="main container" id="main">
+      <h1>Sidebar Menu</h1>
+   </main>
+   
+   <!--=============== MAIN JS ===============-->
+   <script src="js/main.js"></script>
+</body>
+</html>
