@@ -19,8 +19,9 @@
     <header class="header" id="header">
         <div class="header__container">
             <a href="#" class="header__logo">
-                <i class="ri-school-fill"></i>
                 <span>MyControl School</span>
+                <i class="ri-school-fill"></i>
+    
             </a>
 
             <button class="header__toggle" id="header-toggle">
@@ -101,7 +102,6 @@
 
     <!--=============== MAIN ===============-->
     <main class="main container" id="main">
-        <h1>Sidebar Menu</h1>
     </main>
 
     <!--=============== MAIN JS ===============-->
