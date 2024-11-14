@@ -26,7 +26,7 @@
 
             <div id="contentList" class="mt-3">
                 <h4>
-                    <i class="bi bi-journal"></i>
+                    <i class="ri-user-line"></i>
                     Padres
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
                         <i class="bi bi-plus-circle"></i>
@@ -77,7 +77,7 @@
             </div>
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="bi bi-journal"></i>
+                    <i class="ri-user-line"></i>
                     Padre
                 </h4>
                 <hr>

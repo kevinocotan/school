@@ -20,7 +20,7 @@ class padresController extends Controller
     public function save()
     {
         if ($_POST["id_padre"] == 0) {
-            $datosPadres = $this->padre->getPadreByName($_POST["nombres"]);
+            $datosPadres = $this->padre->getPadreByName($_POST["nombre"]);
             if (count($datosPadres) > 0) {
                 $info = array('success' => false, 'msg' => "El Padre ya existe.");
             } else {

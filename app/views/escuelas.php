@@ -87,7 +87,7 @@
             </div>
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="bi bi-cart-fill"></i>
+                    <i class="ri-user-line"></i>
                     Escuelas
                 </h4>
                 <hr>
