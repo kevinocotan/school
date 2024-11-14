@@ -50,7 +50,7 @@ function agregarFoto() {
 function guardarEscuela(event) {
     event.preventDefault();
     const formData = new FormData(formEscuela);
-    API.post(formData, "escuela/save").then(
+    API.post(formData, "escuelas/save").then(
         data => {
             if (data.success) {
                 cancelarEscuela();
@@ -74,7 +74,7 @@ function guardarEscuela(event) {
 }
 
 function cargarDatos() {
-    API.get("escuela/getAll").then(
+    API.get("escuelas/getAll").then(
         data => {
             if (data.success) {
                 objDatos.records = data.records;
@@ -215,7 +215,7 @@ function editarEscuela(id) {
     limpiarForm(1);
     panelDatos.classList.add("d-none");
     panelForm.classList.remove("d-none");
-    API.get("escuela/getOneEscuela?id=" + id).then(
+    API.get("escuelas/getOneEscuela?id=" + id).then(
         data => {
             if (data.success) {
                 mostrarDatosForm(data.records[0]);
@@ -247,7 +247,7 @@ function eliminarEscuela(id) {
         resultado => {
             console.log(resultado.isConfirmed);
             if (resultado.isConfirmed) {
-                API.get("escuela/deleteEscuela?id=" + id).then(
+                API.get("escuelas/deleteEscuela?id=" + id).then(
                     data => {
                         if (data.success) {
                             cancelarEscuela();

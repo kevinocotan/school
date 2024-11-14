@@ -4,20 +4,14 @@ include_once "app/models/escuelas.php";
 class EscuelasController extends Controller {
     private $escuela;
     public function __construct($parametro) {
-        $this->escuela=new escuelas();
+        $this->escuela=new Escuelas();
         parent::__construct("escuelas",$parametro,true);
     }
 
-    public function getAll() {
-        if($_SESSION["tipo"]=="Administrador"){
-            $records=$this->escuela->getAll();
-        }
-        else{
-            $records=$this->escuela->getAllUser();  
-        }
+   public function getAll() {
+        $records=$this->escuela->getAll();
         $info=array('success'=>true, 'records'=>$records);
         echo json_encode($info);
-        
     }
     
     public function save() {
@@ -54,7 +48,7 @@ class EscuelasController extends Controller {
         if (count($records)>0) {
             $info=array('success'=>true,'records'=>$records);
         } else {
-            $info=array('success'=>false,'msg'=>'La escuela no existe no existe.');
+            $info=array('success'=>false,'msg'=>'La escuela no existe.');
         }
         echo json_encode($info);
     }
