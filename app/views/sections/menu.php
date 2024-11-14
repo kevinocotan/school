@@ -34,7 +34,7 @@
         <div class="sidebar__container">
             <div class="sidebar__user">
                 <div class="sidebar__img">
-                    <img src="images/foto-kevin.png" alt="User Image">
+                    <img src="<?php echo $_SESSION["foto"]; ?>" alt="User Image">
                 </div>
 
                 <div class="sidebar__info">

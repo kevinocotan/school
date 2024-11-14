@@ -18,7 +18,8 @@ class LoginController extends Controller {
             $_SESSION["id_usr"]=$record["id_usr"];
             $_SESSION["tipo"]=$record["tipo"];
             $_SESSION["usuario"]=$record["usuario"];
-            $_SESSION["nuser"]="{$record["nombres"]}";
+            $_SESSION["nuser"]="{$record["nombres"]} {$record["apellidos"]}";
+            $_SESSION["foto"]=$record["foto"];
             if ($record["tipo"]=="Administrador") {
                 $info=array("success"=>true,"msg"=>"Usuario correcto","url"=>URL."dashboard");
             } else {
