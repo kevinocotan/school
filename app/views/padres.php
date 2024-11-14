@@ -23,16 +23,14 @@
         </section>
         <!-- Todos los elementos que varian-->
         <section id="contenido">
-            <div>
-                <h4 class="welcomestext text-end">Bienvenido/a: <?php echo $_SESSION["nuser"]; ?> </h4>
-            </div>
+
             <div id="contentList" class="mt-3">
                 <h4>
                     <i class="bi bi-journal"></i>
                     Padres
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
                         <i class="bi bi-plus-circle"></i>
-                        Agregar padres
+                        Agregar Padres
                     </button>
                 </h4>
                 <hr>
@@ -47,7 +45,7 @@
                 <div id="contentTable">
                     <table class="table">
                         <thead class="table-dark">
-                            <th>ID padre</th>
+                            <th>Código de Padre</th>
                             <th>Nombres</th>
                             <th>Dirección</th>
                             <th>Teléfono</th>
@@ -55,11 +53,11 @@
                         </thead>
                         <tbody>
                             <td>1</td>
-                            <td>Diana Iveth</td>
-                            <td>Chalchuapa - Santa Ana</td>
-                            <td>6024-8768</td>
+                            <td>Pedro Lopez</td>
+                            <td>Santa Ana, El Salvador</td>
+                            <td>7720-8920</td>
                             <td>
-                                <button type="button" class="bbtn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
+                                <button type="button" class="btn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
                             </td>
                         </tbody>
@@ -116,7 +114,7 @@
 
 
     <?php include_once "app/views/sections/scripts.php"; ?>
-    <script src="<?php echo URL; ?>public_html/customjs/padre.js"></script>
+    <script src="<?php echo URL; ?>public_html/customjs/padres.js"></script>
 </body>
 
 </html>
