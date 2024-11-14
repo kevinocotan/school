@@ -67,17 +67,17 @@
                             <span>Usuarios</span>
                         </a>
 
-                        <a href="#" class="sidebar__link">
+                        <a href="<?php echo URL; ?>escuelas" class="sidebar__link <?php echo isActive('escuelas'); ?>">
                             <i class="ri-school-line"></i>
                             <span>Escuelas</span>
                         </a>
 
-                        <a href="#" class="sidebar__link">
+                        <a href="#" class="sidebar__link <?php echo isActive('padres'); ?>">
                             <i class="ri-user-3-line"></i>
                             <span>Padres</span>
                         </a>
 
-                        <a href="#" class="sidebar__link">
+                        <a href="#" class="sidebar__link <?php echo isActive('alumnos'); ?>">
                             <i class="ri-graduation-cap-line"></i>
                             <span>Alumnos</span>
                         </a>
