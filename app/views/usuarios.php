@@ -119,7 +119,7 @@
                         <div class="col-sm-10">
                             <select class="form-select" aria-label="Default select example" name="tipo" id="tipo">
                                 <option value="Administrador">Administrador</option>
-                                <option value="Empleado">Empleado</option>
+                                <option value="Usuario">Usuario</option>
                             </select>
                         </div>
                     </div>
