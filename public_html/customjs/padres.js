@@ -197,7 +197,7 @@ function editarPadre(id) {
     limpiarForm(1);
     panelDatos.classList.add("d-none");
     panelForm.classList.remove("d-none");
-    API.get("padre/getOnePadre?id="+id).then(
+    API.get("padres/getOnePadre?id="+id).then(
         data=>{
             if (data.success) {
                 mostrarDatosForm(data.records[0]);
