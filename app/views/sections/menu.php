@@ -72,7 +72,7 @@
                             <span>Escuelas</span>
                         </a>
 
-                        <a href="#" class="sidebar__link <?php echo isActive('padres'); ?>">
+                        <a href="<?php echo URL; ?>padres" class="sidebar__link <?php echo isActive('padres'); ?>">
                             <i class="ri-user-3-line"></i>
                             <span>Padres</span>
                         </a>
