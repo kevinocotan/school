@@ -77,11 +77,21 @@
                             <span>Padres</span>
                         </a>
 
-                        <a href="#" class="sidebar__link <?php echo isActive('alumnos'); ?>">
+                        <!-- Elemento con submenú -->
+                        <div class="sidebar__link sidebar__has-submenu <?php echo isActive('alumnos'); ?>" onclick="toggleSubmenu('submenu-alumnos')">
                             <i class="ri-graduation-cap-line"></i>
                             <span>Alumnos</span>
-                        </a>
+                        </div>
+
+                        <!-- Submenú de Alumnos -->
+                        <div class="sidebar__submenu" id="submenu-alumnos">
+                            <a href="<?php echo URL; ?>alumnos/lista" class="sidebar__link">Lista de Alumnos</a>
+                            <a href="<?php echo URL; ?>alumnos/nuevo" class="sidebar__link">Nuevo Alumno</a>
+
+                        </div>
                     </div>
+
+
                 </div>
 
                 <div>

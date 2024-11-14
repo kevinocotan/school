@@ -57,3 +57,9 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+function toggleSubmenu(submenuId) {
+    const submenu = document.getElementById(submenuId);
+    submenu.classList.toggle('sidebar__submenu-active');
+}
+
