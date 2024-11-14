@@ -10,9 +10,7 @@
 </head>
 <body>
 
-<!-- NO HAY NECESIDAD DE QUE ESTO DE ARRIBA SE REPITA POR CADA ARCHIVO -->
-
-    <div class="main container" id="main">
+<div class="main container" id="main">
         <!--Todos los elementos del encabezado-->
         <section id="encabezado">
             <?php include_once "app/views/sections/header.php"; ?>
@@ -27,10 +25,10 @@
             <div id="contentList" class="mt-3">
                 <h4>
                     <i class="bi bi-people-fill"></i>
-                    Usuarios
+                    Escuelas
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
                         <i class="bi bi-plus-circle"></i>
-                        Agregar Usuario
+                        Agregar Escuela
                     </button>
                 </h4>
                 <hr>
@@ -43,24 +41,27 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Fin de cuadro de busqueda -->
-                <!-- Inicio de la tabla-->
+
                     <div id="contentTable">
                         <table class="table">
                             <thead class="table-dark">
-                                <th>Código de Usuario</th>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Direccion</th>
+                                <th>Email</th>
+                                <th>Latitud</th>
+                                <th>Longitud</th>
+                                <th>Fecha</th>
                                 <th>Usuario</th>
-                                <th>Tipo de Usuario</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
                                 <td>1</td>
-                                <td>Juan</td>
-                                <td>Lopez</td>
-                                <td>admin</td>
+                                <td>Tinte KUUL</td>
+                                <td>El salvador-santa ana</td>
+                                <td>amigosdeisrael@gmail.com</td>
+                                <td>40º 42' 46'</td>
+                                <td>74º 0' 21''</td>
                                 <td>Administrador</td>
                                 <td>
                                     <button type="button" class="btn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
@@ -69,8 +70,6 @@
                             </tbody>
                         </table>
                     </div>
-                <!-- Fin de la tabla -->
-                <!--Paginacion -->
                 <div class="row">
                     <nav aria-label="Page navigation example" class="d-flex justify-content-center">
                         <ul class="pagination">
@@ -82,53 +81,16 @@
                         </ul>
                     </nav>
                 </div>
-                <!-- Fin de paginacion -->
             </div>
-            <!-- Fin del listado de usuarios -->
-            <!--Incio de formulario de usuarios -->
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="bi bi-people-fill"></i>
-                    Usuarios
+                <i class="bi bi-cart-fill"></i>
+                    Escuelas
                 </h4>
                 <hr>
-                <form id="formUsuario" enctype="multipart/form-data">
+                <form id="formEscuela" enctype="multipart/form-data">
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Usuario:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="usuario" name="usuario" required>
-                            <input type="hidden" name="id_usr" id="id_usr" value="0">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña:</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nombres:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nombres" name="nombres" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Apellidos:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="apellidos" name="apellidos" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tipo de Usuario:</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" aria-label="Default select example" name="tipo" id="tipo">
-                                <option value="Administrador">Administrador</option>
-                                <option value="Usuario">Usuario</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Foto:</label>
+                        <label for="foto" class="col-sm-2 col-form-label">Foto:</label>
                         <div class="col-sm-10">
                             <div class="img-thumbnail" id="divfoto" style="width:200px; height:200px">
 
@@ -139,19 +101,64 @@
                             <input type="file" name="foto" id="foto" class="d-none">
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label for="nombre" class="col-sm-2 col-form-label">Escuela:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            <input type="hidden" name="id_school" id="id_school" value="0">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="direccion" class="col-sm-2 col-form-label">Direccion:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="direccion" name="direccion" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="id_usr" class="col-sm-2 col-form-label">Usuario:</label>
+                        <div class="col-sm-10">
+                            <select name="id_usr" id="id_usr" class="form-select">
+                            </select>
+                        </div>
+                    </div> 
+                    <div class="row mb-3">
+                        <label for="fecha" class="col-sm-2 col-form-label">Fecha:</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="fecha" name="fecha" required>
+                        </div>
+                    </div>          
+                    <div class="row mb-3">
+                        <label for="latitud" class="col-sm-2 col-form-label">Latitud:</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" id="latitud" name="latitud" required>
+                        </div>
+                    </div> 
+                    <div class="row mb-3">
+                        <label for="longitud" class="col-sm-2 col-form-label">Longitud:</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" id="longitud" name="longitud" required>
+                        </div>
+                    </div> 
+                    <div id="map" style="height: 400px; max-width: 600px; margin: 0 auto;"></div>
+                    <br>
                     <button type="button" class="btn btn-secondary" id="btnCancelar"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
                     <button type="submit" class="btn btn-primary"><i class="bi bi-hdd"></i> Guardar</button>
                 </form>
             </div>
-            <!--Fin de formulario de usuarios -->
         </section>
-    <!--Todos los elementos del pie del sitio-->
         <section id="pie">
             <?php include_once "app/views/sections/footer.php"; ?>
         </section>
     </div>
     <?php include_once "app/views/sections/scripts.php"; ?>
-    <script src="<?php echo URL;?>public_html/customjs/usuarios.js"></script>
-
+    <script src="<?php echo URL;?>public_html/customjs/escuelas.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPKvPHu2qiRwMbrwzolMEjzLP7RIRnU0I&callback=initMap" async defer></script>
+    
 </body>
 </html>
