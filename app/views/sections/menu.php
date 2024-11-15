@@ -85,6 +85,11 @@
                             </a>
                         </div>
 
+                        <a href="<?php echo URL; ?>alumnos" class="sidebar__link <?php echo isActive('alumnos'); ?>">
+                            <i class="ri-graduation-cap-fill"></i>
+                            <span>Alumnos</span>
+                        </a>
+
                         <a href="<?php echo URL; ?>padres" class="sidebar__link <?php echo isActive('padres'); ?>" id="padres-link">
                             <i class="ri-user-fill"></i>
                             <span>Padres</span>
@@ -99,10 +104,7 @@
                             </a>
                         </div>
 
-                        <a href="<?php echo URL; ?>alumnos" class="sidebar__link <?php echo isActive('alumnos'); ?>">
-                            <i class="ri-graduation-cap-fill"></i>
-                            <span>Alumnos</span>
-                        </a>
+
 
                     </div>
                 </div>
