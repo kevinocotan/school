@@ -7,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "app/views/sections/css.php"; ?>
     <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
-    <title>Paresteco - MyControl School</title>
+    <title>Parentescos - MyControl School</title>
 </head>
 
 <body>
-
-    <!-- NO HAY NECESIDAD DE QUE ESTO DE ARRIBA SE REPITA POR CADA ARCHIVO -->
 
     <div class="main container" id="main">
         <!--Todos los elementos del encabezado-->
@@ -25,7 +23,6 @@
         </section>
         <!-- Todos los elementos que varian-->
         <section id="contenido">
-            <!-- listado de usuarios -->
 
             <div id="contentList" class="mt-3">
                 <h4>

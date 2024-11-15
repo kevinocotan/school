@@ -154,7 +154,10 @@
                             <input type="text" class="form-control" id="longitud" name="longitud" required>
                         </div>
                     </div>
+
                     <div id="map" style="height: 400px; max-width: 600px; margin: 0 auto;"></div>
+
+
                     <br>
                     <button type="button" class="btn btn-secondary" id="btnCancelar"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
                     <button type="submit" class="btn btn-primary"><i class="bi bi-hdd"></i> Guardar</button>
@@ -167,6 +170,8 @@
     </div>
     <?php include_once "app/views/sections/scripts.php"; ?>
     <script src="<?php echo URL; ?>public_html/customjs/escuelas.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWwqxbdlZ1vNfD5TUTTcIs0I8QFbljJ8k&callback=initMap" async defer></script>
+
 
 </body>
 
