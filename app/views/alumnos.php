@@ -142,7 +142,6 @@
                             <select name="genero" id="genero" class="form-select">
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
-                                <option value="Otro">Otro</option>
                             </select>
                         </div>
                     </div>

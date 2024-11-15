@@ -28,7 +28,7 @@ class AlumnosController extends Controller {
             }
         }
         if ($_POST["id_alumno"]==0) {
-            $datosAlumno=$this->alumno->getAlumnoByName($_POST["nombre"]);
+            $datosAlumno=$this->alumno->getAlumnoByName($_POST["nombre_completo"]);
             if (count($datosAlumno)>0){
                 $info=array('success'=>false, 'msg'=>"El alumno ya existe.");
             } else {

@@ -316,7 +316,7 @@ function eliminarAlumno(id) {
         resultado=>{
             console.log(resultado.isConfirmed);
             if (resultado.isConfirmed) {
-                API.get("alumno/deleteAlumno?id="+id).then(
+                API.get("alumnos/deleteAlumno?id="+id).then(
                     data=>{
                         if (data.success) {
                             cancelarAlumno();
