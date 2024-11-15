@@ -26,7 +26,7 @@
 
             <div id="contentList" class="mt-3">
                 <h4>
-                    <i class="bi bi-pencil-fill"></i>
+                    <i class="ri-group-3-line"></i>
                     Parentescos
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
                         <i class="bi bi-plus-circle"></i>
@@ -79,7 +79,7 @@
             </div>
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="bi bi-cart-fill"></i>
+                    <i class="ri-group-3-line"></i>
                     Parentescos
                 </h4>
                 <hr>

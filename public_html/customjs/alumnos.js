@@ -418,41 +418,7 @@ function mostrarDatosForm(record) {
   actualizarMarcadorMapa(parseFloat(latitud), parseFloat(longitud));
 }
 
-function actualizarMarcadorMapa(latitud, longitud) {
-  if (mapa && marcador) {
-    var nuevaPosicion = new google.maps.LatLng(latitud, longitud);
-    marcador.setPosition(nuevaPosicion);
-    mapa.setCenter(nuevaPosicion);
-  }
-}
-
-var mapa;
-var marcador;
-
-function initMap() {
-  mapa = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 0, lng: 0 },
-    zoom: 8,
-  });
-  marcador = new google.maps.Marker({
-    position: { lat: 0, lng: 0 },
-    map: mapa,
-    draggable: true,
-  });
-  marcador.addListener("dragend", function (event) {
-    actualizarPosicion(event.latLng.lat(), event.latLng.lng());
-  });
-}
-
-function actualizarPosicion(latitud, longitud) {
-  document.getElementById("latitud").value = latitud;
-  document.getElementById("longitud").value = longitud;
-}
-
-function guardarCoordenadas() {
-  var latitud = marcador.getPosition().lat();
-  var longitud = marcador.getPosition().lng();
-}
+var map, marker;
 
 function initMap() {
   // Coordenadas iniciales (puedes cambiarlas según tu región)
@@ -485,4 +451,24 @@ function initMap() {
     document.getElementById("latitud").value = coords.lat();
     document.getElementById("longitud").value = coords.lng();
   });
+}
+
+function actualizarMarcadorMapa(latitud, longitud) {
+  if (map && marker) {
+    var nuevaPosicion = new google.maps.LatLng(latitud, longitud);
+    marker.setPosition(nuevaPosicion);
+    map.setCenter(nuevaPosicion);
+  }
+}
+
+function actualizarPosicion(latitud, longitud) {
+  document.getElementById("latitud").value = latitud;
+  document.getElementById("longitud").value = longitud;
+}
+
+function guardarCoordenadas() {
+  var latitud = marker.getPosition().lat();
+  var longitud = marker.getPosition().lng();
+  console.log("Latitud:", latitud);
+  console.log("Longitud:", longitud);
 }

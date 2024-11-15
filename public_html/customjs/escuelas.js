@@ -321,71 +321,7 @@ function mostrarDatosForm(record) {
   actualizarMarcadorMapa(parseFloat(latitud), parseFloat(longitud));
 }
 
-function actualizarMarcadorMapa(latitud, longitud) {
-  if (mapa && marcador) {
-    var nuevaPosicion = new google.maps.LatLng(latitud, longitud);
-    marcador.setPosition(nuevaPosicion);
-
-    mapa.setCenter(nuevaPosicion);
-  }
-}
-
-var mapa;
-var marcador;
-function initMap() {
-  mapa = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 0, lng: 0 },
-    zoom: 8,
-  });
-
-  marcador = new google.maps.Marker({
-    position: { lat: 0, lng: 0 },
-    map: mapa,
-    draggable: true,
-  });
-
-  marcador.addListener("dragend", function (event) {
-    actualizarPosicion(event.latLng.lat(), event.latLng.lng());
-  });
-}
-
-function actualizarPosicion(latitud, longitud) {
-  document.getElementById("latitud").value = latitud;
-  document.getElementById("longitud").value = longitud;
-}
-
-function guardarCoordenadas() {
-  var latitud = marcador.getPosition().lat();
-  var longitud = marcador.getPosition().lng();
-  console.log("Latitud:", latitud);
-  console.log("Longitud:", longitud);
-}
-
-function mostrarEscuela(id) {
-  API.get("escuelamapa/getEscuelasMapa?id_escuela=" + id)
-    .then((data) => {
-      if (data.success) {
-        const urlImagen = data.records[0].foto_escuela;
-        console.log(data.alum);
-        window.location.href =
-          "escuelamapa?url_imagen=" +
-          encodeURIComponent(urlImagen) +
-          "&latitud=" +
-          data.records[0].latitud_escuela +
-          "&longitud=" +
-          data.records[0].longitud_escuela +
-          "&alumnos=" +
-          JSON.stringify(data.alum);
-      } else {
-        console.log("Error al recuperar los registros");
-      }
-    })
-    .catch((error) => {
-      console.error("Error en la llamada:", error);
-    });
-}
-
-let map, marker;
+var map, marker;
 
 function initMap() {
   // Coordenadas iniciales (puedes cambiarlas según tu región)
@@ -418,4 +354,43 @@ function initMap() {
     document.getElementById("latitud").value = coords.lat();
     document.getElementById("longitud").value = coords.lng();
   });
+}
+
+function actualizarMarcadorMapa(latitud, longitud) {
+  if (map && marker) {
+    var nuevaPosicion = new google.maps.LatLng(latitud, longitud);
+    marker.setPosition(nuevaPosicion);
+    map.setCenter(nuevaPosicion);
+  }
+}
+
+function guardarCoordenadas() {
+  var latitud = marker.getPosition().lat();
+  var longitud = marker.getPosition().lng();
+  console.log("Latitud:", latitud);
+  console.log("Longitud:", longitud);
+}
+
+function mostrarEscuela(id) {
+  API.get("escuelamapa/getEscuelasMapa?id_escuela=" + id)
+    .then((data) => {
+      if (data.success) {
+        const urlImagen = data.records[0].foto_escuela;
+        console.log(data.alum);
+        window.location.href =
+          "escuelamapa?url_imagen=" +
+          encodeURIComponent(urlImagen) +
+          "&latitud=" +
+          data.records[0].latitud_escuela +
+          "&longitud=" +
+          data.records[0].longitud_escuela +
+          "&alumnos=" +
+          JSON.stringify(data.alum);
+      } else {
+        console.log("Error al recuperar los registros");
+      }
+    })
+    .catch((error) => {
+      console.error("Error en la llamada:", error);
+    });
 }
