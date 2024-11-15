@@ -16,7 +16,7 @@ class GradosController extends Controller {
     
     public function save() {
         if ($_POST["id_grado"]==0) {
-            $datosGrados=$this->grado->getGradoByName($_POST["nombres"]);
+            $datosGrados=$this->grado->getGradoByName($_POST["nombre_grado"]);
             if (count($datosGrados)>0){
                 $info=array('success'=>false, 'msg'=>"El grado ya existe.");
             } else {
