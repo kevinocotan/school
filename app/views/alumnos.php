@@ -57,7 +57,7 @@
                             <th>Latitud</th>
                             <th>Longitud</th>
                             <th>Grado</th>
-                            <th>Seccion</th>
+                            <th>Sección</th>
                             <th>Escuela</th>
                             <th>&nbsp;</th>
                         </thead>
@@ -154,7 +154,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="id_seccion" class="col-sm-2 col-form-label">Seccion:</label>
+                        <label for="id_seccion" class="col-sm-2 col-form-label">Sección:</label>
                         <div class="col-sm-10">
                             <select name="id_seccion" id="id_seccion" class="form-select">
                             </select>

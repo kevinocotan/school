@@ -47,13 +47,13 @@
                 <div id="contentTable">
                     <table class="table">
                         <thead class="table-dark">
-                            <th>Codigo de Grado</th>
+                            <th>Código de Grado</th>
                             <th>Grado</th>
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
                             <td>1</td>
-                            <td>Diana Iveth</td>
+                            <td>Primer Grado</td>
                             <td>
                                 <button type="button" class="bbtn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>

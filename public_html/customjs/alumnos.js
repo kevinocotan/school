@@ -98,7 +98,7 @@ function cargarDatos() {
 }
 
 function cargarGrado() {
-    API.get("grado/getAll").then(
+    API.get("grados/getAll").then(
         data=>{
             if(data.success) {
                 const txtGrado=document.querySelector("#id_grado");
@@ -122,7 +122,7 @@ function cargarGrado() {
 }
 
 function cargarSeccion() {
-    API.get("seccion/getAll").then(
+    API.get("secciones/getAll").then(
         data=>{
             if (data.success) {
                 const txtSeccion=document.querySelector("#id_seccion");

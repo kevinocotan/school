@@ -48,13 +48,13 @@
                 <div id="contentTable">
                     <table class="table">
                         <thead class="table-dark">
-                            <th>ID Secciones</th>
-                            <th>Nombre de la Seccion</th>
+                            <th>Código de Sección</th>
+                            <th>Nombre de la Sección</th>
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
                             <td>1</td>
-                            <td>Diana Iveth</td>
+                            <td>Sección A</td>
                             <td>
                                 <button type="button" class="bbtn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
@@ -77,12 +77,12 @@
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
                     <i class="bi bi-journal"></i>
-                    Seccion
+                    Sección
                 </h4>
                 <hr>
                 <form id="formSeccion" enctype="multipart/form-data">
                     <div class="row mb-3">
-                        <label for="nombre_seccion" class="col-sm-2 col-form-label">Nombre de la seccion:</label>
+                        <label for="nombre_seccion" class="col-sm-2 col-form-label">Nombre de la Sección:</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="nombre_seccion" name="nombre_seccion" required>
                             <input type="hidden" name="id_seccion" id="id_seccion" value="0">
