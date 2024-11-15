@@ -199,8 +199,8 @@ function crearTabla() {
                     <td>${item.fecha}</td>
                     <td>${item.nombres}</td>
                     <td>
-                        <button type="button" class="btn btn-dark btncolor" onclick="editarEscuela(${item.id_school})"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger btncolor" onclick="eliminarEscuela(${item.id_school})"><i class="bi bi-trash"></i></button>
+                        <button type="button" class="btn btn-dark btncolor" onclick="editarEscuela(${item.id_school})"><i class="ri-edit-fill"></i></button>
+                        <button type="button" class="btn btn-danger btncolor" onclick="eliminarEscuela(${item.id_school})"><i class="ri-delete-bin-7-line"></i></button>
                     </td>
                     </tr>                
                 `;

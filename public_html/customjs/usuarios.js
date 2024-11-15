@@ -146,8 +146,8 @@ function crearTabla() {
                     <td>${item.usuario}</td>
                     <td>${item.tipo}</td>
                     <td>
-                        <button type="button" class="btn btn-dark btncolor" onclick="editarUsuario(${item.id_usr})"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger btncolor" onclick="eliminarUsuaio(${item.id_usr})"><i class="bi bi-trash"></i></button>
+                        <button type="button" class="btn btn-dark btncolor" onclick="editarUsuario(${item.id_usr})"><i class="ri-edit-fill"></i></button>
+                        <button type="button" class="btn btn-danger btncolor" onclick="eliminarUsuaio(${item.id_usr})"><i class="ri-delete-bin-7-line"></i></button>
                     </td>
                     </tr>
                 

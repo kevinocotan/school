@@ -29,7 +29,7 @@
                     <i class="ri-user-line"></i>
                     Padres
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
-                        <i class="bi bi-plus-circle"></i>
+                        <i class="ri-add-large-fill"></i>
                         Agregar Padres
                     </button>
                 </h4>
@@ -57,8 +57,8 @@
                             <td>Santa Ana, El Salvador</td>
                             <td>7720-8920</td>
                             <td>
-                                <button type="button" class="btn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
+                                <button type="button" class="btn btn-dark btncolor"><i class="ri-edit-fill"></i></button>
+                                <button type="button" class="btn btn-danger btncolor"><i class="ri-delete-bin-7-line"></i></button>
                             </td>
                         </tbody>
                     </table>

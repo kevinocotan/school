@@ -31,7 +31,7 @@
 
                     Grados
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
-                        <i class="bi bi-plus-circle"></i>
+                        <i class="ri-add-large-fill"></i>
                         Agregar Grados
                     </button>
                 </h4>
@@ -55,8 +55,8 @@
                             <td>1</td>
                             <td>Primer Grado</td>
                             <td>
-                                <button type="button" class="bbtn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
+                                <button type="button" class="bbtn btn-dark btncolor"><i class="ri-edit-fill"></i></button>
+                                <button type="button" class="btn btn-danger btncolor"><i class="ri-delete-bin-7-line"></i></button>
                             </td>
                         </tbody>
                     </table>

@@ -29,10 +29,11 @@
 
             <div id="contentList" class="mt-3">
                 <h4>
-                    <i class="bi bi-pencil-fill"></i>
+                    <i class="ri-graduation-cap-line"></i>
+
                     Alumnos
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
-                        <i class="bi bi-plus-circle"></i>
+                        <i class="ri-add-large-fill"></i>
                         Agregar Alumno
                     </button>
                 </h4>
@@ -50,8 +51,8 @@
                         <thead class="table-dark">
                             <th>Código</th>
                             <th>Alumno</th>
-                            <th>Direccion</th>
-                            <th>Telefono</th>
+                            <th>Dirección</th>
+                            <th>Teléfono</th>
                             <th>Email</th>
                             <th>Genero</th>
                             <th>Latitud</th>
@@ -63,19 +64,19 @@
                         </thead>
                         <tbody>
                             <td>1</td>
-                            <td>Tinte KUUL</td>
-                            <td>El salvador-santa ana</td>
-                            <td style="word-wrap: break-word; max-width: 150px;">amigosdeisrael@gmail.com</td>
+                            <td>Melvin Ocotan</td>
+                            <td>Chalchuapa, Santa Ana</td>
+                            <td>7234-3421</td>
+                            <td>melvin.ocotan@catolica.edu.sv</td>
+                            <td>Masculino</td>
                             <td>40º 42' 46'</td>
                             <td>74º 0' 21''</td>
-                            <td>Administrador</td>
-                            <td>Administrador</td>
-                            <td>Administrador</td>
-                            <td>Administrador</td>
-                            <td>Administrador</td>
+                            <td>Primer Grado</td>
+                            <td>Sección B</td>
+                            <td>Universidad Católica de El Salvador</td>
                             <td>
-                                <button type="button" class="btn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
+                                <button type="button" class="btn btn-dark btncolor"><i class="ri-edit-fill"></i></button>
+                                <button type="button" class="btn btn-danger btncolor"><i class="ri-delete-bin-7-line"></i></button>
                             </td>
                         </tbody>
                     </table>
@@ -94,8 +95,8 @@
             </div>
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="bi bi-cart-fill"></i>
-                    Alumno
+                    <i class="ri-graduation-cap-line"></i>
+                    Alumnos
                 </h4>
                 <hr>
                 <form id="formAlumno" enctype="multipart/form-data">
@@ -125,7 +126,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="telefono" class="col-sm-2 col-form-label">Telefono:</label>
+                        <label for="telefono" class="col-sm-2 col-form-label">Teléfono:</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="telefono" name="telefono" required>
                         </div>
@@ -140,8 +141,8 @@
                         <label for="genero" class="col-sm-2 col-form-label">Género:</label>
                         <div class="col-sm-10">
                             <select name="genero" id="genero" class="form-select">
-                                <option value="Masculino">Masculino</option>
-                                <option value="Femenino">Femenino</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
                             </select>
                         </div>
                     </div>

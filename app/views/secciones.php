@@ -29,10 +29,10 @@
 
             <div id="contentList" class="mt-3">
                 <h4>
-                    <i class="bi bi-journal"></i>
+                    <i class="ri-font-family"></i>
                     Secciones
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
-                        <i class="bi bi-plus-circle"></i>
+                        <i class="ri-add-large-fill"></i>
                         Agregar Secciones
                     </button>
                 </h4>
@@ -56,8 +56,8 @@
                             <td>1</td>
                             <td>Sección A</td>
                             <td>
-                                <button type="button" class="bbtn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
-                                <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
+                                <button type="button" class="bbtn btn-dark btncolor"><i class="ri-edit-fill"></i></button>
+                                <button type="button" class="btn btn-danger btncolor"><i class="ri-delete-bin-7-line"></i></button>
                             </td>
                         </tbody>
                     </table>
@@ -76,7 +76,7 @@
             </div>
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="bi bi-journal"></i>
+                    <i class="ri-font-family"></i>
                     Sección
                 </h4>
                 <hr>

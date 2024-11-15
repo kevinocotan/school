@@ -112,8 +112,8 @@ function crearTabla() {
                     <td>${index + 1}</td>
                     <td>${item.nombre_grado}</td>
                     <td>
-                        <button type="button" class="btn btn-dark btncolor" onclick="editarGrado(${item.id_grado})"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger btncolor" onclick="eliminarGrado(${item.id_grado})"><i class="bi bi-trash"></i></button>
+                        <button type="button" class="btn btn-dark btncolor" onclick="editarGrado(${item.id_grado})"><i class="ri-edit-fill"></i></button>
+                        <button type="button" class="btn btn-danger btncolor" onclick="eliminarGrado(${item.id_grado})"><i class="ri-delete-bin-7-line"></i></button>
                     </td>
                     </tr>
                 

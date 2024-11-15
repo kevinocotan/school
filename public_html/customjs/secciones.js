@@ -109,10 +109,10 @@ function crearTabla() {
                     <td>
                         <button type="button" class="btn btn-dark btncolor" onclick="editarSeccion(${
                           item.id_seccion
-                        })"><i class="bi bi-pencil-square"></i></button>
+                        })"><i class="ri-edit-fill"></i></button>
                         <button type="button" class="btn btn-danger btncolor" onclick="eliminarSeccion(${
                           item.id_seccion
-                        })"><i class="bi bi-trash"></i></button>
+                        })"><i class="ri-delete-bin-7-line"></i></button>
                     </td>
                     </tr>
                 

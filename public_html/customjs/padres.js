@@ -122,8 +122,8 @@ function crearTabla() {
                     <td>${item.direccion}</td>
                     <td>${item.telefono}</td>
                     <td>
-                        <button type="button" class="btn btn-dark btncolor" onclick="editarPadre(${item.id_padre})"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger btncolor" onclick="eliminarPadre(${item.id_padre})"><i class="bi bi-trash"></i></button>
+                        <button type="button" class="btn btn-dark btncolor" onclick="editarPadre(${item.id_padre})"><i class="ri-edit-fill"></i></button>
+                        <button type="button" class="btn btn-danger btncolor" onclick="eliminarPadre(${item.id_padre})"><i class="ri-delete-bin-7-line"></i></button>
                     </td>
                     </tr>
                 
