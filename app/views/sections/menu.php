@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="css/styles-sidebar.css">
+    <link rel="stylesheet" href="public_html/css/styles-sidebar.css">
 
     <title>Responsive Sidebar Menu | Dark/Light Mode - Bedimcode</title>
 </head>
