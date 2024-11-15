@@ -35,7 +35,7 @@ function guardarPadrealumno(event) {
   event.preventDefault();
   const formData = new FormData(formPadrealumno);
   //console.log(formData);
-  API.post(formData, "padresalumnos/save")
+  API.post(formData, "parentescos/save")
     .then((data) => {
       //console.log(data.msg);
       if (data.success) {
@@ -58,7 +58,7 @@ function guardarPadrealumno(event) {
 }
 
 function cargarDatos() {
-  API.get("padresalumnos/getAll")
+  API.get("parentescos/getAll")
     .then((data) => {
       //console.log(data.records);
       if (data.success) {
@@ -77,7 +77,7 @@ function cargarDatos() {
 }
 
 function cargarAlumno() {
-  API.get("alumnos/getAll")
+  API.get("alumno/getAll")
     .then((data) => {
       if (data.success) {
         const txtAlumno = document.querySelector("#id_alumno");
@@ -97,7 +97,7 @@ function cargarAlumno() {
 }
 
 function cargarPadre() {
-  API.get("padres/getAll")
+  API.get("padre/getAll")
     .then((data) => {
       if (data.success) {
         const txtPadre = document.querySelector("#id_padre");
@@ -160,7 +160,7 @@ function crearTabla() {
     objDatos.recordsFilter = objDatos.records.map((item) => item);
   } else {
     objDatos.recordsFilter = objDatos.records.filter((item) => {
-      const { nombre_completo, nombre_padre, parentesco } = item;
+      const { nombre_completo, nombre_padre, parentesco, fecha } = item;
       if (
         nombre_completo
           .toUpperCase()
@@ -181,6 +181,11 @@ function crearTabla() {
       ) {
         return item;
       }
+      if (
+        fecha.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) != -1
+      ) {
+        return item;
+      }
     });
   }
 
@@ -197,6 +202,7 @@ function crearTabla() {
                     <td>${item.nombre_completo}</td>
                     <td>${item.nombre_padre}</td>
                     <td>${item.parentesco}</td>
+                    <td>${item.fecha}</td>
                     <td>
                         <button type="button" class="btn btn-dark btncolor" onclick="editarPadrealumno(${
                           item.id_padre_alumno
@@ -218,7 +224,7 @@ function editarPadrealumno(id) {
   limpiarForm(1);
   panelDatos.classList.add("d-none");
   panelForm.classList.remove("d-none");
-  API.get("padresalumnos/getOnePadresAlumnos?id=" + id)
+  API.get("parentescos/getOneParentesco?id=" + id)
     .then((data) => {
       if (data.success) {
         mostrarDatosForm(data.records[0]);
@@ -244,7 +250,7 @@ function eliminarPadrealumno(id) {
   }).then((resultado) => {
     console.log(resultado.isConfirmed);
     if (resultado.isConfirmed) {
-      API.get("padresalumnos/deletePadresAlumnos?id=" + id)
+      API.get("parentescos/deleteParentesco?id=" + id)
         .then((data) => {
           if (data.success) {
             cancelarPadrealumno();
@@ -292,9 +298,10 @@ function aplicarFiltro(element) {
 }
 
 function mostrarDatosForm(record) {
-  const { id_padre_alumno, parentesco, id_alumno, id_padre } = record;
+  const { id_padre_alumno, parentesco, fecha, id_alumno, id_padre } = record;
   document.querySelector("#id_padre_alumno").value = id_padre_alumno;
   document.querySelector("#parentesco").value = parentesco;
+  document.querySelector("#fecha").value = fecha;
   document.querySelector("#id_alumno").value = id_alumno;
   document.querySelector("#id_padre").value = id_padre;
 }

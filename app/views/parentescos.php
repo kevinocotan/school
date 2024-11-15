@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "app/views/sections/css.php"; ?>
     <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
-    <title>Padres y Alumnos - MyControl School</title>
+    <title>Usuarios - MyControl School</title>
 </head>
 
 <body>
@@ -26,6 +26,7 @@
         <!-- Todos los elementos que varian-->
         <section id="contenido">
             <!-- listado de usuarios -->
+
             <div id="contentList" class="mt-3">
                 <h4>
                     <i class="bi bi-pencil-fill"></i>
@@ -44,21 +45,21 @@
                         </div>
                     </div>
                 </div>
-
                 <div id="contentTable">
                     <table class="table">
                         <thead class="table-dark">
-                            <th>Código de Parentesco</th>
+                            <th>Código</th>
                             <th>Alumno</th>
                             <th>Padre</th>
-                            <th>Parentesco</th>
+                            <th>Parentezco</th>
+                            <th>Fecha</th>
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
                             <td>1</td>
-                            <td>Melvin Fernando Ocotan</td>
-                            <td>Pedro Esteban Ocotan</td>
-                            <td>Padre</td>
+                            <td>Tinte KUUL</td>
+                            <td>El salvador-santa ana</td>
+                            <td>amigosdeisrael@gmail.com</td>
                             <td>
                                 <button type="button" class="btn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
@@ -106,7 +107,12 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="row mb-3">
+                        <label for="fecha" class="col-sm-2 col-form-label">Fecha:</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="fecha" name="fecha" required>
+                        </div>
+                    </div>
                     <button type="button" class="btn btn-secondary" id="btnCancelar"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
                     <button type="submit" class="btn btn-primary"><i class="bi bi-hdd"></i> Guardar</button>
                 </form>
@@ -117,7 +123,7 @@
         </section>
     </div>
     <?php include_once "app/views/sections/scripts.php"; ?>
-    <script src="<?php echo URL; ?>public_html/customjs/padresalumnos.js"></script>
+    <script src="<?php echo URL; ?>public_html/customjs/parentescos.js"></script>
 </body>
 
 </html>
