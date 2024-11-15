@@ -141,8 +141,8 @@
                         <label for="genero" class="col-sm-2 col-form-label">Género:</label>
                         <div class="col-sm-10">
                             <select name="genero" id="genero" class="form-select">
-                                <option value="M">Masculino</option>
-                                <option value="F">Femenino</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
                             </select>
                         </div>
                     </div>
@@ -193,7 +193,7 @@
     </div>
     <?php include_once "app/views/sections/scripts.php"; ?>
     <script src="<?php echo URL; ?>public_html/customjs/alumnos.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPKvPHu2qiRwMbrwzolMEjzLP7RIRnU0I&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWwqxbdlZ1vNfD5TUTTcIs0I8QFbljJ8k&callback=initMap" async defer></script>
 
 </body>
 
