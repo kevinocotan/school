@@ -85,3 +85,23 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const escuelasLink = document.getElementById('escuelas-link');
+    const toggleSubmenu = document.getElementById('toggle-submenu');
+    const escuelasSubmenu = document.getElementById('escuelas-submenu');
+
+    // Evitar que el submenú abra "Escuelas" cuando se hace clic en el icono
+    toggleSubmenu.addEventListener('click', (event) => {
+        event.preventDefault(); // Evita la navegación a la página de "Escuelas"
+        escuelasSubmenu.classList.toggle('show-submenu');
+    });
+
+    // Permitir que el clic en el texto "Escuelas" navegue a la página
+    escuelasLink.addEventListener('click', (event) => {
+        if (event.target !== toggleSubmenu) {
+            window.location.href = escuelasLink.href; // Navega a la página de "Escuelas"
+        }
+    });
+});
+

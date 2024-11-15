@@ -305,6 +305,18 @@ body.dark-theme {
   transform: rotate(180deg);
 }
 
+/* Asegúrate de que los elementos dentro del enlace estén en línea */
+.sidebar__link {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los íconos y el texto */
+}
+
+.sidebar__link .toggle-arrow {
+  margin-left: auto; /* Empuja la flecha a la derecha */
+  font-size: 1rem; /* Ajusta el tamaño de la flecha si es necesario */
+  padding-left: 5px; /* Agrega un poco de espacio entre el texto y la flecha */
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 360px) {

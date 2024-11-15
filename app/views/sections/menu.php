@@ -70,7 +70,7 @@
                         <a href="<?php echo URL; ?>escuelas" class="sidebar__link <?php echo isActive('escuelas'); ?>" id="escuelas-link">
                             <i class="ri-school-line"></i>
                             <span>Escuelas</span>
-
+                            <i class="ri-arrow-down-s-line" id="toggle-submenu"></i>
                         </a>
 
                         <!-- Submenú para Grados y Secciones -->
@@ -84,7 +84,6 @@
                                 <span>Secciones</span>
                             </a>
                         </div>
-
 
 
                         <a href="<?php echo URL; ?>padres" class="sidebar__link <?php echo isActive('padres'); ?>">
