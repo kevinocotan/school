@@ -6,7 +6,7 @@ class PadresAlumnosController extends Controller
     private $padrealumno;
     public function __construct($parametro)
     {
-        $this->padrealumno = new Padresalumnos();
+        $this->padrealumno = new PadresAlumnos();
         parent::__construct("padresalumnos", $parametro, true);
     }
 
@@ -21,7 +21,7 @@ class PadresAlumnosController extends Controller
     {
 
         if ($_POST["id_padre_alumno"] == 0) {
-            $datosPadrealumno = $this->padrealumno->getPadresAlumnosByName($_POST["nombre"]);
+            $datosPadrealumno = $this->padrealumno->getPadresAlumnosByName($_POST["parentesco"]);
             if (count($datosPadrealumno) > 0) {
                 $info = array('success' => false, 'msg' => "El parentesco ya esta asociado.");
             } else {

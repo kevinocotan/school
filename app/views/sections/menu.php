@@ -67,13 +67,15 @@
                             <span>Usuarios</span>
                         </a>
 
+                        <!-- SUB MENU ESCUELAS -->
+
                         <a href="<?php echo URL; ?>escuelas" class="sidebar__link <?php echo isActive('escuelas'); ?>" id="escuelas-link">
                             <i class="ri-school-fill"></i>
                             <span>Escuelas</span>
                             <i class="ri-arrow-down-s-line" id="toggle-submenu"></i>
                         </a>
 
-                        <!-- Submenú para Grados y Secciones -->
+
                         <div id="escuelas-submenu" class="sidebar__submenu">
                             <a href="<?php echo URL; ?>grados" class="sidebar__link <?php echo isActive('grados'); ?>">
                                 <i class="ri-number-1"></i>
@@ -85,10 +87,14 @@
                             </a>
                         </div>
 
+                        <!-- FIN SUB MENU ESCUELAS -->
+
                         <a href="<?php echo URL; ?>alumnos" class="sidebar__link <?php echo isActive('alumnos'); ?>">
                             <i class="ri-graduation-cap-fill"></i>
                             <span>Alumnos</span>
                         </a>
+
+                        <!-- SUB MENU PADRES -->
 
                         <a href="<?php echo URL; ?>padres" class="sidebar__link <?php echo isActive('padres'); ?>" id="padres-link">
                             <i class="ri-user-fill"></i>
@@ -104,6 +110,7 @@
                             </a>
                         </div>
 
+                        <!-- FIN SUB MENU PADRES -->
 
 
                     </div>

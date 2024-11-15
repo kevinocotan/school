@@ -66,16 +66,18 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-icon", getCurrentIcon());
 });
 
-// Selecciona el enlace de Escuelas y el submenú
+/* SUBMENU DE ESCUELAS Y PADRES */
+
 const escuelasLink = document.getElementById("escuelas-link");
 const escuelasSubmenu = document.getElementById("escuelas-submenu");
-const expandIcon = document.getElementById("expand-icon");
 
-// Agrega un evento de clic para mostrar/ocultar el submenú
+const padresLink = document.getElementById("padres-link");
+const padresSubmenu = document.getElementById("padres-submenu");
+
+/* PARA QUE DESPLACE EL SUBMENU DE ESCUELAS */
 escuelasLink.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // Alterna la visibilidad del submenú y el icono de expansión
   if (
     escuelasSubmenu.style.display === "none" ||
     !escuelasSubmenu.style.display
@@ -88,7 +90,21 @@ escuelasLink.addEventListener("click", (e) => {
   }
 });
 
-// Verifica la URL actual para mantener el submenú expandido en Grados o Secciones
+/* PARA QUE DESPLACE EL SUBMENU DE PADRES */
+
+padresLink.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (padresSubmenu.style.display === "none" || !padresSubmenu.style.display) {
+    padresSubmenu.style.display = "block";
+    padresLink.classList.add("active");
+  } else {
+    padresSubmenu.style.display = "none";
+    padresLink.classList.remove("active");
+  }
+});
+
+/* PARA QUE SALGA MARCADO Y SE MANTENGA SELECCIONADO ESCUELAS */
 window.addEventListener("DOMContentLoaded", () => {
   if (
     window.location.href.includes("grados") ||
@@ -99,62 +115,47 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+/* PARA QUE SALGA MARCADO Y SE MANTENGA SELECCIONADO PADRES */
+window.addEventListener("DOMContentLoaded", () => {
+  window.location.href.includes("padresalumnos");
+  padresSubmenu.style.display = "block";
+  padresLink.classList.add("active");
+});
+
+/* PARA PODER HACER CLIC EN ESCUELAS Y QUE SE ABRA */
+
 document.addEventListener("DOMContentLoaded", () => {
   const escuelasLink = document.getElementById("escuelas-link");
   const toggleSubmenu = document.getElementById("toggle-submenu");
   const escuelasSubmenu = document.getElementById("escuelas-submenu");
 
-  // Evitar que el submenú abra "Escuelas" cuando se hace clic en el icono
   toggleSubmenu.addEventListener("click", (event) => {
-    event.preventDefault(); // Evita la navegación a la página de "Escuelas"
+    event.preventDefault();
     escuelasSubmenu.classList.toggle("show-submenu");
   });
 
-  // Permitir que el clic en el texto "Escuelas" navegue a la página
   escuelasLink.addEventListener("click", (event) => {
     if (event.target !== toggleSubmenu) {
-      window.location.href = escuelasLink.href; // Navega a la página de "Escuelas"
+      window.location.href = escuelasLink.href;
     }
   });
 });
 
-// Selecciona los elementos del submenú y los enlaces de "Padres"
-const padresLink = document.getElementById("padres-link");
-const padresSubmenu = document.getElementById("padres-submenu");
-const toggleSubmenuPadres = document.getElementById("toggle-submenu-padres");
+/* PARA PODER HACER CLIC EN PADRES Y QUE SE ABRA */
 
-// Agrega un evento de clic para mostrar/ocultar el submenú de "Padres"
-padresLink.addEventListener("click", (e) => {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const padresLink = document.getElementById("padres-link");
+  const toggleSubmenuPadres = document.getElementById("toggle-submenu-padres");
+  const padresSubmenu = document.getElementById("padres-submenu");
 
-  // Alterna la visibilidad del submenú
-  if (padresSubmenu.style.display === "none" || !padresSubmenu.style.display) {
-    padresSubmenu.style.display = "block";
-    padresLink.classList.add("active");
-  } else {
-    padresSubmenu.style.display = "none";
-    padresLink.classList.remove("active");
-  }
+  toggleSubmenuPadres.addEventListener("click", (event) => {
+    event.preventDefault();
+    padresSubmenu.classList.toggle("show-submenu");
+  });
 
-  // Si no está en el submenú, permite navegar a la página de "Padres"
-  if (!padresSubmenu.classList.contains("show-submenu")) {
-    window.location.href = padresLink.href; // Navega a la página de "Padres"
-  }
-});
-
-// Verifica la URL actual para mantener el submenú expandido en Información o Contacto
-window.addEventListener("DOMContentLoaded", () => {
-  if (
-    window.location.href.includes("informacion") ||
-    window.location.href.includes("contacto")
-  ) {
-    padresSubmenu.style.display = "block";
-    padresLink.classList.add("active");
-  }
-});
-
-// Alterna el submenú al hacer clic en el ícono de expansión
-toggleSubmenuPadres.addEventListener("click", (event) => {
-  event.preventDefault(); // Evita la navegación a la página de "Padres"
-  padresSubmenu.classList.toggle("show-submenu");
+  padresLink.addEventListener("click", (event) => {
+    if (event.target !== toggleSubmenuPadres) {
+      window.location.href = padresLink.href;
+    }
+  });
 });

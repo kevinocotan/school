@@ -48,18 +48,17 @@
                 <div id="contentTable">
                     <table class="table">
                         <thead class="table-dark">
-                            <th>Código</th>
+                            <th>Código de Parentesco</th>
                             <th>Alumno</th>
                             <th>Padre</th>
                             <th>Parentesco</th>
-                            <th>Fecha</th>
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
                             <td>1</td>
-                            <td>Tinte KUUL</td>
-                            <td>El salvador-santa ana</td>
-                            <td>amigosdeisrael@gmail.com</td>
+                            <td>Melvin Fernando Ocotan</td>
+                            <td>Pedro Esteban Ocotan</td>
+                            <td>Padre</td>
                             <td>
                                 <button type="button" class="btn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
@@ -107,12 +106,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label for="fecha" class="col-sm-2 col-form-label">Fecha:</label>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control" id="fecha" name="fecha" required>
-                        </div>
-                    </div>
+
                     <button type="button" class="btn btn-secondary" id="btnCancelar"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
                     <button type="submit" class="btn btn-primary"><i class="bi bi-hdd"></i> Guardar</button>
                 </form>
