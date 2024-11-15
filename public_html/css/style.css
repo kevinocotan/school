@@ -1,11 +1,9 @@
 .btncolor {
-    background-color: #8C52FF;
-    color: #fff;
-    border-color: rgb(119, 49, 165); 
+  background-color: hsl(228, 85%, 63%);
+  color: #fff;
+  border-color: hsl(228, 8%, 56%);
 }
 
 .btncolor:hover {
-    background-color: rgb(174, 192, 16);
+  background-color: rgb(174, 192, 16);
 }
-
-

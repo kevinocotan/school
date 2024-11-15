@@ -32,7 +32,7 @@
                     Grados
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
                         <i class="bi bi-plus-circle"></i>
-                        Agregar grados
+                        Agregar Grados
                     </button>
                 </h4>
                 <hr>
