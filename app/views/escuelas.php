@@ -87,7 +87,7 @@
             </div>
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="ri-user-line"></i>
+                    <i class="ri-school-line"></i>
                     Escuelas
                 </h4>
                 <hr>

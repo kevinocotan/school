@@ -24,13 +24,15 @@
         <!-- Todos los elementos que varian-->
         <section id="contenido">
 
+
             <div id="contentList" class="mt-3">
                 <h4>
-                    <i class="ri-user-line"></i>
-                    Padres
+                    <i class="ri-number-1"></i>
+
+                    Grados
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
                         <i class="bi bi-plus-circle"></i>
-                        Agregar Padres
+                        Agregar grados
                     </button>
                 </h4>
                 <hr>
@@ -45,19 +47,15 @@
                 <div id="contentTable">
                     <table class="table">
                         <thead class="table-dark">
-                            <th>Código de Padre</th>
-                            <th>Nombres</th>
-                            <th>Dirección</th>
-                            <th>Teléfono</th>
+                            <th>ID Grado</th>
+                            <th>Nombre de grado</th>
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
                             <td>1</td>
-                            <td>Pedro Lopez</td>
-                            <td>Santa Ana, El Salvador</td>
-                            <td>7720-8920</td>
+                            <td>Diana Iveth</td>
                             <td>
-                                <button type="button" class="btn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
+                                <button type="button" class="bbtn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
                             </td>
                         </tbody>
@@ -77,31 +75,19 @@
             </div>
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="ri-user-line"></i>
-                    Padres
+                    <i class="ri-number-1"></i>
+
+                    Grado
                 </h4>
                 <hr>
-                <form id="formPadre" enctype="multipart/form-data">
+                <form id="formGrado" enctype="multipart/form-data">
                     <div class="row mb-3">
-                        <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                        <label for="nombre_grado" class="col-sm-2 col-form-label">Nombre del grado:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                            <input type="hidden" name="id_padre" id="id_padre" value="0">
+                            <input type="text" class="form-control" id="nombre_grado" name="nombre_grado" required>
+                            <input type="hidden" name="id_grado" id="id_grado" value="0">
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label for="direccion" class="col-sm-2 col-form-label">Dirección:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="direccion" name="direccion">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="telefono" class="col-sm-2 col-form-label">Teléfono:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="telefono" name="telefono">
-                        </div>
-                    </div>
-
                     <button type="button" class="btn btn-secondary" id="btnCancelar"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
                     <button type="submit" class="btn btn-primary"><i class="bi bi-hdd"></i> Guardar</button>
                 </form>
@@ -110,11 +96,8 @@
         <section id="pie">
             <?php include_once "app/views/sections/footer.php"; ?>
         </section>
-    </div>
-
-
-    <?php include_once "app/views/sections/scripts.php"; ?>
-    <script src="<?php echo URL; ?>public_html/customjs/padres.js"></script>
+        <?php include_once "app/views/sections/scripts.php"; ?>
+        <script src="<?php echo URL; ?>public_html/customjs/grados.js"></script>
 </body>
 
 </html>

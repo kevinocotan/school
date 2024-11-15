@@ -72,19 +72,26 @@
                             <span>Escuelas</span>
                         </a>
 
+                        <a href="<?php echo URL; ?>grados" class="sidebar__link <?php echo isActive('grados'); ?>">
+                            <i class="ri-number-1"></i>
+                            <span>Grados</span>
+                        </a>
+
+                        <a href="<?php echo URL; ?>secciones" class="sidebar__link <?php echo isActive('secciones'); ?>">
+                            <i class="ri-font-family"></i>
+                            <span>Secciones</span>
+                        </a>
+
                         <a href="<?php echo URL; ?>padres" class="sidebar__link <?php echo isActive('padres'); ?>">
                             <i class="ri-user-3-line"></i>
                             <span>Padres</span>
                         </a>
 
-                        <a href="<?php echo URL; ?>alumnos"class="sidebar__link <?php echo isActive('alumnos'); ?>">
+                        <a href="<?php echo URL; ?>alumnos" class="sidebar__link <?php echo isActive('alumnos'); ?>">
                             <i class="ri-graduation-cap-line"></i>
                             <span>Alumnos</span>
                         </a>
-
                     </div>
-
-
                 </div>
 
                 <div>
