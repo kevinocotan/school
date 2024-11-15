@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "app/views/sections/css.php"; ?>
     <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
-    <title>Usuarios - MyControl School</title>
+    <title>Secciones - MyControl School</title>
 </head>
 
 <body>
