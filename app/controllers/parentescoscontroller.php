@@ -19,20 +19,26 @@ class ParentescosController extends Controller
 
     public function save()
     {
-        if ($_POST["id_padre_alumno"] == 0) {
-            $datosParentesco = $this->parentesco->getParentescoByName($_POST["parentesco"]);
-            if (count($datosParentesco) > 0) {
-                $info = array('success' => false, 'msg' => "La sección ya existe.");
-            } else {
-                $records = $this->parentesco->save($_POST);
-                $info = array('success' => true, 'msg' => "La sección se ha guardado con éxito.");
-            }
+        // Comprobar si ya existe la relación entre el alumno y el padre
+        $existeRelacion = $this->parentesco->checkIfExist($_POST["id_alumno"], $_POST["id_padre"]);
+
+        if ($existeRelacion) {
+            // Si ya existe la relación, no insertamos el nuevo parentesco
+            $info = array('success' => false, 'msg' => "El parentesco para este alumno y padre ya existe.");
         } else {
-            $records = $this->parentesco->update($_POST);
-            $info = array('success' => true, 'msg' => "Los datos de La sección han sido actualizados con éxito.");
+            // Si no existe la relación, insertamos el parentesco
+            if ($_POST["id_padre_alumno"] == 0) {
+                $records = $this->parentesco->save($_POST);
+                $info = array('success' => true, 'msg' => "El parentesco se ha guardado con éxito.");
+            } else {
+                $records = $this->parentesco->update($_POST);
+                $info = array('success' => true, 'msg' => "Los datos del parentesco han sido actualizados con éxito.");
+            }
         }
+
         echo json_encode($info);
     }
+
 
     public function getOneParentesco()
     {
@@ -40,7 +46,7 @@ class ParentescosController extends Controller
         if (count($records) > 0) {
             $info = array('success' => true, 'records' => $records);
         } else {
-            $info = array('success' => false, 'msg' => 'La sección no existe.');
+            $info = array('success' => false, 'msg' => 'El parentesto no existe.');
         }
         echo json_encode($info);
     }
@@ -48,7 +54,7 @@ class ParentescosController extends Controller
     public function deleteParentesco()
     {
         $records = $this->parentesco->deleteParentesco($_GET["id"]);
-        $info = array('success' => true, 'msg' => "Se ha eliminado La sección con éxito.");
+        $info = array('success' => true, 'msg' => "Se ha eliminado el parentesto con éxito.");
         echo json_encode($info);
     }
 }

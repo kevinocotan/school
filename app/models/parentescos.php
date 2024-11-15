@@ -18,6 +18,8 @@ class Parentescos extends BaseDeDatos
         return $this->executeQuery("SELECT id_padre_alumno, parentesco, fecha, id_alumno, id_padre FROM padresalumnos WHERE parentesco='{$nombre}'");
     }
 
+
+
     public function save($data)
     {
         return $this->executeInsert("INSERT INTO padresalumnos SET parentesco='{$data["parentesco"]}', fecha='{$data["fecha"]}', id_padre='{$data["id_padre"]}', id_alumno='{$data["id_alumno"]}'");
@@ -37,6 +39,14 @@ class Parentescos extends BaseDeDatos
     {
         return $this->executeInsert("DELETE FROM padresalumnos WHERE id_padre_alumno='$id'");
     }
+
+    public function checkIfExist($id_alumno, $id_padre)
+    {
+        $query = "SELECT COUNT(*) as total FROM padresalumnos WHERE id_alumno = '{$id_alumno}' AND id_padre = '{$id_padre}'";
+        $result = $this->executeQuery($query);
+        return $result[0]['total'] > 0; // Si ya existe, retorna true
+    }
+
 
     public function getPadrealumnoReporte($data)
     {

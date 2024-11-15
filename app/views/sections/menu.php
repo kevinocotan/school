@@ -94,11 +94,6 @@
 
                             <!-- FIN SUB MENU ESCUELAS -->
 
-                            <a href="<?php echo URL; ?>alumnos" class="sidebar__link <?php echo isActive('alumnos'); ?>">
-                                <i class="ri-graduation-cap-fill"></i>
-                                <span>Alumnos</span>
-                            </a>
-
                             <!-- SUB MENU PADRES -->
 
                             <a href="<?php echo URL; ?>padres" class="sidebar__link <?php echo isActive('padres'); ?>" id="padres-link">
@@ -114,10 +109,12 @@
                                     <span>Parentescos</span>
                                 </a>
                             </div>
-
                             <!-- FIN SUB MENU PADRES -->
 
-
+                            <a href="<?php echo URL; ?>alumnos" class="sidebar__link <?php echo isActive('alumnos'); ?>">
+                                <i class="ri-graduation-cap-fill"></i>
+                                <span>Alumnos</span>
+                            </a>
                         </div>
                     </div>
 
