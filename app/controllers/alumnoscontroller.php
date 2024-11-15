@@ -1,7 +1,7 @@
 <?php
-include_once "app/models/alumno.php";
+include_once "app/models/alumnos.php";
 
-class AlumnoController extends Controller {
+class AlumnosController extends Controller {
     private $alumno;
     public function __construct($parametro) {
         $this->alumno=new alumnos();

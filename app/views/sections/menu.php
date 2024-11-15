@@ -77,7 +77,7 @@
                             <span>Padres</span>
                         </a>
 
-                        <a href="#" class="sidebar__link <?php echo isActive('alumnos'); ?>">
+                        <a href="<?php echo URL; ?>alumnos"class="sidebar__link <?php echo isActive('alumnos'); ?>">
                             <i class="ri-graduation-cap-line"></i>
                             <span>Alumnos</span>
                         </a>

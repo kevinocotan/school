@@ -24,6 +24,7 @@
         <!-- Todos los elementos que varian-->
         <section id="contenido">
             <!-- listado de usuarios -->
+             
             <div id="contentList" class="mt-3">
                 <h4>
                     <i class="bi bi-people-fill"></i>
