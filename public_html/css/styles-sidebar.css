@@ -66,8 +66,6 @@ button {
   all: unset;
 }
 
-
-
 /*=============== VARIABLES DARK THEME ===============*/
 body.dark-theme {
   --first-color: hsl(228, 70%, 63%);
@@ -291,6 +289,20 @@ body.dark-theme {
   width: 3px;
   height: 20px;
   background-color: var(--first-color);
+}
+
+/* SIDEBAR SUBMENU */
+.sidebar__submenu {
+  display: none;
+  padding-left: 20px; /* Ajuste opcional para el submenú */
+}
+
+.sidebar__submenu .sidebar__link {
+  font-size: 0.9em;
+}
+
+.sidebar__link.active .expand-icon {
+  transform: rotate(180deg);
 }
 
 /*=============== BREAKPOINTS ===============*/

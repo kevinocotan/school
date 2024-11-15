@@ -58,3 +58,30 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 
+// Selecciona el enlace de Escuelas y el submenú
+const escuelasLink = document.getElementById('escuelas-link');
+const escuelasSubmenu = document.getElementById('escuelas-submenu');
+const expandIcon = document.getElementById('expand-icon');
+
+// Agrega un evento de clic para mostrar/ocultar el submenú
+escuelasLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Alterna la visibilidad del submenú y el icono de expansión
+    if (escuelasSubmenu.style.display === 'none' || !escuelasSubmenu.style.display) {
+        escuelasSubmenu.style.display = 'block';
+        escuelasLink.classList.add('active');
+    } else {
+        escuelasSubmenu.style.display = 'none';
+        escuelasLink.classList.remove('active');
+    }
+});
+
+// Verifica la URL actual para mantener el submenú expandido en Grados o Secciones
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.href.includes('grados') || window.location.href.includes('secciones')) {
+        escuelasSubmenu.style.display = 'block';
+        escuelasLink.classList.add('active');
+    }
+});
+

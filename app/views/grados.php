@@ -47,8 +47,8 @@
                 <div id="contentTable">
                     <table class="table">
                         <thead class="table-dark">
-                            <th>ID Grado</th>
-                            <th>Nombre de grado</th>
+                            <th>Codigo de Grado</th>
+                            <th>Grado</th>
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
@@ -76,13 +76,12 @@
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
                     <i class="ri-number-1"></i>
-
-                    Grado
+                    Grados
                 </h4>
                 <hr>
                 <form id="formGrado" enctype="multipart/form-data">
                     <div class="row mb-3">
-                        <label for="nombre_grado" class="col-sm-2 col-form-label">Nombre del grado:</label>
+                        <label for="nombre_grado" class="col-sm-2 col-form-label">Grado:</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="nombre_grado" name="nombre_grado" required>
                             <input type="hidden" name="id_grado" id="id_grado" value="0">

@@ -67,20 +67,25 @@
                             <span>Usuarios</span>
                         </a>
 
-                        <a href="<?php echo URL; ?>escuelas" class="sidebar__link <?php echo isActive('escuelas'); ?>">
+                        <a href="<?php echo URL; ?>escuelas" class="sidebar__link <?php echo isActive('escuelas'); ?>" id="escuelas-link">
                             <i class="ri-school-line"></i>
                             <span>Escuelas</span>
+
                         </a>
 
-                        <a href="<?php echo URL; ?>grados" class="sidebar__link <?php echo isActive('grados'); ?>">
-                            <i class="ri-number-1"></i>
-                            <span>Grados</span>
-                        </a>
+                        <!-- Submenú para Grados y Secciones -->
+                        <div id="escuelas-submenu" class="sidebar__submenu">
+                            <a href="<?php echo URL; ?>grados" class="sidebar__link <?php echo isActive('grados'); ?>">
+                                <i class="ri-number-1"></i>
+                                <span>Grados</span>
+                            </a>
+                            <a href="<?php echo URL; ?>secciones" class="sidebar__link <?php echo isActive('secciones'); ?>">
+                                <i class="ri-font-family"></i>
+                                <span>Secciones</span>
+                            </a>
+                        </div>
 
-                        <a href="<?php echo URL; ?>secciones" class="sidebar__link <?php echo isActive('secciones'); ?>">
-                            <i class="ri-font-family"></i>
-                            <span>Secciones</span>
-                        </a>
+
 
                         <a href="<?php echo URL; ?>padres" class="sidebar__link <?php echo isActive('padres'); ?>">
                             <i class="ri-user-3-line"></i>
@@ -91,6 +96,9 @@
                             <i class="ri-graduation-cap-line"></i>
                             <span>Alumnos</span>
                         </a>
+
+
+
                     </div>
                 </div>
 
