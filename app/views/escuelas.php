@@ -26,7 +26,7 @@
             <!-- listado de usuarios -->
             <div id="contentList" class="mt-3">
                 <h4>
-                    <i class="ri-school-line"></i>
+                    <i class="ri-school-fill"></i>
                     Escuelas
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
                         <i class="ri-add-large-fill"></i>
@@ -87,7 +87,7 @@
             </div>
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="ri-school-line"></i>
+                    <i class="ri-school-fill"></i>
                     Escuelas
                 </h4>
                 <hr>

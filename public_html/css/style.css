@@ -7,3 +7,10 @@
 .btncolor:hover {
   background-color: rgb(174, 192, 16);
 }
+
+  /* Estilo predeterminado para la tabla (modo claro) */
+  .table {
+    color: #8b8e9b;
+  }
+
+ 

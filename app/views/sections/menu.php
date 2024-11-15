@@ -20,7 +20,7 @@
         <div class="header__container">
             <a href="<?php echo URL; ?>dashboard" class="header__logo">
                 <span>MyControl School</span>
-                <i class="ri-school-fill"></i>
+                <i class="ri-school-line"></i>
             </a>
 
             <button class="header__toggle" id="header-toggle">
@@ -63,12 +63,12 @@
                         </a>
 
                         <a href="<?php echo URL; ?>usuarios" class="sidebar__link <?php echo isActive('usuarios'); ?>">
-                            <i class="ri-group-line"></i>
+                            <i class="ri-group-fill"></i>
                             <span>Usuarios</span>
                         </a>
 
                         <a href="<?php echo URL; ?>escuelas" class="sidebar__link <?php echo isActive('escuelas'); ?>" id="escuelas-link">
-                            <i class="ri-school-line"></i>
+                            <i class="ri-school-fill"></i>
                             <span>Escuelas</span>
                             <i class="ri-arrow-down-s-line" id="toggle-submenu"></i>
                         </a>
@@ -85,18 +85,24 @@
                             </a>
                         </div>
 
-
-                        <a href="<?php echo URL; ?>padres" class="sidebar__link <?php echo isActive('padres'); ?>">
-                            <i class="ri-user-3-line"></i>
+                        <a href="<?php echo URL; ?>padres" class="sidebar__link <?php echo isActive('padres'); ?>" id="padres-link">
+                            <i class="ri-user-fill"></i>
                             <span>Padres</span>
+                            <i class="ri-arrow-down-s-line" id="toggle-submenu-padres"></i>
                         </a>
+
+                        <!-- Submenú para los subenlaces de Padres -->
+                        <div id="padres-submenu" class="sidebar__submenu">
+                            <a href="<?php echo URL; ?>padresalumnos" class="sidebar__link <?php echo isActive('padresalumnos'); ?>">
+                                <i class="ri-group-3-line"></i>
+                                <span>Padres y Alumnos</span>
+                            </a>
+                        </div>
 
                         <a href="<?php echo URL; ?>alumnos" class="sidebar__link <?php echo isActive('alumnos'); ?>">
-                            <i class="ri-graduation-cap-line"></i>
+                            <i class="ri-graduation-cap-fill"></i>
                             <span>Alumnos</span>
                         </a>
-
-
 
                     </div>
                 </div>

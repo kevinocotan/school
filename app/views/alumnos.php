@@ -29,7 +29,7 @@
 
             <div id="contentList" class="mt-3">
                 <h4>
-                    <i class="ri-graduation-cap-line"></i>
+                    <i class="ri-graduation-cap-fill"></i>
 
                     Alumnos
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
@@ -95,7 +95,7 @@
             </div>
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
-                    <i class="ri-graduation-cap-line"></i>
+                    <i class="ri-graduation-cap-fill"></i>
                     Alumnos
                 </h4>
                 <hr>
