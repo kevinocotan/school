@@ -108,7 +108,7 @@ padresLink.addEventListener("click", (e) => {
 window.addEventListener("DOMContentLoaded", () => {
   if (
     window.location.href.includes("grados") ||
-    window.location.href.includes("secciones") || window.location.href.includes("parentescos")
+    window.location.href.includes("secciones")
   ) {
     escuelasSubmenu.style.display = "block";
     escuelasLink.classList.add("active");
@@ -117,7 +117,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 /* PARA QUE SALGA MARCADO Y SE MANTENGA SELECCIONADO PADRES */
 window.addEventListener("DOMContentLoaded", () => {
-  window.location.href.includes("parentescos");
+  window.location.href.includes("padresalumnos");
   padresSubmenu.style.display = "block";
   padresLink.classList.add("active");
 });

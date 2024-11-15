@@ -1,4 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include_once "app/views/sections/css.php"; ?>
+    <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
+    <title>Secciones - MyControl School</title>
+</head>
+
+<body>
+
+    <!-- NO HAY NECESIDAD DE QUE ESTO DE ARRIBA SE REPITA POR CADA ARCHIVO -->
+
+    <div class="main container" id="main">
+        <!--Todos los elementos del encabezado-->
+        <section id="encabezado">
+            <?php include_once "app/views/sections/header.php"; ?>
+        </section>
+        <!--Opciones de menu-->
+        <section id="menu">
+            <?php include_once "app/views/sections/menu.php"; ?>
+        </section>
+        <!-- Todos los elementos que varian-->
+        <section id="contenido">
+            <!-- listado de usuarios -->
             <div id="contentList" class="mt-3">
                 <h4>
                     <i class="bi bi-people-fill"></i>
