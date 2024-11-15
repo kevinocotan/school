@@ -58,7 +58,7 @@
 
     <script src="<?php echo URL; ?>public_html/customjs/api.js"></script>
     <script src="<?php echo URL; ?>public_html/customjs/login.js"></script>
-    <script src="js/login-script.js"></script>
+    <script src="public_html/js/login-script.php"></script>
 
 </body>
 

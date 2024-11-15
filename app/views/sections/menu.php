@@ -120,7 +120,7 @@
     </main>
 
     <!--=============== MAIN JS ===============-->
-    <script src="js/main.js"></script>
+    <script src="public_html/js/main.js"></script>
 </body>
 
 </html>
