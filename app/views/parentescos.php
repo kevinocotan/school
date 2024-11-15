@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "app/views/sections/css.php"; ?>
     <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
-    <title>Usuarios - MyControl School</title>
+    <title>Paresteco - MyControl School</title>
 </head>
 
 <body>
@@ -30,10 +30,10 @@
             <div id="contentList" class="mt-3">
                 <h4>
                     <i class="bi bi-pencil-fill"></i>
-                    Padres-Alumnos
+                    Parentescos
                     <button type="button" class="btn btn-dark btncolor float-end" id="btnAgregar">
                         <i class="bi bi-plus-circle"></i>
-                        Agregar parantesco
+                        Agregar Parantesco
                     </button>
                 </h4>
                 <hr>
@@ -48,18 +48,19 @@
                 <div id="contentTable">
                     <table class="table">
                         <thead class="table-dark">
-                            <th>Código</th>
+                            <th>Código de Parentesco</th>
                             <th>Alumno</th>
                             <th>Padre</th>
-                            <th>Parentezco</th>
+                            <th>Parentesco</th>
                             <th>Fecha</th>
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
                             <td>1</td>
-                            <td>Tinte KUUL</td>
-                            <td>El salvador-santa ana</td>
-                            <td>amigosdeisrael@gmail.com</td>
+                            <td>Melvin Ocotan</td>
+                            <td>Pedro Ocotan</td>
+                            <td>Padre</td>
+                            <td>11/11/2024</td>
                             <td>
                                 <button type="button" class="btn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
@@ -82,7 +83,7 @@
             <div id="contentForm" class="mt-3 d-none">
                 <h4>
                     <i class="bi bi-cart-fill"></i>
-                    Padres-alumnos
+                    Parentescos
                 </h4>
                 <hr>
                 <form id="formPadrealumno" enctype="multipart/form-data">

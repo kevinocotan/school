@@ -77,7 +77,7 @@ function cargarDatos() {
 }
 
 function cargarAlumno() {
-  API.get("alumno/getAll")
+  API.get("alumnos/getAll")
     .then((data) => {
       if (data.success) {
         const txtAlumno = document.querySelector("#id_alumno");
@@ -97,7 +97,7 @@ function cargarAlumno() {
 }
 
 function cargarPadre() {
-  API.get("padre/getAll")
+  API.get("padres/getAll")
     .then((data) => {
       if (data.success) {
         const txtPadre = document.querySelector("#id_padre");
