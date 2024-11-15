@@ -66,23 +66,7 @@ button {
   all: unset;
 }
 
-/* Submenú oculto por defecto */
-.sidebar__submenu {
-  display: none;
-  padding-left: 40px;
-}
 
-/* Estilo para los enlaces del submenú */
-.sidebar__submenu .sidebar__link {
-  font-size: 1rem;
-  color: #888;
-}
-
-/* Estilo de submenú cuando está activo */
-.sidebar__submenu-active {
-  display: block;
-  row-gap: -1.5rem;
-}
 
 /*=============== VARIABLES DARK THEME ===============*/
 body.dark-theme {
