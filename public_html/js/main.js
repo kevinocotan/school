@@ -91,7 +91,6 @@ escuelasLink.addEventListener("click", (e) => {
 });
 
 /* PARA QUE DESPLACE EL SUBMENU DE PADRES */
-
 padresLink.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -104,8 +103,36 @@ padresLink.addEventListener("click", (e) => {
   }
 });
 
-/* PARA QUE SALGA MARCADO Y SE MANTENGA SELECCIONADO ESCUELAS */
+/* CERRAR EL SUBMENU DE PADRES Y ESCUELAS AL HACER CLIC EN OTRO ENLACE */
+const sidebarLinks = document.querySelectorAll(".sidebar__link");
+sidebarLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    // Cerrar submenús si se hace clic en cualquier otro enlace
+    if (
+      padresSubmenu.style.display === "block" &&
+      !e.target.closest("#padres-link")
+    ) {
+      padresSubmenu.style.display = "none";
+      padresLink.classList.remove("active");
+    }
+    if (
+      escuelasSubmenu.style.display === "block" &&
+      !e.target.closest("#escuelas-link")
+    ) {
+      escuelasSubmenu.style.display = "none";
+      escuelasLink.classList.remove("active");
+    }
+  });
+});
+
 window.addEventListener("DOMContentLoaded", () => {
+  // Submenú de Padres
+  if (window.location.href.includes("parentescos")) {
+    padresSubmenu.style.display = "block";
+    padresLink.classList.add("active");
+  }
+
+  // Submenú de Escuelas
   if (
     window.location.href.includes("grados") ||
     window.location.href.includes("secciones")
@@ -113,13 +140,6 @@ window.addEventListener("DOMContentLoaded", () => {
     escuelasSubmenu.style.display = "block";
     escuelasLink.classList.add("active");
   }
-});
-
-/* PARA QUE SALGA MARCADO Y SE MANTENGA SELECCIONADO PADRES */
-window.addEventListener("DOMContentLoaded", () => {
-  window.location.href.includes("padresalumnos");
-  padresSubmenu.style.display = "block";
-  padresLink.classList.add("active");
 });
 
 /* PARA PODER HACER CLIC EN ESCUELAS Y QUE SE ABRA */
