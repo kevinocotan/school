@@ -52,8 +52,8 @@ class Alumnos extends BaseDeDatos
             $condicion .= "AND alumnos.id_school='{$data["id_school"]}' ";
         }
 
-        return $this->executeQuery("SELECT alumnos.*, grados.nombre AS grado, 
-            secciones.nombre AS seccion, escuelas.nombre AS escuela 
+        return $this->executeQuery("SELECT alumnos.*, grados.nombre_grado AS grado, 
+            secciones.nombre_seccion AS seccion, escuelas.nombre AS escuela 
             FROM alumnos
             INNER JOIN grados ON alumnos.id_grado = grados.id_grado
             INNER JOIN secciones ON alumnos.id_seccion = secciones.id_seccion
@@ -62,10 +62,12 @@ class Alumnos extends BaseDeDatos
             ORDER BY alumnos.nombre_completo");
     }
 
+/* no se por que tengo secciones.nombre, si se llama secciones.seccion */
+
     public function getAlumnosByEscuela($id_school)
     {
-        return $this->executeQuery("SELECT alumnos.*, grados.nombre AS grado, 
-            secciones.nombre AS seccion 
+        return $this->executeQuery("SELECT alumnos.*, grados.nombre_grado AS grado, 
+            secciones.nombre_seccion AS seccion 
             FROM alumnos
             INNER JOIN grados ON alumnos.id_grado = grados.id_grado
             INNER JOIN secciones ON alumnos.id_seccion = secciones.id_seccion
