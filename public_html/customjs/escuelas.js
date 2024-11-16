@@ -147,7 +147,7 @@ function crearTabla() {
     objDatos.recordsFilter = objDatos.records.map((item) => item);
   } else {
     objDatos.recordsFilter = objDatos.records.filter((item) => {
-      const { nombre, direccion, email, latitud, longitud, fecha, nombres } =
+      const { nombre, direccion, email, latitud, longitud, nombres } =
         item;
       if (
         nombre.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) != -1
@@ -176,11 +176,6 @@ function crearTabla() {
         return item;
       }
       if (
-        fecha.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) != -1
-      ) {
-        return item;
-      }
-      if (
         nombres.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) != -1
       ) {
         return item;
@@ -203,7 +198,6 @@ function crearTabla() {
                     <td>${item.email}</td>
                     <td>${item.latitud}</td>
                     <td>${item.longitud}</td>
-                    <td>${item.fecha}</td>
                     <td>${item.nombres}</td>
                     <td>
                         <button type="button" class="btn btn-dark btncolor" onclick="editarEscuela(${item.id_school})"><i class="ri-edit-fill"></i></button>
@@ -305,7 +299,6 @@ function mostrarDatosForm(record) {
     email,
     latitud,
     longitud,
-    fecha,
     id_usr,
     foto,
   } = record;
@@ -315,7 +308,6 @@ function mostrarDatosForm(record) {
   document.querySelector("#email").value = email;
   document.querySelector("#latitud").value = latitud;
   document.querySelector("#longitud").value = longitud;
-  document.querySelector("#fecha").value = fecha;
   document.querySelector("#id_usr").value = id_usr;
   divFoto.innerHTML = `<img src="${foto}" class="h-100 w-100" style="object-fit:contain;">`;
   actualizarMarcadorMapa(parseFloat(latitud), parseFloat(longitud));

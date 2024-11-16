@@ -10,32 +10,32 @@ class escuelas extends BaseDeDatos
 
     public function getAll()
     {
-        return $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, date_format(a.fecha,'%d-%M-%Y') as fecha, b.nombres from escuelas a inner join usuarios b on a.id_usr = b.id_usr order by a.id_usr;");
+        return $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.nombres from escuelas a inner join usuarios b on a.id_usr = b.id_usr order by a.id_usr;");
     }
     public function getAllUser()
     {
-        return $this->executeQuery("SELECT a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, DATE_FORMAT(a.fecha,'%d-%M-%Y') as fecha, b.nombres FROM escuelas a INNER JOIN usuarios b ON a.id_usr = b.id_usr WHERE b.id_usr = {$_SESSION['id_usr']}");
+        return $this->executeQuery("SELECT a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.nombres FROM escuelas a INNER JOIN usuarios b ON a.id_usr = b.id_usr WHERE b.id_usr = {$_SESSION['id_usr']}");
     }
 
 
     public function getEscuelaByName($nombre)
     {
-        return $this->executeQuery("Select id_school, nombre, direccion, email, latitud, longitud, fecha, id_usr from escuelas where nombre='{$nombre}'");
+        return $this->executeQuery("Select id_school, nombre, direccion, email, latitud, longitud, id_usr from escuelas where nombre='{$nombre}'");
     }
 
     public function save($data, $img)
     {
-        return $this->executeInsert("insert into escuelas set nombre='{$data["nombre"]}', direccion='{$data["direccion"]}', email='{$data["email"]}', latitud='{$data["latitud"]}', longitud='{$data["longitud"]}', fecha='{$data["fecha"]}', id_usr='{$data["id_usr"]}', foto='{$img}'");
+        return $this->executeInsert("insert into escuelas set nombre='{$data["nombre"]}', direccion='{$data["direccion"]}', email='{$data["email"]}', latitud='{$data["latitud"]}', longitud='{$data["longitud"]}', id_usr='{$data["id_usr"]}', foto='{$img}'");
     }
 
     public function getOneEscuela($id)
     {
-        return $this->executeQuery("Select id_school, nombre, direccion, email, latitud, longitud, fecha, id_usr, foto from escuelas where id_school='{$id}'");
+        return $this->executeQuery("Select id_school, nombre, direccion, email, latitud, longitud, id_usr, foto from escuelas where id_school='{$id}'");
     }
 
     public function update($data, $img)
     {
-        return $this->executeInsert("update escuelas set nombre='{$data["nombre"]}', direccion='{$data["direccion"]}', email='{$data["email"]}', latitud='{$data["latitud"]}', longitud='{$data["longitud"]}', fecha='{$data["fecha"]}', id_usr='{$data["id_usr"]}', foto= if('{$img}'='',foto,'{$img}') where id_school={$data["id_school"]}");
+        return $this->executeInsert("update escuelas set nombre='{$data["nombre"]}', direccion='{$data["direccion"]}', email='{$data["email"]}', latitud='{$data["latitud"]}', longitud='{$data["longitud"]}', id_usr='{$data["id_usr"]}', foto= if('{$img}'='',foto,'{$img}') where id_school={$data["id_school"]}");
     }
 
     public function deleteEscuela($id)
@@ -45,12 +45,12 @@ class escuelas extends BaseDeDatos
 
     function getEscuelaByUsuarios($id)
     {
-        return  $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, a.fecha, b.id_usr from escuelas a inner join usuarios b on a.id_usr = b.id_usr order by a.id_usr where b.id_usr='{$id}' order by nombre");
+        return  $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.id_usr from escuelas a inner join usuarios b on a.id_usr = b.id_usr order by a.id_usr where b.id_usr='{$id}' order by nombre");
     }
 
     function getEscuelaById($id)
     {
-        return  $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, a.fecha, b.id_usr from escuelas a inner join usuarios b on a.id_usr = b.id_usr where a.id_usr='{$id}' order by nombre");
+        return  $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.id_usr from escuelas a inner join usuarios b on a.id_usr = b.id_usr where a.id_usr='{$id}' order by nombre");
     }
 
 
@@ -102,10 +102,4 @@ class escuelas extends BaseDeDatos
         return $this->executeQuery($query);
     }
 
-
-
-    public function getFechasPorEscuelas()
-    {
-        return $this->executeQuery("select fecha as id_school, fecha FROM escuelas GROUP BY fecha ORDER BY fecha");
-    }
 }

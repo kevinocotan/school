@@ -53,7 +53,6 @@
                             <th>Email</th>
                             <th>Latitud</th>
                             <th>Longitud</th>
-                            <th>Fecha</th>
                             <th>Usuario</th>
                             <th>&nbsp;</th>
                         </thead>
@@ -64,7 +63,6 @@
                             <td>catolica@catolica.edu.sv</td>
                             <td>40º 42' 46'</td>
                             <td>74º 0' 21''</td>
-                            <td>13/11/2024</td>
                             <td>Administrador</td>
                             <td>
                                 <button type="button" class="btn btn-dark btncolor"><i class="ri-edit-fill"></i></button>
@@ -118,21 +116,12 @@
                         </div>
                     </div>
 
-
                     <div class="row mb-3">
                         <label for="email" class="col-sm-2 col-form-label">Email:</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="email" name="email" required>
                         </div>
                     </div>
-
-                    <div class="row mb-3">
-                        <label for="fecha" class="col-sm-2 col-form-label">Fecha:</label>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control" id="fecha" name="fecha" required>
-                        </div>
-                    </div>
-
 
                     <div class="row mb-3">
                         <label for="id_usr" class="col-sm-2 col-form-label">Usuario:</label>

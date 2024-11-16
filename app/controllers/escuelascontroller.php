@@ -58,9 +58,6 @@ class EscuelasController extends Controller {
         $info=array('success'=>true,'msg'=>"Se ha eliminado la escuela con éxito.");
         echo json_encode($info);
     }
-    public function getFechasPorEscuelas(){
-        $records=$this->escuela->getFechasPorEscuelas();
-        $info=array('success'=>true,'records'=>$records);
-        echo json_encode($info);
-    }
+
+   
 }
