@@ -11,7 +11,7 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="public_html/css/styles-sidebar.css">
 
-    <title>Responsive Sidebar Menu | Dark/Light Mode - Bedimcode</title>
+    <title>Responsive Sidebar Menu | Dark/Light Mode </title>
 </head>
 
 <body>
@@ -122,9 +122,9 @@
                         <h3 class="sidebar__title">INFORMES</h3>
 
                         <div class="sidebar__list">
-                            <a href="<?php echo URL; ?>reporteescuela" class="sidebar__link <?php echo isActive('reporteescuela'); ?>">
+                            <a href="<?php echo URL; ?>reportes" class="sidebar__link <?php echo isActive('reportes'); ?>">
                                 <i class="ri-file-pdf-2-line"></i>
-                                <span>Reportes Escuelas</span>
+                                <span>Reportes</span>
                             </a>
                         </div>
                     </div>

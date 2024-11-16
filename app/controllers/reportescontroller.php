@@ -4,7 +4,7 @@ include_once "app/models/escuelas.php";
 include_once "app/models/alumnos.php";
 include_once "vendor/autoload.php";
 
-class ReporteEscuelaController extends Controller
+class ReportesController extends Controller
 {
     private $escuela;
     private $alumno;
@@ -13,7 +13,7 @@ class ReporteEscuelaController extends Controller
     {
         $this->escuela = new Escuelas();
         $this->alumno = new Alumnos(); // Incluye la lógica de alumnos
-        parent::__construct("reporteescuela", $parametro, true);
+        parent::__construct("reportes", $parametro, true);
     }
     public function getReporteEscuela()
     {
