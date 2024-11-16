@@ -42,6 +42,12 @@
                     </select>
                 </div>
 
+                <div class="col-auto d-flex">
+                    <label class="col-form-label mx-3" for="autoSizingInput">Alumnos</label>
+                    <select name="id_alumno" id="id_alumno" class="form-select">
+                    </select>
+                </div>
+
                 <div class="col-auto">
                     <button type="button" class="btn btn-dark btncolor" id="btnViewReport">Ver Reporte</button>
                 </div>

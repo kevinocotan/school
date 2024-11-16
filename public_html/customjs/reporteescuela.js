@@ -2,7 +2,7 @@
 
 const btnViewReport=document.querySelector("#btnViewReport");
 const idSchool=document.querySelector("#id_school");
-const idCliente=document.querySelector("#id_cliente");
+const idAlumno=document.querySelector("#id_alumno");
 const frameReporte=document.querySelector("#framereporte");
 const filtro=document.querySelector("#filtro");
 const API=new Api()
@@ -62,21 +62,21 @@ function cargarDatos() {
 }
 
 function cargarAlumnos() {
-    API.get("clientes/getAll").then(
+    API.get("alumnos/getAll").then(
         data=>{
             if(data.success) {
-                idCliente.innerHTML="";
-                const optionCliente=document.createElement("option");
-                optionCliente.value="0";
-                optionCliente.textContent="Todos";
-                idCliente.append(optionCliente);
+                idAlumno.innerHTML="";
+                const optionAlumno=document.createElement("option");
+                optionAlumno.value="0";
+                optionAlumno.textContent="Todos";
+                idAlumno.append(optionAlumno);
                 data.records.forEach(
                     (item,index)=>{
-                        const {id_cliente,nombrescliente}=item;
-                        const optionCliente=document.createElement("option");
-                        optionCliente.value=id_cliente;
-                        optionCliente.textContent=nombrescliente;
-                        idCliente.append(optionCliente);
+                        const {id_alumno,nombre_completo}=item;
+                        const optionAlumno=document.createElement("option");
+                        optionAlumno.value=id_alumno;
+                        optionAlumno.textContent=nombre_completo;
+                        idAlumno.append(optionAlumno);
                     }
                 );
             }
