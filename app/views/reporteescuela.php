@@ -36,13 +36,13 @@
                     </select>
                 </div>
 
-                <div class="col-auto d-flex">
+                <div class="col-auto d-flex filtroescuelas">
                     <label class="col-form-label mx-3" for="autoSizingInput">Escuelas</label>
                     <select name="id_school" id="id_school" class="form-select">
                     </select>
                 </div>
 
-                <div class="col-auto d-flex">
+                <div class="col-auto d-flex filtroalumnos d-none">
                     <label class="col-form-label mx-3" for="autoSizingInput">Alumnos</label>
                     <select name="id_alumno" id="id_alumno" class="form-select">
                     </select>
