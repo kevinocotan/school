@@ -42,17 +42,27 @@ class Alumnos extends BaseDeDatos
     public function getAlumnosReporte($data)
     {
         $condicion = "";
-    
+
+        // Filtrar por id_grado si se proporciona
         if (isset($data["id_grado"]) && $data["id_grado"] != "0") {
             $condicion .= "AND alumnos.id_grado='{$data["id_grado"]}' ";
         }
+
+        // Filtrar por id_seccion si se proporciona
         if (isset($data["id_seccion"]) && $data["id_seccion"] != "0") {
             $condicion .= "AND alumnos.id_seccion='{$data["id_seccion"]}' ";
         }
+
+        // Filtrar por id_school si se proporciona
         if (isset($data["id_school"]) && $data["id_school"] != "0") {
             $condicion .= "AND alumnos.id_school='{$data["id_school"]}' ";
         }
-    
+
+        // Filtrar por id_alumno si se proporciona
+        if (isset($data["id_alumno"]) && $data["id_alumno"] != "0") {
+            $condicion .= "AND alumnos.id_alumno='{$data["id_alumno"]}' ";
+        }
+
         $query = "SELECT alumnos.*, grados.nombre_grado AS grado, 
             secciones.nombre_seccion AS seccion, escuelas.nombre AS escuela 
             FROM alumnos
@@ -61,14 +71,11 @@ class Alumnos extends BaseDeDatos
             INNER JOIN escuelas ON alumnos.id_school = escuelas.id_school
             WHERE 1=1 $condicion 
             ORDER BY alumnos.nombre_completo";
-    
+
         error_log($query); // Depuración de la consulta SQL
         return $this->executeQuery($query);
     }
-    
 
-
-/* no se por que tengo secciones.nombre, si se llama secciones.seccion */
 
     public function getAlumnosByEscuela($id_school)
     {

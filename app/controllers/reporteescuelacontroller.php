@@ -81,36 +81,40 @@ class ReporteEscuelaController extends Controller
         $pageNumber = 1;
         $registros = $this->alumno->getAlumnosReporte($_GET);
         $htmlHeader = '<div style="text-align: center;">
-            <img src="public_html/images/school.jpg" style="width:100px; height: auto;">
-            <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte De Alumnos</h3>
-            <h3 style="margin: 5px 0 0; font-size: 20px;">Listado general de Alumno</h3>
-        </div>';
+        <img src="public_html/images/school.jpg" style="width:100px; height: auto;">
+        <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte De Alumnos</h3>
+        <h3 style="margin: 5px 0 0; font-size: 20px;">Listado general de Alumno</h3>
+    </div>';
         $html = "<table style='width: 100%; border-collapse: collapse;'>
-        <thead>
-            <tr style='background-color: #ddd;'>
-                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Código</th>
-                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Alumno</th>
-                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Dirección</th>
-                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Teléfono</th>
-                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Genero</th>
-                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Grado</th>
-                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Sección</th>
-                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Escuela</th>
-            </tr>
-        </thead>
-        <tbody>";
+    <thead>
+        <tr style='background-color: #ddd;'>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Código</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Alumno</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Dirección</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Teléfono</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Genero</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Grado</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Sección</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Escuela</th>
+        </tr>
+    </thead>
+    <tbody>";
 
-        foreach ($registros as $key => $value) {
-            $html .= "<tr>";
-            $html .= "<td style='border: 1px solid #999; text-align: center;'>" . ($key + 1) . "</td>";
-            $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["nombre_completo"]}</td>";
-            $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["direccion"]}</td>";
-            $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["telefono"]}</td>";
-            $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["genero"]}</td>";
-            $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["id_grado"]}</td>";
-            $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["id_seccion"]}</td>";
-            $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["id_school"]}</td>";
-            $html .= "</tr>";
+        if (!empty($registros)) {
+            foreach ($registros as $key => $value) {
+                $html .= "<tr>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>" . ($key + 1) . "</td>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["nombre_completo"]}</td>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["direccion"]}</td>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["telefono"]}</td>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["genero"]}</td>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["grado"]}</td>"; // Cambiado
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["seccion"]}</td>"; // Cambiado
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["escuela"]}</td>"; // Cambiado
+                $html .= "</tr>";
+            }
+        } else {
+            $html .= "<tr><td colspan='8' style='text-align:center;'>No se encontraron resultados</td></tr>";
         }
 
         $html .= "</tbody></table>";
