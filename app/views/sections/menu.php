@@ -122,7 +122,7 @@
                         <h3 class="sidebar__title">INFORMES</h3>
 
                         <div class="sidebar__list">
-                            <a href="#" class="sidebar__link">
+                            <a href="<?php echo URL; ?>reportes" class="sidebar__link <?php echo isActive('reportes'); ?>">
                                 <i class="ri-file-pdf-2-line"></i>
                                 <span>Reportes</span>
                             </a>

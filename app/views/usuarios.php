@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "app/views/sections/css.php"; ?>
     <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
-    <title>Secciones - MyControl School</title>
+    <title>Usuarios - MyControl School</title>
 </head>
 
 <body>
@@ -26,6 +26,7 @@
         <!-- Todos los elementos que varian-->
         <section id="contenido">
             <!-- listado de usuarios -->
+
             <div id="contentList" class="mt-3">
                 <h4>
                     <i class="bi bi-people-fill"></i>

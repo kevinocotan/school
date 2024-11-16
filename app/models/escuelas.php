@@ -43,25 +43,8 @@ class escuelas extends BaseDeDatos {
         return  $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, a.fecha, b.id_usr from escuelas a inner join usuarios b on a.id_usr = b.id_usr where a.id_usr='{$id}' order by nombre");
     }
 
-    public function getEscuelaReporte($data){
-        $condicion="";
-        if (isset($data["id_school"])) {
-            if ($data["id_school"]!="0") {
-                $condicion.="and fecha='{$data["id_school"]}'";
-            }
-        }
-        if (isset($data["mes"])) {
-            $condicion.="and month(fecha)='{$data["mes"]}' and year(fecha)='{$data["anio"]}'";
-        }
 
-        return $this->executeQuery("Select id_school, fecha, nombre, direccion, email from escuelas
-        where 1=1 $condicion
-        order by fecha");
-    }
-
-    public function getFechasPorEscuelas(){
-        return $this->executeQuery("select fecha as id_school, fecha FROM escuelas GROUP BY fecha ORDER BY fecha");
-    }
+    /* PARA MAPA */
 
     public function getEscuelasMapa($ids){
         $id_school = $ids['id_escuela'];
@@ -88,6 +71,29 @@ class escuelas extends BaseDeDatos {
                     a.id_school = $id_school";
         return $this->executeQuery($query);
     }
+    
+
+    public function getEscuelaReporte($data){
+        $condicion="";
+        if (isset($data["id_school"])) {
+            if ($data["id_school"]!="0") {
+                $condicion.="and fecha='{$data["id_school"]}'";
+            }
+        }
+        if (isset($data["mes"])) {
+            $condicion.="and month(fecha)='{$data["mes"]}' and year(fecha)='{$data["anio"]}'";
+        }
+
+        return $this->executeQuery("Select id_school, fecha, nombre, direccion, email from escuelas
+        where 1=1 $condicion
+        order by fecha");
+    }
+
+    public function getFechasPorEscuelas(){
+        return $this->executeQuery("select fecha as id_school, fecha FROM escuelas GROUP BY fecha ORDER BY fecha");
+    }
+
+
     
 
     

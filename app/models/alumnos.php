@@ -31,5 +31,24 @@ class Alumnos extends BaseDeDatos {
         return $this->executeInsert("DELETE FROM alumnos WHERE id_alumno='$id'");
     }
 
+    public function getAlumnosReporte($data){
+        $condicion="";
+        if ($data["idalumno"]!="0") {
+            $condicion.="and c.id_alumno='{$data["idalumno"]}'";
+        }
+        if ($data["idpadrealumno"]!="0") {
+            $condicion.="and b.id_padre_alumno='{$data["idpadrealumno"]}'";
+        }
+        return $this->executeQuery("Select a.*, b.categoria, c.autor, date_format(a.fecha_publicacion, '%d-%M-%Y') as fecha_pub from autores c 
+        inner join (categorias b inner join libros a using(id_cate)) using (id_autor)
+        where 1=1 $condicion");
+    }
+
+    function getLibroByCategoria($id){
+        return $this->executeQuery("Select id_libro, titulo,descripcion,categoria,autor,
+        fotop, fotom, fotog from categorias inner join (autores inner join libros using
+        (id_autor)) using(id_cate) where categorias.id_cate='$id' order by titulo"); 
+    }
+
 }
 ?>
