@@ -88,6 +88,7 @@ class escuelas extends BaseDeDatos {
         where 1=1 $condicion
         order by fecha");
     }
+    
 
     public function getFechasPorEscuelas(){
         return $this->executeQuery("select fecha as id_school, fecha FROM escuelas GROUP BY fecha ORDER BY fecha");

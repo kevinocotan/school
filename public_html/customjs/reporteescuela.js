@@ -88,5 +88,27 @@ function cargarAlumnos() {
 }
 
 function verReporte() {
-  frameReporte.src = `${BASE_API}reporteescuela/getReporte?id_school=${idSchool.value}&id_alumno=${idAlumno.value}`;
+  switch (filtro.value) {
+    case "1":
+      frameReporte.src = `${BASE_API}reporteescuela/getReporteEscuela?id_school=${idSchool.value}`;
+      break;
+    case "2":
+      frameReporte.src = `${BASE_API}reporteescuela/getReporteAlumno?id_alumno=${idAlumno.value}`;
+      break;
+    default:
+      break;
+  }
+
+  function verReporte() {
+    switch (filtro.value) {
+      case "1": // Reporte por escuela
+        frameReporte.src = `${BASE_API}reporteescuela/getReporteEscuela?id_school=${idSchool.value}`;
+        break;
+      case "2": // Reporte por alumno
+        frameReporte.src = `${BASE_API}reporteescuela/getReporteAlumno?id_alumno=${idAlumno.value}`;
+        break;
+      default:
+        break;
+    }
+  }
 }
