@@ -1,67 +1,52 @@
-//variables y selectores
-
+// Variables y selectores
 const btnViewReport = document.querySelector("#btnViewReport");
-const idAutor = document.querySelector("#id_autor");
-const idCate = document.querySelector("#id_cate");
+const idEscuela = document.querySelector("#id_escuela");
 const frameReporte = document.querySelector("#framereporte");
-const API = new Api();
+const API = new Api(); // Clase para manejar peticiones a la API
 
+// Inicialización de eventos
 eventListener();
 
 function eventListener() {
+  // Cargar datos al cargar la página
   document.addEventListener("DOMContentLoaded", cargarDatos);
-  btnViewReport = addEventListener("click", verReporte);
+  // Asignar evento al botón para ver el reporte
+  btnViewReport.addEventListener("click", verReporte);
 }
 
-//Funciones
+// Funciones
 
+// Función para cargar los datos iniciales
 function cargarDatos() {
-  API.get("autores/getAll")
+  // Cargar escuelas
+  API.get("escuelas/getAll")
     .then((data) => {
       if (data.success) {
-        idAutor.innerHTML = "";
-        const optionAutor = document.createElement("option");
-        optionAutor.value = "0";
-        optionAutor.textContent = "Todos";
-        idAutor.append(optionAutor);
-        data.records.forEach((item, index) => {
-          const { id_autor, autor } = item;
-          const optionAutor = document.createElement("option");
-          optionAutor.value = id_autor;
-          optionAutor.textContent = autor;
-          idAutor.append(optionAutor);
-        });
-      }
-      cargarCategorias();
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
+        idEscuela.innerHTML = ""; // Limpiar opciones previas
+        const optionEscuela = document.createElement("option");
+        optionEscuela.value = "0"; // Valor predeterminado para 'Todas'
+        optionEscuela.textContent = "Todas";
+        idEscuela.append(optionEscuela);
 
-function cargarCategorias() {
-  API.get("categorias/getAll")
-    .then((data) => {
-      if (data.success) {
-        idCate.innerHTML = "";
-        const optionCate = document.createElement("option");
-        optionCate.value = "0";
-        optionCate.textContent = "Todos";
-        idCate.append(optionCate);
-        data.records.forEach((item, index) => {
-          const { id_cate, categoria } = item;
-          const optionCate = document.createElement("option");
-          optionCate.value = id_cate;
-          optionCate.textContent = categoria;
-          idCate.append(optionCate);
+        // Agregar opciones desde la API
+        data.records.forEach((item) => {
+          const { id_escuela, escuela } = item;
+          const optionEscuela = document.createElement("option");
+          optionEscuela.value = id_escuela;
+          optionEscuela.textContent = escuela;
+          idEscuela.append(optionEscuela);
         });
       }
     })
     .catch((error) => {
-      console.error("Error:", error);
+      console.error("Error al cargar escuelas:", error);
     });
 }
 
+// Función para mostrar el reporte en el iframe
 function verReporte() {
-  frameReporte.src = `${BASE_API}reportelibros/getReporte?idcate=${idCate.value}&idautor=${idAutor.value}`;
+  const idEscuelaValue = idEscuela.value || "0"; // Validar selección de escuela
+
+  // Establecer el src del iframe para generar el reporte
+  frameReporte.src = `${BASE_API}reportes/getReporte?idescuela=${idEscuelaValue}`;
 }

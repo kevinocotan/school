@@ -24,38 +24,41 @@
             <?php include_once "app/views/sections/menu.php"; ?>
         </section>
         <!-- Todos los elementos que varian-->
+
+        
         <section id="contenido">
             <!-- listado de usuarios -->
 
 
-        <section id="contenido">
-            <form class="row gy-2 gx-3 align-items-center">
-                <div class="col-auto d-flex">
-                    <label class="col-form-label" for="autoSizingInput">Autor</label>
-                    <select name="id_autor" id="id_autor" class="form-select">
-
-                    </select>
+            <section id="contenido">
+                <form class="row gy-2 gx-3 align-items-center">
+                    <div class="col-auto d-flex">
+                        <label class="col-form-label" for="autoSizingInput">Escuelas</label>
+                        <select name="id_school" id="id_school" class="form-select"></select>
+                    </div>
+                    <div class="col-auto d-flex">
+                        <label class="col-form-label" for="autoSizingInput">Alumnos</label>
+                        <select name="id_alumno" id="id_alumno" class="form-select"></select>
+                    </div>
+                    <div class="col-auto d-flex">
+                        <label class="col-form-label" for="autoSizingInput">Parentescos</label>
+                        <select name="id_padre_alumno" id="id_padre_alumno" class="form-select"></select>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-primary" id="btnViewReport">Ver Reporte</button>
+                    </div>
+                </form>
+                <div class="row">
+                    <iframe src="" frameborder="0" width="100%" height="400" id="framereporte"></iframe>
                 </div>
-                <div class="col-auto d-flex">
-                    <label class="col-form-label" for="autoSizingInput">Categoría</label>
-                    <select name="id_cate" id="id_cate" class="form-select">
-
-                    </select>
-                </div>
-                <div class="col-auto">
-                    <button type="button" class="btn btn-primary" id="btnViewReport">Ver Reporte</button>
-                </div>
-            </form>
-            <div class="row">
-                <iframe src="" frameborder="0" width="100%" height="400" id="framereporte"></iframe>
-            </div>
-        </section>
-    <!--Todos los elementos del pie del sitio-->
-        <section id="pie">
-            <?php include_once "app/views/sections/footer.php"; ?>
-        </section>
+            </section>
+            <!--Todos los elementos del pie del sitio-->
+            <section id="pie">
+                <?php include_once "app/views/sections/footer.php"; ?>
+            </section>
     </div>
     <?php include_once "app/views/sections/scripts.php"; ?>
-    <script src="<?php echo URL;?>public_html/customjs/reportes.js"></script>
+    <script src="<?php echo URL; ?>public_html/customjs/reportes.js"></script>
 </body>
+
 </html>
