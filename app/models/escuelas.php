@@ -73,7 +73,7 @@ class escuelas extends BaseDeDatos {
     }
     
 
-    public function getEscuelaReporte($data){
+    public function getEscuelasReporte($data){
         $condicion="";
         if (isset($data["id_school"])) {
             if ($data["id_school"]!="0") {

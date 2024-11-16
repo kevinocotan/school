@@ -4,15 +4,15 @@ include_once "app/models/escuelas.php";
 include_once "vendor/autoload.php";
 
 class ReporteEscuelaController extends Controller {
-    private $reporte;
+    private $escuela;
     public function __construct($parametro) {
-        $this->reporte = new Escuelas();
+        $this->escuela = new Escuelas();
         parent::__construct("reporteescuela",$parametro,true);
     }
 
     public function getReporte(){
         $pageNumber = 1;
-        $registros=$this->reporte->getEscuelaReporte($_GET);
+        $registros=$this->escuela->getEscuelasReporte($_GET);
         $htmlHeader = '<div style="text-align: center;">
             <img src="public_html/images/school.jpg"  style="width:100px; height: auto;">
             <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte De Escuelas</h3>
@@ -25,7 +25,6 @@ class ReporteEscuelaController extends Controller {
                 <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Nombre</th>
                 <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Email</th>
                 <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Direccion</th>
-                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Fecha</th>
             </tr>
         </thead>
         <tbody>";
@@ -35,7 +34,6 @@ class ReporteEscuelaController extends Controller {
             $html.="<td style='border: 1px solid #999; text-align: center;'>{$value["nombre"]}</td>";
             $html.="<td style='border: 1px solid #999; text-align: center;'>{$value["email"]}</td>";
             $html.="<td style='border: 1px solid #999; text-align: center;'>{$value["direccion"]}</td>";
-            $html.="<td style='border: 1px solid #999; text-align: center;'>{$value["fecha"]}</td>";
             $html.="</tr>";
          
         }
@@ -47,7 +45,7 @@ class ReporteEscuelaController extends Controller {
         $htmlFooter = '<div style="text-align: center;">
         
         <p style="font-size: 12px;">Página {PAGENO} de {nb} </p>
-        <p style="font-size: 12px;">© 2024 Sistema School. Todos los derechos reservados.</p>
+        <p style="font-size: 12px;">© 2024 MyControl School. Todos los derechos reservados.</p>
         </div>';
 
         $mpdfConfig=array(
@@ -73,7 +71,7 @@ class ReporteEscuelaController extends Controller {
 
     }
     public function getFechasPorEscuelas(){
-        $records=$this->reporte->getFechasPorEscuelas();
+        $records=$this->escuela->getFechasPorEscuelas();
         $info=array('success'=>true,'records'=>$records);
         echo json_encode($info);
     }
