@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="col-auto d-flex filtroparentescos d-none">
-                    <label class="col-form-label mx-3" for="autoSizingInput">Responsables</label>
+                    <label class="col-form-label mx-3" for="autoSizingInput">Alumnos</label>
                     <select name="id_padre_alumno" id="id_padre_alumno" class="form-select">
                     </select>
                 </div>

@@ -104,17 +104,26 @@ function cargarParentescos() {
   API.get("parentescos/getAll")
     .then((data) => {
       if (data.success) {
-        idPadreAlumno.innerHTML = "";
+        idPadreAlumno.innerHTML = ""; // Limpiamos el select
         const optionPadreAlumno = document.createElement("option");
         optionPadreAlumno.value = "0";
         optionPadreAlumno.textContent = "Todos";
         idPadreAlumno.append(optionPadreAlumno);
-        data.records.forEach((item, index) => {
-          const { id_padre_alumno, parentesco } = item;
-          const optionPadreAlumno = document.createElement("option");
-          optionPadreAlumno.value = id_padre_alumno;
-          optionPadreAlumno.textContent = parentesco;
-          idPadreAlumno.append(optionPadreAlumno);
+
+        // Usamos un Set para evitar nombres duplicados
+        const nombresAlumnos = new Set();
+
+        data.records.forEach((item) => {
+          const { id_padre_alumno, nombre_completo } = item;
+
+          // Verificamos si el nombre ya ha sido agregado
+          if (!nombresAlumnos.has(nombre_completo)) {
+            nombresAlumnos.add(nombre_completo); // Añadimos el nombre al Set
+            const option = document.createElement("option");
+            option.value = id_padre_alumno;
+            option.textContent = nombre_completo;
+            idPadreAlumno.append(option);
+          }
         });
       }
     })
