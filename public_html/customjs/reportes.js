@@ -18,21 +18,32 @@ function eventListener() {
 //Funciones
 
 function mostrarFiltro() {
+  // Ocultar todos los filtros primero
+  document
+    .querySelectorAll(".filtroescuelas")
+    .forEach((item) => item.classList.add("d-none"));
+  document
+    .querySelectorAll(".filtroalumnos")
+    .forEach((item) => item.classList.add("d-none"));
+  document
+    .querySelectorAll(".filtroparentescos")
+    .forEach((item) => item.classList.add("d-none"));
+
+  // Mostrar el filtro correspondiente
   switch (filtro.value) {
-    case "1":
+    case "1": // Filtro por Escuela
       document
         .querySelectorAll(".filtroescuelas")
         .forEach((item) => item.classList.remove("d-none"));
-      document
-        .querySelectorAll(".filtroalumnos")
-        .forEach((item) => item.classList.add("d-none"));
       break;
-    case "2":
-      document
-        .querySelectorAll(".filtroescuelas")
-        .forEach((item) => item.classList.add("d-none"));
+    case "2": // Filtro por Alumno
       document
         .querySelectorAll(".filtroalumnos")
+        .forEach((item) => item.classList.remove("d-none"));
+      break;
+    case "3": // Filtro por Responsable
+      document
+        .querySelectorAll(".filtroparentescos")
         .forEach((item) => item.classList.remove("d-none"));
       break;
     default:
