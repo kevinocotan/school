@@ -49,7 +49,6 @@
                             <th>Alumno</th>
                             <th>Padre</th>
                             <th>Parentesco</th>
-                            <th>Fecha</th>
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
@@ -57,7 +56,6 @@
                             <td>Melvin Ocotan</td>
                             <td>Pedro Ocotan</td>
                             <td>Padre</td>
-                            <td>11/11/2024</td>
                             <td>
                                 <button type="button" class="btn btn-dark btncolor"><i class="bi bi-pencil-square"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="bi bi-trash"></i></button>
@@ -103,12 +101,6 @@
                         <div class="col-sm-10">
                             <select name="id_padre" id="id_padre" class="form-select">
                             </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="fecha" class="col-sm-2 col-form-label">Fecha:</label>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control" id="fecha" name="fecha" required>
                         </div>
                     </div>
                     <button type="button" class="btn btn-secondary" id="btnCancelar"><i class="bi bi-x-circle-fill"></i> Cancelar</button>

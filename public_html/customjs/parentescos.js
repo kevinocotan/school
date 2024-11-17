@@ -160,7 +160,7 @@ function crearTabla() {
     objDatos.recordsFilter = objDatos.records.map((item) => item);
   } else {
     objDatos.recordsFilter = objDatos.records.filter((item) => {
-      const { nombre_completo, nombre_padre, parentesco, fecha } = item;
+      const { nombre_completo, nombre_padre, parentesco } = item;
       if (
         nombre_completo
           .toUpperCase()
@@ -181,11 +181,7 @@ function crearTabla() {
       ) {
         return item;
       }
-      if (
-        fecha.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) != -1
-      ) {
-        return item;
-      }
+
     });
   }
 
@@ -202,7 +198,6 @@ function crearTabla() {
                     <td>${item.nombre_completo}</td>
                     <td>${item.nombre_padre}</td>
                     <td>${item.parentesco}</td>
-                    <td>${item.fecha}</td>
                     <td>
                         <button type="button" class="btn btn-dark btncolor" onclick="editarPadrealumno(${
                           item.id_padre_alumno
@@ -298,10 +293,9 @@ function aplicarFiltro(element) {
 }
 
 function mostrarDatosForm(record) {
-  const { id_padre_alumno, parentesco, fecha, id_alumno, id_padre } = record;
+  const { id_padre_alumno, parentesco, id_alumno, id_padre } = record;
   document.querySelector("#id_padre_alumno").value = id_padre_alumno;
   document.querySelector("#parentesco").value = parentesco;
-  document.querySelector("#fecha").value = fecha;
   document.querySelector("#id_alumno").value = id_alumno;
   document.querySelector("#id_padre").value = id_padre;
 }

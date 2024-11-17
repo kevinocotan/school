@@ -21,8 +21,8 @@ class ReportesController extends Controller
         $registros = $this->escuela->getEscuelasReporte($_GET);
         $htmlHeader = '<div style="text-align: center;">
             <img src="public_html/images/school.jpg"  style="width:100px; height: auto;">
-            <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte De Escuelas</h3>
-            <h3 style="margin: 5px 0 0; font-size: 20px;">Listado general de Escuelas</h3>
+            <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte de Escuelas</h3>
+            <h3 style="margin: 5px 0 0; font-size: 20px;">Datos Generales de Escuelas</h3>
         </div>';
         $html = "<table style='width: 100%; border-collapse: collapse;'>
         <thead>
@@ -82,8 +82,8 @@ class ReportesController extends Controller
         $registros = $this->alumno->getAlumnosReporte($_GET);
         $htmlHeader = '<div style="text-align: center;">
         <img src="public_html/images/school.jpg" style="width:100px; height: auto;">
-        <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte De Alumnos</h3>
-        <h3 style="margin: 5px 0 0; font-size: 20px;">Listado general de Alumno</h3>
+        <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte de Alumnos</h3>
+        <h3 style="margin: 5px 0 0; font-size: 20px;">Datos Generales de Alumnos</h3>
     </div>';
         $html = "<table style='width: 100%; border-collapse: collapse;'>
     <thead>
