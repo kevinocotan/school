@@ -3,6 +3,7 @@
 const btnViewReport = document.querySelector("#btnViewReport");
 const idSchool = document.querySelector("#id_school");
 const idAlumno = document.querySelector("#id_alumno");
+const idPadreAlumno = document.querySelector("#id_padre_alumno");
 const frameReporte = document.querySelector("#framereporte");
 const filtro = document.querySelector("#filtro");
 const API = new Api();
@@ -90,6 +91,30 @@ function cargarAlumnos() {
           optionAlumno.value = id_alumno;
           optionAlumno.textContent = nombre_completo;
           idAlumno.append(optionAlumno);
+        });
+      }
+      cargarParentescos();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
+function cargarParentescos() {
+  API.get("parentescos/getAll")
+    .then((data) => {
+      if (data.success) {
+        idPadreAlumno.innerHTML = "";
+        const optionPadreAlumno = document.createElement("option");
+        optionPadreAlumno.value = "0";
+        optionPadreAlumno.textContent = "Todos";
+        idPadreAlumno.append(optionPadreAlumno);
+        data.records.forEach((item, index) => {
+          const { id_padre_alumno, parentesco } = item;
+          const optionPadreAlumno = document.createElement("option");
+          optionPadreAlumno.value = id_padre_alumno;
+          optionPadreAlumno.textContent = parentesco;
+          idPadreAlumno.append(optionPadreAlumno);
         });
       }
     })
