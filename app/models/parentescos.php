@@ -52,4 +52,42 @@ class Parentescos extends BaseDeDatos
         $result = $this->executeQuery($query);
         return $result[0]['total'] > 0; // Si ya existe, retorna true
     }
+
+
+    public function getResponsableReporte($data)
+    {
+        $condicion = "";
+
+        // Filtrar por id_grado si se proporciona
+        if (isset($data["id_padre"]) && $data["id_padre"] != "0") {
+            $condicion .= "AND padresalumnos.id_padre='{$data["id_padre"]}' ";
+        }
+
+        // Filtrar por id_seccion si se proporciona
+        if (isset($data["id_alumno"]) && $data["id_alumno"] != "0") {
+            $condicion .= "AND padresalumnos.id_alumno='{$data["id_alumno"]}' ";
+        }
+
+        // Filtrar por id_padre_alumno si se proporciona
+        if (isset($data["id_padre_alumno"]) && $data["id_padre_alumno"] != "0") {
+            $condicion .= "AND padresalumnos.id_padre_alumno='{$data["id_padre_alumno"]}' ";
+        }
+
+        if (isset($data["id_padre_alumno"])) {
+            if ($data["id_padre_alumno"] != "0") {
+                $condicion .= "and fecha='{$data["id_padre_alumno"]}'";
+            }
+        }
+
+        $query = "SELECT padresalumnos.*, padres.nombre AS padre, 
+            alumnos.nombre_completo AS alumno
+            FROM padresalumnos
+            INNER JOIN padres ON padresalumnos.id_padre = padres.id_padre
+            INNER JOIN alumnos ON padresalumnos.id_alumno = alumnos.id_alumno
+            WHERE 1=1 $condicion 
+            ORDER BY padresalumnos.id_padre_alumno";
+
+        error_log($query); // Depuración de la consulta SQL
+        return $this->executeQuery($query);
+    }
 }

@@ -48,10 +48,9 @@
                     <select name="id_alumno" id="id_alumno" class="form-select">
                     </select>
                 </div>
-
                 <div class="col-auto d-flex filtroparentescos d-none">
-                    <label class="col-form-label mx-3" for="autoSizingInput">Alumnos</label>
-                    <select name="id_padre_alumno" id="id_padre_alumno" class="form-select">
+                    <label class="col-form-label mx-3" for="autoSizingInput">Responsables</label>
+                    <select name="id_alumno" id="id_alumno" class="form-select">
                     </select>
                 </div>
 
