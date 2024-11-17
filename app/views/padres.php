@@ -46,7 +46,7 @@
                     <table class="table">
                         <thead class="table-dark">
                             <th>Código de Padre</th>
-                            <th>Nombres</th>
+                            <th>Nombre Completo</th>
                             <th>Dirección</th>
                             <th>Teléfono</th>
                             <th>&nbsp;</th>

@@ -47,7 +47,7 @@
                         <thead class="table-dark">
                             <th>Código de Parentesco</th>
                             <th>Alumno</th>
-                            <th>Padre</th>
+                            <th>Responsable</th>
                             <th>Parentesco</th>
                             <th>&nbsp;</th>
                         </thead>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="id_padre" class="col-sm-2 col-form-label">Padre:</label>
+                        <label for="id_padre" class="col-sm-2 col-form-label">Responsable:</label>
                         <div class="col-sm-10">
                             <select name="id_padre" id="id_padre" class="form-select">
                             </select>
