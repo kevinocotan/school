@@ -77,7 +77,6 @@ function cargarDatos() {
         objDatos.records = data.records;
         objDatos.currentPage = 1;
         crearTabla();
-        cargarUsuarios();
       } else {
         console.log("Error al recuperar los registros");
       }
@@ -273,7 +272,7 @@ function mostrarDatosForm(record) {
     email,
     latitud,
     longitud,
-    foto,
+    foto
   } = record;
   document.querySelector("#id_school").value = id_school;
   document.querySelector("#nombre").value = nombre;

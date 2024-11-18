@@ -60,6 +60,7 @@
                             <th>Grado</th>
                             <th>Sección</th>
                             <th>Escuela</th>
+                            <th>Usuario</th>
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
@@ -74,6 +75,7 @@
                             <td>Primer Grado</td>
                             <td>Sección B</td>
                             <td>Universidad Católica de El Salvador</td>
+                            <td>melvin.ocotan</td>
                             <td>
                                 <button type="button" class="btn btn-dark btncolor"><i class="ri-edit-fill"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="ri-delete-bin-7-line"></i></button>
@@ -160,6 +162,7 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="row mb-3">
                         <label for="id_school" class="col-sm-2 col-form-label">Escuela:</label>
                         <div class="col-sm-10">
@@ -167,6 +170,15 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="row mb-3">
+                        <label for="id_usr" class="col-sm-2 col-form-label">Usuario:</label>
+                        <div class="col-sm-10">
+                            <select name="id_usr" id="id_usr" class="form-select">
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="row mb-3">
                         <label for="latitud" class="col-sm-2 col-form-label">Latitud:</label>
                         <div class="col-sm-10">
@@ -179,6 +191,10 @@
                             <input type="text" class="form-control" id="longitud" name="longitud" required>
                         </div>
                     </div>
+
+
+                    <br>
+
                     <div id="map" style="height: 400px; max-width: 600px; margin: 0 auto;"></div>
                     <br>
                     <button type="button" class="btn btn-secondary" id="btnCancelar"><i class="bi bi-x-circle-fill"></i> Cancelar</button>

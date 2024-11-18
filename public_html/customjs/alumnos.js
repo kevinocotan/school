@@ -83,6 +83,7 @@ function cargarDatos() {
         cargarGrado();
         cargarSeccion();
         cargarSchool();
+        cargarUsuarios();
       } else {
         console.log("Error al recuperar los registros");
       }
@@ -152,6 +153,26 @@ function cargarSchool() {
     });
 }
 
+function cargarUsuarios() {
+  API.get("usuarios/getAll")
+    .then((data) => {
+      if (data.success) {
+        const txtUsuario = document.querySelector("#id_usr");
+        txtUsuario.innerHTML = "";
+        data.records.forEach((item, index) => {
+          const { id_usr, usuario } = item;
+          const optionUsuario = document.createElement("option");
+          optionUsuario.value = id_usr;
+          optionUsuario.textContent = usuario;
+          txtUsuario.append(optionUsuario);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
 function crearPaginacion() {
   //Borrar elementos
   pagination.innerHTML = "";
@@ -190,6 +211,7 @@ function crearPaginacion() {
   };
   pagination.append(elSiguiente);
 }
+
 function crearTabla() {
   if (objDatos.filter == "") {
     objDatos.recordsFilter = objDatos.records.map((item) => item);
@@ -206,6 +228,7 @@ function crearTabla() {
         nombre_grado,
         nombre_seccion,
         nombre_escuela,
+        usuario,
       } = item;
       if (
         nombre_completo
@@ -266,6 +289,13 @@ function crearTabla() {
       ) {
         return item;
       }
+      if (
+        usuario
+        .toUpperCase()
+        .search(objDatos.filter.toLocaleUpperCase()) != -1
+      ) {
+        return item;
+      }
     });
   }
 
@@ -282,15 +312,14 @@ function crearTabla() {
                     <td>${item.nombre_completo}</td>
                     <td>${item.direccion}</td>
                     <td>${item.telefono}</td>
-                    <td style="word-wrap: break-word; max-width: 100px;">${
-                      item.email
-                    }</td>
+                    <td>${item.email}</td>
                     <td>${item.genero}</td>
                     <td>${item.latitud}</td>
                     <td>${item.longitud}</td>
                     <td>${item.nombre_grado}</td>
                     <td style="text-align: center;">${item.nombre_seccion}</td>
                     <td>${item.nombre_escuela}</td>
+                    <td>${item.usuario}</td>
                     <td>
                         <button type="button" class="btn btn-dark btncolor" onclick="editarAlumno(${
                           item.id_alumno
@@ -401,6 +430,7 @@ function mostrarDatosForm(record) {
     id_grado,
     id_seccion,
     id_school,
+    id_usr,
     foto,
   } = record;
   document.querySelector("#id_alumno").value = id_alumno;
@@ -414,6 +444,7 @@ function mostrarDatosForm(record) {
   document.querySelector("#id_grado").value = id_grado;
   document.querySelector("#id_seccion").value = id_seccion;
   document.querySelector("#id_school").value = id_school;
+  document.querySelector("#id_usr").value = id_usr;
   divFoto.innerHTML = `<img src="${foto}" class="h-100 w-100" style="object-fit:contain;">`;
   actualizarMarcadorMapa(parseFloat(latitud), parseFloat(longitud));
 }
