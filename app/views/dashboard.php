@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -50,10 +50,10 @@
                 function initMap() {
                     const initialCoords = {
                         lat: 13.68935,
-                        lng: -89.18718
+                        lng: -89.0976
                     }; // Cambia estas coordenadas según tu región
                     map = new google.maps.Map(document.getElementById("map"), {
-                        zoom: 8,
+                        zoom: 9,
                         center: initialCoords,
                     });
 

@@ -38,9 +38,6 @@
 
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" name="password">
 
-                <br>
-
-
                 <div id="mensaje"></div>
 
                 <br>
