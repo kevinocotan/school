@@ -8,8 +8,8 @@ $url=rtrim($url,"/");
 $url=explode("/",$url);
 //print_r($url);
 if (empty($url[0])) {
-    $archivoController="app/controllers/main";
-    $url[0]="main";
+    $archivoController="app/controllers/login";
+    $url[0]="login";
 } else {
     $archivoController="app/controllers/{$url[0]}";
 }
