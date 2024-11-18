@@ -45,22 +45,15 @@ $fotoUsuario = $alumnoActual[0]["foto_usuario"];
 
         <!-- Contenido principal -->
         <section id="contenido">
-            <h1>Dashboard de Usuario</h1>
-            <h2>Bienvenido, <?php echo $nombreCompleto; ?></h2>
+            <h3>Bienvenido, <?php echo $nombreCompleto; ?></h3>
+            <br>
+            <h4>Estudiante de:</h4>
+            <br>
             <div class="perfil">
-                <img src="<?php echo $foto; ?>" alt="Foto de Alumno" width="100" height="100">
-                <p><strong>Dirección:</strong> <?php echo $direccion; ?></p>
-                <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
-                <p><strong>Email:</strong> <?php echo $email; ?></p>
-                <p><strong>Género:</strong> <?php echo $genero; ?></p>
                 <p><strong>Grado:</strong> <?php echo $nombreGrado; ?></p>
                 <p><strong>Sección:</strong> <?php echo $nombreSeccion; ?></p>
                 <p><strong>Escuela:</strong> <?php echo $nombreEscuela; ?></p>
             </div>
-            <h3>Información del Usuario</h3>
-            <p><strong>Usuario:</strong> <?php echo $usuario; ?></p>
-            <p><strong>Tipo de Usuario:</strong> <?php echo $tipoUsuario; ?></p>
-            <img src="<?php echo $fotoUsuario; ?>" alt="Foto de Usuario" width="50" height="50">
         </section>
     </div>
 

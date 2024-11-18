@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="sidebar__actions">
+                <div class="sidebar__actions" style="margin-top: 55vh;">
                     <button>
                         <i class="ri-moon-clear-fill sidebar__link sidebar__theme" id="theme-button">
                             <span>Tema</span>
