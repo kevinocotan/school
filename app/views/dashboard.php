@@ -7,12 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "app/views/sections/css.php"; ?>
     <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
-    <title>Dashboard - MyControl School</title>
+    <title>Escuelas - MyControl School</title>
+
 </head>
 
 <body>
 
-    <!-- NO HAY NECESIDAD DE QUE ESTO DE ARRIBA SE REPITA POR CADA ARCHIVO -->
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
 
     <div class="main container" id="main">
         <!--Todos los elementos del encabezado-->
@@ -25,65 +31,92 @@
         </section>
         <!-- Todos los elementos que varian-->
         <section id="contenido">
-            <!-- listado de usuarios -->
 
-            <div>
-                <p>El marcador de la escuela es <span style="color: blue;">azul</span>.</p>
-                <p>Los marcadores de los alumnos son <span style="color: red;">rojos</span>.</p>
+
+            <div class="container mt-2">
+
+                <div id="map"></div>
             </div>
-            <br>
-            <section id="mapa">
-                <div id="map" style="height: 400px; max-width: 800px; margin: 0 auto;"></div>
-            </section>
-            <section id="pie">
-                <?php include_once "app/views/sections/footer.php"; ?>
-            </section>
 
-
-            <?php include_once "app/views/sections/scripts.php"; ?>
-            <script src="<?php echo URL; ?>public_html/customjs/escuelas.js"></script>
+            <!-- SweetAlert2 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <!-- Google Maps API -->
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWwqxbdlZ1vNfD5TUTTcIs0I8QFbljJ8k&callback&callback=initMap"></script>
+            <!-- Script principal -->
             <script>
+                let map;
+
+                // Inicializa el mapa de Google
                 function initMap() {
-                    var latitud_escuela = <?php echo isset($_GET['latitud']) ? $_GET['latitud'] : ''; ?>;
-                    var longitud_escuela = <?php echo isset($_GET['longitud']) ? $_GET['longitud'] : ''; ?>;
-
-                    var schoolLocation = {
-                        lat: parseFloat(latitud_escuela),
-                        lng: parseFloat(longitud_escuela)
-                    };
-
-                    var map = new google.maps.Map(document.getElementById('map'), {
+                    const initialCoords = {
+                        lat: 13.68935,
+                        lng: -89.18718
+                    }; // Cambia estas coordenadas según tu región
+                    map = new google.maps.Map(document.getElementById("map"), {
                         zoom: 8,
-                        center: schoolLocation
+                        center: initialCoords,
                     });
 
-                    var marker = new google.maps.Marker({
-                        position: schoolLocation,
-                        map: map,
-                        title: 'Escuela',
-                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-                    });
+                    // Carga escuelas y alumnos en el mapa
+                    cargarMapaConEscuelasYAlumnos();
+                }
 
-                    var alumnos = <?php echo isset($_GET['alumnos']) ? $_GET['alumnos'] : '[]'; ?>;
-                    for (var i = 0; i < alumnos.length; i++) {
-                        var alumno = alumnos[i];
-                        var alumnoLocation = {
-                            lat: parseFloat(alumno.latitud_alumno),
-                            lng: parseFloat(alumno.longitud_alumno)
-                        };
+                // Carga escuelas y alumnos en el mapa
+                function cargarMapaConEscuelasYAlumnos() {
+                    fetch("escuelas/getEscuelasYAlumnos")
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.success) {
+                                data.records.forEach((item) => {
+                                    const {
+                                        tipo,
+                                        nombre,
+                                        latitud,
+                                        longitud,
+                                        direccion,
+                                        nombre_escuela
+                                    } = item;
+                                    const coords = {
+                                        lat: parseFloat(latitud),
+                                        lng: parseFloat(longitud)
+                                    };
 
-                        var markerAlumno = new google.maps.Marker({
-                            position: alumnoLocation,
-                            map: map,
-                            title: alumno.nombre_alumno,
-                            icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                                    // Define el ícono según el tipo
+                                    const icon = tipo === 'escuela' ?
+                                        'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' :
+                                        'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+
+                                    // Crear un marcador
+                                    const marker = new google.maps.Marker({
+                                        position: coords,
+                                        map: map,
+                                        title: nombre,
+                                        icon: icon,
+                                    });
+
+                                    // Definir el contenido del marcador
+                                    const content = tipo === 'escuela' ?
+                                        `<strong>${nombre}</strong><br>Dirección: ${direccion}` :
+                                        `<strong>${nombre}</strong><br>Escuela: ${nombre_escuela}`;
+
+                                    // Información al hacer clic en el marcador
+                                    const infoWindow = new google.maps.InfoWindow({
+                                        content: content,
+                                    });
+
+                                    marker.addListener("click", () => {
+                                        infoWindow.open(map, marker);
+                                    });
+                                });
+                            } else {
+                                Swal.fire("Error", "No se pudieron cargar los datos del mapa", "error");
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Error al cargar los datos del mapa:", error);
                         });
-                    }
                 }
             </script>
-            
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWwqxbdlZ1vNfD5TUTTcIs0I8QFbljJ8k&callback=initMap" async defer></script>
-    </div>
 </body>
 
 </html>
