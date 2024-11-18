@@ -53,6 +53,24 @@ class escuelas extends BaseDeDatos
         return  $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.id_usr from escuelas a inner join usuarios b on a.id_usr = b.id_usr where a.id_usr='{$id}' order by nombre");
     }
 
+    public function getEscuelasReporte($data)
+    {
+        $condicion = "";
+
+        // Filtrar por id_school cuando no es "0"
+        if (isset($data["id_school"]) && $data["id_school"] != "0") {
+            $condicion .= "AND id_school='{$data["id_school"]}'";
+        }
+
+        $query = "SELECT id_school, nombre, direccion, email 
+                  FROM escuelas
+                  WHERE 1=1 $condicion
+                  ORDER BY id_school";
+
+        return $this->executeQuery($query);
+    }
+
+    
     public function getEscuelasYAlumnos()
     {
         $query = "

@@ -40,6 +40,11 @@
 
                 <br>
 
+
+                <div id="mensaje"></div>
+
+                <br>
+
                 <button class="btn btn-success" type="submit">Iniciar Sesión</button>
             </form>
 

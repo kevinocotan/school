@@ -33,7 +33,7 @@ class Parentescos extends BaseDeDatos
 
     public function getOneParentesco($id)
     {
-        return $this->executeQuery("SELECT id_padre_alumno, id_alumno, id_padre FROM padresalumnos WHERE id_padre_alumno='{$id}'");
+        return $this->executeQuery("SELECT id_padre_alumno, parentesco, id_alumno, id_padre FROM padresalumnos WHERE id_padre_alumno='{$id}'");
     }
 
     public function update($data)
