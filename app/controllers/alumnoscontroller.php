@@ -3,6 +3,7 @@ include_once "app/models/alumnos.php";
 
 class AlumnosController extends Controller {
     private $alumno;
+    
     public function __construct($parametro) {
         $this->alumno=new alumnos();
         parent::__construct("alumnos",$parametro,true);

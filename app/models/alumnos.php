@@ -139,4 +139,23 @@ class Alumnos extends BaseDeDatos
             WHERE alumnos.id_school='{$id_school}' 
             ORDER BY alumnos.nombre_completo");
     }
+
+    // app/models/alumnos.php
+
+    public function getAlumnoActual($id_usr)
+    {
+        $query = "SELECT a.id_alumno, a.nombre_completo, a.direccion, a.telefono, a.email, a.foto, 
+              a.genero, a.latitud, a.longitud, a.id_usr, b.nombre_grado, c.nombre_seccion, 
+              d.nombre AS nombre_escuela, u.nombres, u.apellidos, u.usuario, u.tipo AS tipo_usuario, 
+              u.foto AS foto_usuario 
+              FROM alumnos a 
+              INNER JOIN grados b ON a.id_grado = b.id_grado 
+              INNER JOIN secciones c ON a.id_seccion = c.id_seccion 
+              INNER JOIN escuelas d ON a.id_school = d.id_school 
+              INNER JOIN usuarios u ON a.id_usr = u.id_usr 
+              WHERE a.id_usr = '{$id_usr}' 
+              LIMIT 1";
+
+        return $this->executeQuery($query);
+    }
 }

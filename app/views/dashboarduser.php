@@ -1,3 +1,30 @@
+<?php
+
+include_once "app/models/db.class.php";
+include_once "app/models/alumnos.php";
+
+$alumnoModel = new Alumnos();
+$alumnoActual = $alumnoModel->getAlumnoActual($_SESSION["id_usr"]);
+if (empty($alumnoActual)) {
+    echo "Error: No se encontró información del alumno.";
+    exit;
+}
+
+// Datos del alumno
+$nombreCompleto = $alumnoActual[0]["nombre_completo"];
+$direccion = $alumnoActual[0]["direccion"];
+$telefono = $alumnoActual[0]["telefono"];
+$email = $alumnoActual[0]["email"];
+$foto = $alumnoActual[0]["foto"];
+$genero = $alumnoActual[0]["genero"];
+$nombreGrado = $alumnoActual[0]["nombre_grado"];
+$nombreSeccion = $alumnoActual[0]["nombre_seccion"];
+$nombreEscuela = $alumnoActual[0]["nombre_escuela"];
+$usuario = $alumnoActual[0]["usuario"];
+$tipoUsuario = $alumnoActual[0]["tipo_usuario"];
+$fotoUsuario = $alumnoActual[0]["foto_usuario"];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,52 +34,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "app/views/sections/css.php"; ?>
     <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
-    <title>Escuelas - MyControl School</title>
-
+    <title>Alumnos - MyControl School</title>
 </head>
 
 <body>
 
-    <style>
-        #map {
-            height: 600px;
-            width: 100%;
-        }
-    </style>
-
     <div class="main container" id="main">
-        <!--Todos los elementos del encabezado-->
-        <section id="encabezado">
-            <?php include_once "app/views/sections/header.php"; ?>
-        </section>
-        <!--Opciones de menu-->
-        <section id="menu">
-            <?php include_once "app/views/sections/menu_user.php"; ?>
-        </section>
-        <!-- Todos los elementos que varian-->
+        <!-- Menú lateral -->
+        <?php include_once "app/views/sections/menu_user.php"; ?>
+
+        <!-- Contenido principal -->
         <section id="contenido">
+            <h1>Dashboard de Usuario</h1>
+            <h2>Bienvenido, <?php echo $nombreCompleto; ?></h2>
+            <div class="perfil">
+                <img src="<?php echo $foto; ?>" alt="Foto de Alumno" width="100" height="100">
+                <p><strong>Dirección:</strong> <?php echo $direccion; ?></p>
+                <p><strong>Teléfono:</strong> <?php echo $telefono; ?></p>
+                <p><strong>Email:</strong> <?php echo $email; ?></p>
+                <p><strong>Género:</strong> <?php echo $genero; ?></p>
+                <p><strong>Grado:</strong> <?php echo $nombreGrado; ?></p>
+                <p><strong>Sección:</strong> <?php echo $nombreSeccion; ?></p>
+                <p><strong>Escuela:</strong> <?php echo $nombreEscuela; ?></p>
+            </div>
+            <h3>Información del Usuario</h3>
+            <p><strong>Usuario:</strong> <?php echo $usuario; ?></p>
+            <p><strong>Tipo de Usuario:</strong> <?php echo $tipoUsuario; ?></p>
+            <img src="<?php echo $fotoUsuario; ?>" alt="Foto de Usuario" width="50" height="50">
+        </section>
+    </div>
 
-
-            <!DOCTYPE html>
-            <html lang="es">
-
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Información del Alumno</title>
-                <!-- Puedes agregar aquí tu enlace a Bootstrap, FontAwesome, o cualquier otro framework -->
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert para alertas -->
-                <script src="app.js"></script> <!-- Asegúrate de que este archivo se incluya al final -->
-            </head>
-
-            <body>
-                <div>
-                    <h4 >Bienvenido/a: <?php echo $_SESSION["nuser"]; ?> </h4>
-                </div>
-            </body>
-
-            </html>
-
+    <script src="public_html/js/main.js"></script>
 </body>
 
 </html>
