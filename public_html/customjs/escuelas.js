@@ -147,8 +147,7 @@ function crearTabla() {
     objDatos.recordsFilter = objDatos.records.map((item) => item);
   } else {
     objDatos.recordsFilter = objDatos.records.filter((item) => {
-      const { nombre, direccion, email, latitud, longitud, nombres } =
-        item;
+      const { nombre, direccion, email, latitud, longitud, nombres } = item;
       if (
         nombre.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) != -1
       ) {
@@ -313,6 +312,16 @@ function mostrarDatosForm(record) {
   actualizarMarcadorMapa(parseFloat(latitud), parseFloat(longitud));
 }
 
+/* PARA MAPA */
+
+function actualizarMarcadorMapa(latitud, longitud) {
+  if (map && marker) {
+    var nuevaPosicion = new google.maps.LatLng(latitud, longitud);
+    marker.setPosition(nuevaPosicion);
+    map.setCenter(nuevaPosicion);
+  }
+}
+
 var map, marker;
 
 function initMap() {
@@ -348,14 +357,6 @@ function initMap() {
   });
 }
 
-function actualizarMarcadorMapa(latitud, longitud) {
-  if (map && marker) {
-    var nuevaPosicion = new google.maps.LatLng(latitud, longitud);
-    marker.setPosition(nuevaPosicion);
-    map.setCenter(nuevaPosicion);
-  }
-}
-
 function guardarCoordenadas() {
   var latitud = marker.getPosition().lat();
   var longitud = marker.getPosition().lng();
@@ -384,5 +385,56 @@ function mostrarEscuela(id) {
     })
     .catch((error) => {
       console.error("Error en la llamada:", error);
+    });
+}
+
+function cargarMapaConEscuelasYAlumnos() {
+  fetch("escuelas/getEscuelasYAlumnos")
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        data.records.forEach((item) => {
+          const { tipo, nombre, latitud, longitud, direccion, nombre_escuela } =
+            item;
+          const coords = {
+            lat: parseFloat(latitud),
+            lng: parseFloat(longitud),
+          };
+
+          // Define el ícono según el tipo
+          const icon =
+            tipo === "escuela"
+              ? "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+              : "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+
+          // Crear un marcador
+          const marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title: nombre,
+            icon: icon,
+          });
+
+          // Definir el contenido del marcador
+          const content =
+            tipo === "escuela"
+              ? `<strong>${nombre}</strong><br>Dirección: ${direccion}`
+              : `<strong>${nombre}</strong><br>Escuela: ${nombre_escuela}`;
+
+          // Información al hacer clic en el marcador
+          const infoWindow = new google.maps.InfoWindow({
+            content: content,
+          });
+
+          marker.addListener("click", () => {
+            infoWindow.open(map, marker);
+          });
+        });
+      } else {
+        Swal.fire("Error", "No se pudieron cargar los datos del mapa", "error");
+      }
+    })
+    .catch((error) => {
+      console.error("Error al cargar los datos del mapa:", error);
     });
 }

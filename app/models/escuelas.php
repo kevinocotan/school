@@ -53,53 +53,32 @@ class escuelas extends BaseDeDatos
         return  $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.id_usr from escuelas a inner join usuarios b on a.id_usr = b.id_usr where a.id_usr='{$id}' order by nombre");
     }
 
-
-    /* PARA MAPA */
-
-    public function getEscuelasMapa($ids)
+    public function getEscuelasYAlumnos()
     {
-        $id_school = $ids['id_escuela'];
-        $query = "SELECT 
-                    e.foto AS foto_escuela,
-                    e.latitud AS latitud_escuela,
-                    e.longitud AS longitud_escuela
-                  FROM 
-                    escuelas e
-                  WHERE
-                    e.id_school = $id_school";
+        $query = "
+            SELECT 
+                'escuela' AS tipo,
+                e.id_school AS id,
+                e.nombre AS nombre,
+                e.direccion AS direccion,
+                e.latitud AS latitud,
+                e.longitud AS longitud,
+                NULL AS id_alumno,
+                NULL AS nombre_escuela
+            FROM escuelas e
+            UNION ALL
+            SELECT 
+                'alumno' AS tipo,
+                a.id_school AS id,
+                a.nombre_completo AS nombre,
+                NULL AS direccion,
+                a.latitud AS latitud,
+                a.longitud AS longitud,
+                a.id_alumno AS id_alumno,
+                e.nombre AS nombre_escuela
+            FROM alumnos a
+            INNER JOIN escuelas e ON a.id_school = e.id_school
+        ";
         return $this->executeQuery($query);
     }
-
-    public function getAlumnosescuMapa($ids)
-    {
-        $id_school = $ids['id_escuela'];
-        $query = "SELECT 
-                    a.nombre_completo AS nombre_alumno,
-                    a.latitud AS latitud_alumno,
-                    a.longitud AS longitud_alumno
-                FROM 
-                    alumnos a
-                WHERE
-                    a.id_school = $id_school";
-        return $this->executeQuery($query);
-    }
-
-
-    public function getEscuelasReporte($data)
-    {
-        $condicion = "";
-
-        // Filtrar por id_school cuando no es "0"
-        if (isset($data["id_school"]) && $data["id_school"] != "0") {
-            $condicion .= "AND id_school='{$data["id_school"]}'";
-        }
-
-        $query = "SELECT id_school, nombre, direccion, email 
-                  FROM escuelas
-                  WHERE 1=1 $condicion
-                  ORDER BY id_school";
-
-        return $this->executeQuery($query);
-    }
-
 }
