@@ -33,6 +33,25 @@
         <section id="contenido">
 
 
+            <!DOCTYPE html>
+            <html lang="es">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Información del Alumno</title>
+                <!-- Puedes agregar aquí tu enlace a Bootstrap, FontAwesome, o cualquier otro framework -->
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert para alertas -->
+                <script src="app.js"></script> <!-- Asegúrate de que este archivo se incluya al final -->
+            </head>
+
+            <body>
+                <div>
+                    <h4 >Bienvenido/a: <?php echo $_SESSION["nuser"]; ?> </h4>
+                </div>
+            </body>
+
+            </html>
 
 </body>
 
