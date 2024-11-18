@@ -1,3 +1,18 @@
+<?php
+// Inicia la sesión
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verifica si el usuario está logueado y si es un administrador
+if (!isset($_SESSION['usuario']) || $_SESSION['tipo'] !== 'Administrador') {
+    // Redirige a la página de acceso denegado o a su propia página
+    header('Location: ' . URL . 'dashboarduser');
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,6 +27,8 @@
     <link rel="stylesheet" href="public_html/css/styles-sidebar.css">
 
     <title>Responsive Sidebar Menu | Dark/Light Mode </title>
+
+
 </head>
 
 <body>

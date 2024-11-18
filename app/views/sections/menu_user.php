@@ -1,67 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                    <li class="nav-item dropdown" >
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Mantenimientos
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="<?php echo URL;?>citasuser">Citas</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>clientesuser">Clientes</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>serviciosuser">Servicios</a></li>                                                            
-                        </ul>                     
-                    </li>
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Productos
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="<?php echo URL;?>productosuser">Productos</a></li>                           
-                            <li><a class="dropdown-item" href="<?php echo URL;?>categoriauser">Categoría de Producto</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>subcategoriauser">Subcategoría de Producto</a></li>
-                            <li><hr class="dropdown-divider bg-white"></li>   
-                            <li><a class="dropdown-item" href="<?php echo URL;?>compraproductosuser">Compras de Producto</a></li> 
-                        </ul>
-                    </li>
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="public_html/css/styles-sidebar.css">
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Registros
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="<?php echo URL;?>ingresosuser">Ingresos</a></li>
-                            <li><a class="dropdown-item" href="<?php echo URL;?>egresosuser">Egresos</a></li>
-                        </ul>
-                    </li>
+    <title>Responsive Sidebar Menu | Dark/Light Mode </title>
+</head>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Ayuda
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="" onclick="mostrarPDF()">Manual de Usuario</a></li>
-                            <script>
-                        function mostrarPDF() {
-                            window.open('pdf/Manual.pdf', '_blank');
+<body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+        <div class="header__container">
+            <a href="<?php echo URL; ?>dashboard" class="header__logo">
+                <span>MyControl School</span>
+                <i class="ri-school-line"></i>
+            </a>
+
+            <button class="header__toggle" id="header-toggle">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+    </header>
+
+
+
+    <!--=============== MAIN ===============-->
+    <main class="main container" id="main">
+
+        <!--=============== SIDEBAR ===============-->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar__container">
+                <div class="sidebar__user">
+                    <div class="sidebar__img">
+                        <img src="<?php echo $_SESSION["foto"]; ?>" alt="User Image">
+                    </div>
+
+                    <div class="sidebar__info">
+                        <!-- Display the username dynamically -->
+                        <h3><?php echo $_SESSION["nuser"]; ?></h3>
+                        <span><?php echo $_SESSION["usuario"]; ?>@gmail.com</span> <!-- Or customize this as needed -->
+                    </div>
+                </div>
+
+                <div class="sidebar__content">
+                    <div>
+
+                        <?php
+                        // Función que determina si la URL actual corresponde a la página activa
+                        function isActive($page)
+                        {
+                            return (strpos($_SERVER['REQUEST_URI'], $page) !== false) ? 'active-link' : '';
                         }
-                    </script>
-                    <li><a class="dropdown-item" href="<?php echo URL;?>main/getPreguntasFrecuentesUser" tabindex="-1" aria-disabled="true">Preguntas Frecuentes</a></li>                       
+                        ?>
 
-                        </ul>
-                </li>
-                
-                
-                    <li class="nav-item">
-                    <a class="nav-link" href="<?php echo URL;?>login/cerrar" tabindex="-1" aria-disabled="true">Cerrar sesión</a>
-                    </li>
-                </ul>
+
+                    <div>
+                        <h3 class="sidebar__title">MANAGE</h3>
+
+                        <div class="sidebar__list">
+                        <a href="<?php echo URL; ?>dashboard" class="sidebar__link <?php echo isActive('dashboard'); ?>">
+                                <i class="ri-pie-chart-2-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar__actions">
+                    <button>
+                        <i class="ri-moon-clear-fill sidebar__link sidebar__theme" id="theme-button">
+                            <span>Tema</span>
+                        </i>
+                    </button>
+
+                    <!-- Log Out button linked to logout URL -->
+                    <a href="<?php echo URL; ?>login/cerrar" class="sidebar__link">
+                        <i class="ri-logout-box-r-fill"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
                 </div>
             </div>
         </nav>
+
+    </main>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="public_html/js/main.js"></script>
+</body>
+
+</html>

@@ -1,57 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "app/views/sections/css.php"; ?>
-    <link rel="shortcut icon" href="<?php echo URL;?>public_html/images/logotransparente.png" type="image/x-icon">
-    <title>MyControl School</title>
+    <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
+    <title>Escuelas - MyControl School</title>
+
 </head>
+
 <body>
-    <div class="container">
+
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+
+    <div class="main container" id="main">
         <!--Todos los elementos del encabezado-->
-        <section id="encabezado_user">
-            <?php include_once "app/views/sections/header_user.php"; ?>
+        <section id="encabezado">
+            <?php include_once "app/views/sections/header.php"; ?>
         </section>
         <!--Opciones de menu-->
-        <section id="menu_user">
+        <section id="menu">
             <?php include_once "app/views/sections/menu_user.php"; ?>
         </section>
         <!-- Todos los elementos que varian-->
         <section id="contenido">
-          <div id="carouselExampleIndicators" class="carousel carousel-dark slid mt-4" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="<?php echo URL;?>public_html/images/logo2.png" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="<?php echo URL;?>public_html/images/logo.png" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="<?php echo URL;?>public_html/images/logo4.png" class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" class="text-dark">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+
+
+            <div class="container mt-2">
+
+                <div id="map"></div>
             </div>
-        </section>
-    <!--Todos los elementos del pie del sitio-->
-        <section id="pie">
-            <?php include_once "app/views/sections/footer_user.php"; ?>
-        </section>
-    </div>
-    <?php include_once "app/views/sections/scripts_user.php"; ?>
+
+            <!-- SweetAlert2 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <!-- Google Maps API -->
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWwqxbdlZ1vNfD5TUTTcIs0I8QFbljJ8k&callback&callback=initMap"></script>
+            <!-- Script principal -->
+            <script>
+                let map;
+
+                // Inicializa el mapa de Google
+                function initMap() {
+                    const initialCoords = {
+                        lat: 13.68935,
+                        lng: -89.0976
+                    }; // Cambia estas coordenadas según tu región
+                    map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 9,
+                        center: initialCoords,
+                    });
+
+                    // Carga escuelas y alumnos en el mapa
+                    cargarMapaConEscuelasYAlumnos();
+                }
+
+                // Carga escuelas y alumnos en el mapa
+                function cargarMapaConEscuelasYAlumnos() {
+                    fetch("escuelas/getEscuelasYAlumnos")
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.success) {
+                                data.records.forEach((item) => {
+                                    const {
+                                        tipo,
+                                        nombre,
+                                        latitud,
+                                        longitud,
+                                        direccion,
+                                        nombre_escuela
+                                    } = item;
+                                    const coords = {
+                                        lat: parseFloat(latitud),
+                                        lng: parseFloat(longitud)
+                                    };
+
+                                    // Define el ícono según el tipo
+                                    const icon = tipo === 'escuela' ?
+                                        'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' :
+                                        'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+
+                                    // Crear un marcador
+                                    const marker = new google.maps.Marker({
+                                        position: coords,
+                                        map: map,
+                                        title: nombre,
+                                        icon: icon,
+                                    });
+
+                                    // Definir el contenido del marcador
+                                    const content = tipo === 'escuela' ?
+                                        `<strong>${nombre}</strong><br>Dirección: ${direccion}` :
+                                        `<strong>${nombre}</strong><br>Escuela: ${nombre_escuela}`;
+
+                                    // Información al hacer clic en el marcador
+                                    const infoWindow = new google.maps.InfoWindow({
+                                        content: content,
+                                    });
+
+                                    marker.addListener("click", () => {
+                                        infoWindow.open(map, marker);
+                                    });
+                                });
+                            } else {
+                                Swal.fire("Error", "No se pudieron cargar los datos del mapa", "error");
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Error al cargar los datos del mapa:", error);
+                        });
+                }
+            </script>
 </body>
+
 </html>
