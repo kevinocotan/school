@@ -10,47 +10,32 @@ class escuelas extends BaseDeDatos
 
     public function getAll()
     {
-        return $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.nombres from escuelas a inner join usuarios b on a.id_usr = b.id_usr order by a.id_usr;");
+        return $this->executeQuery("SELECT id_school, nombre, direccion, email, latitud, longitud FROM escuelas ORDER BY id_school;");
     }
-    public function getAllUser()
-    {
-        return $this->executeQuery("SELECT a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.nombres FROM escuelas a INNER JOIN usuarios b ON a.id_usr = b.id_usr WHERE b.id_usr = {$_SESSION['id_usr']}");
-    }
-
 
     public function getEscuelaByName($nombre)
     {
-        return $this->executeQuery("Select id_school, nombre, direccion, email, latitud, longitud, id_usr from escuelas where nombre='{$nombre}'");
+        return $this->executeQuery("SELECT id_school, nombre, direccion, email, latitud, longitud FROM escuelas WHERE nombre='{$nombre}'");
     }
 
     public function save($data, $img)
     {
-        return $this->executeInsert("insert into escuelas set nombre='{$data["nombre"]}', direccion='{$data["direccion"]}', email='{$data["email"]}', latitud='{$data["latitud"]}', longitud='{$data["longitud"]}', id_usr='{$data["id_usr"]}', foto='{$img}'");
+        return $this->executeInsert("INSERT INTO escuelas SET nombre='{$data["nombre"]}', direccion='{$data["direccion"]}', email='{$data["email"]}', latitud='{$data["latitud"]}', longitud='{$data["longitud"]}', foto='{$img}'");
     }
 
     public function getOneEscuela($id)
     {
-        return $this->executeQuery("Select id_school, nombre, direccion, email, latitud, longitud, id_usr, foto from escuelas where id_school='{$id}'");
+        return $this->executeQuery("SELECT id_school, nombre, direccion, email, latitud, longitud, foto FROM escuelas WHERE id_school='{$id}'");
     }
 
     public function update($data, $img)
     {
-        return $this->executeInsert("update escuelas set nombre='{$data["nombre"]}', direccion='{$data["direccion"]}', email='{$data["email"]}', latitud='{$data["latitud"]}', longitud='{$data["longitud"]}', id_usr='{$data["id_usr"]}', foto= if('{$img}'='',foto,'{$img}') where id_school={$data["id_school"]}");
+        return $this->executeInsert("UPDATE escuelas SET nombre='{$data["nombre"]}', direccion='{$data["direccion"]}', email='{$data["email"]}', latitud='{$data["latitud"]}', longitud='{$data["longitud"]}', foto=IF('{$img}'='', foto, '{$img}') WHERE id_school={$data["id_school"]}");
     }
 
     public function deleteEscuela($id)
     {
-        return $this->executeInsert("delete from escuelas where id_school='$id'");
-    }
-
-    function getEscuelaByUsuarios($id)
-    {
-        return  $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.id_usr from escuelas a inner join usuarios b on a.id_usr = b.id_usr order by a.id_usr where b.id_usr='{$id}' order by nombre");
-    }
-
-    function getEscuelaById($id)
-    {
-        return  $this->executeQuery("select a.id_school, a.nombre, a.direccion, a.email, a.latitud, a.longitud, b.id_usr from escuelas a inner join usuarios b on a.id_usr = b.id_usr where a.id_usr='{$id}' order by nombre");
+        return $this->executeInsert("DELETE FROM escuelas WHERE id_school='$id'");
     }
 
     public function getEscuelasReporte($data)
@@ -70,7 +55,6 @@ class escuelas extends BaseDeDatos
         return $this->executeQuery($query);
     }
 
-    
     public function getEscuelasYAlumnos()
     {
         $query = "

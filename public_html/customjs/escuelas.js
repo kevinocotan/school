@@ -87,25 +87,6 @@ function cargarDatos() {
     });
 }
 
-function cargarUsuarios() {
-  API.get("usuarios/getAll")
-    .then((data) => {
-      if (data.success) {
-        const txtUsuario = document.querySelector("#id_usr");
-        txtUsuario.innerHTML = "";
-        data.records.forEach((item, index) => {
-          const { id_usr, nombres } = item;
-          const optionUsuario = document.createElement("option");
-          optionUsuario.value = id_usr;
-          optionUsuario.textContent = nombres;
-          txtUsuario.append(optionUsuario);
-        });
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
 
 function crearPaginacion() {
   pagination.innerHTML = "";
@@ -147,7 +128,7 @@ function crearTabla() {
     objDatos.recordsFilter = objDatos.records.map((item) => item);
   } else {
     objDatos.recordsFilter = objDatos.records.filter((item) => {
-      const { nombre, direccion, email, latitud, longitud, nombres } = item;
+      const { nombre, direccion, email, latitud, longitud } = item;
       if (
         nombre.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) != -1
       ) {
@@ -174,11 +155,6 @@ function crearTabla() {
       ) {
         return item;
       }
-      if (
-        nombres.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) != -1
-      ) {
-        return item;
-      }
     });
   }
 
@@ -197,7 +173,6 @@ function crearTabla() {
                     <td>${item.email}</td>
                     <td>${item.latitud}</td>
                     <td>${item.longitud}</td>
-                    <td>${item.nombres}</td>
                     <td>
                         <button type="button" class="btn btn-dark btncolor" onclick="editarEscuela(${item.id_school})"><i class="ri-edit-fill"></i></button>
                         <button type="button" class="btn btn-danger btncolor" onclick="eliminarEscuela(${item.id_school})"><i class="ri-delete-bin-7-line"></i></button>
@@ -298,7 +273,6 @@ function mostrarDatosForm(record) {
     email,
     latitud,
     longitud,
-    id_usr,
     foto,
   } = record;
   document.querySelector("#id_school").value = id_school;
@@ -307,7 +281,6 @@ function mostrarDatosForm(record) {
   document.querySelector("#email").value = email;
   document.querySelector("#latitud").value = latitud;
   document.querySelector("#longitud").value = longitud;
-  document.querySelector("#id_usr").value = id_usr;
   divFoto.innerHTML = `<img src="${foto}" class="h-100 w-100" style="object-fit:contain;">`;
   actualizarMarcadorMapa(parseFloat(latitud), parseFloat(longitud));
 }
@@ -363,7 +336,6 @@ function guardarCoordenadas() {
   console.log("Latitud:", latitud);
   console.log("Longitud:", longitud);
 }
-
 
 function cargarMapaConEscuelasYAlumnos() {
   fetch("escuelas/getEscuelasYAlumnos")
