@@ -3,7 +3,6 @@
 const btnViewReport = document.querySelector("#btnViewReport");
 const idSchool = document.querySelector("#id_school");
 const idAlumno = document.querySelector("#id_alumno");
-const idPadreAlumno = document.querySelector("#id_padre_alumno");
 const frameReporte = document.querySelector("#framereporte");
 const filtro = document.querySelector("#filtro");
 const API = new Api();
@@ -26,9 +25,6 @@ function mostrarFiltro() {
   document
     .querySelectorAll(".filtroalumnos")
     .forEach((item) => item.classList.add("d-none"));
-  document
-    .querySelectorAll(".filtroparentescos")
-    .forEach((item) => item.classList.add("d-none"));
 
   // Mostrar el filtro correspondiente
   switch (filtro.value) {
@@ -40,11 +36,6 @@ function mostrarFiltro() {
     case "2": // Filtro por Alumno
       document
         .querySelectorAll(".filtroalumnos")
-        .forEach((item) => item.classList.remove("d-none"));
-      break;
-    case "3": // Filtro por Responsable
-      document
-        .querySelectorAll(".filtroparentescos")
         .forEach((item) => item.classList.remove("d-none"));
       break;
     default:
@@ -93,35 +84,12 @@ function cargarAlumnos() {
           idAlumno.append(optionAlumno);
         });
       }
-      cargarParentescos();
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 }
 
-function cargarParentescos() {
-  API.get("parentescos/getAll")
-    .then((data) => {
-      if (data.success) {
-        idPadreAlumno.innerHTML = "";
-        const optionPadreAlumno = document.createElement("option");
-        optionPadreAlumno.value = "0";
-        optionPadreAlumno.textContent = "Todos";
-        idPadreAlumno.append(optionPadreAlumno);
-        data.records.forEach((item, index) => {
-          const { id_padre_alumno, nombre_completo } = item;
-          const optionPadreAlumno = document.createElement("option");
-          optionPadreAlumno.value = id_padre_alumno;
-          optionPadreAlumno.textContent = nombre_completo;
-          idPadreAlumno.append(optionPadreAlumno);
-        });
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
 
 function verReporte() {
   switch (filtro.value) {

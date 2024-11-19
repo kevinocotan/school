@@ -33,7 +33,6 @@
                     <select name="filtro" id="filtro" class="form-select">
                         <option value="1">Por Escuela</option>
                         <option value="2">Por Alumnos</option>
-                        <option value="3">Por Responsables</option>
                     </select>
                 </div>
 
@@ -48,18 +47,13 @@
                     <select name="id_alumno" id="id_alumno" class="form-select">
                     </select>
                 </div>
-                <div class="col-auto d-flex filtroparentescos d-none">
-                    <label class="col-form-label mx-3" for="autoSizingInput">Responsables</label>
-                    <select name="id_alumno" id="id_alumno" class="form-select">
-                    </select>
-                </div>
 
                 <div class="col-auto">
                     <button type="button" class="btn btn-dark btncolor" id="btnViewReport">Ver Reporte</button>
                 </div>
             </form>
             <div class="row">
-                <iframe src="" frameborder="0" width="100%" height="400" id="framereporte"></iframe>
+                <iframe src="" frameborder="0" width="100%" height="650" id="framereporte"></iframe>
             </div>
         </section>
         <!--Todos los elementos del pie del sitio-->
