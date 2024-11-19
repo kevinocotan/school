@@ -20,20 +20,26 @@ function eventListener() {
 // Funciones
 
 function mostrarFiltro() {
-  // Ocultar todos los filtros
+  // Ocultar todos los filtros y limpiar dinámicamente el contenido relacionado
   document
     .querySelectorAll(".filtroescuelas, .filtroalumnos, .filtroparentesco")
     .forEach((item) => item.classList.add("d-none"));
 
+  // Limpiar el contenedor dinámico (como selects previos)
+  contenedorDinamico.innerHTML = "";
+
+  // Limpia el iframe cuando cambia el filtro
+  frameReporte.src = "";
+
   // Mostrar el filtro correspondiente
   switch (filtro.value) {
-    case "1":
+    case "1": // Filtrar por escuela
       document.querySelector(".filtroescuelas").classList.remove("d-none");
       break;
-    case "2":
+    case "2": // Filtrar por alumno
       document.querySelector(".filtroalumnos").classList.remove("d-none");
       break;
-    case "3":
+    case "3": // Filtrar por parentesco
       document.querySelector(".filtroparentesco").classList.remove("d-none");
       break;
   }

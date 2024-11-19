@@ -30,9 +30,9 @@ class ReportesController extends Controller
             ? $this->parentesco->getAll() // Si es "Todos", obtener todos los parentescos
             : $this->parentesco->getParentescosByAlumno($idAlumno);
 
-        // Encabezado del PDF
+        // Encabezado del PDF 
         $htmlHeader = '<div style="text-align: center;">
-        <img src="public_html/images/school.jpg" style="width:100px; height: auto;">
+        <img src="public_html/images/logotransparente.png" style="width:100px; height: auto;">
         <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte de Parentescos</h3>
         <h3 style="margin: 5px 0 0; font-size: 20px;">Datos Generales de Parentescos</h3>
         </div>';
@@ -160,7 +160,7 @@ class ReportesController extends Controller
         $pageNumber = 1;
         $registros = $this->escuela->getEscuelasReporte($_GET);
         $htmlHeader = '<div style="text-align: center;">
-            <img src="public_html/images/school.jpg"  style="width:100px; height: auto;">
+        <img src="htdocs/school/public_html/images/logotransparente.png" style="width:100px; height: auto;">
             <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte de Escuelas</h3>
             <h3 style="margin: 5px 0 0; font-size: 20px;">Datos Generales de Escuelas</h3>
         </div>';
