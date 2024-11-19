@@ -59,14 +59,13 @@ if (!empty($datosEscuela)) {
             <div class="perfil">
 
                 <!-- Mostrar imagen de la escuela -->
-                <div class="escuela-imagen" style="text-align: center; margin-top: 20px;">
+                <div class="escuela-imagen" style="text-align: center; margin-top: 20px; ">
                     <?php if (!empty($datosEscuela[0]["foto"])): ?>
                         <img src="<?php echo $datosEscuela[0]["foto"]; ?>" alt="Imagen de <?php echo $nombreEscuela; ?>" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                     <?php else: ?>
                         <p>No hay imagen disponible para esta escuela.</p>
                     <?php endif; ?>
                 </div>
-
 
                 <br>
                 <p><strong>Escuela:</strong> <?php echo $nombreEscuela; ?></p>
@@ -76,8 +75,6 @@ if (!empty($datosEscuela)) {
 
                 <p><strong>Ubicación Escuela:</strong></p>
             </div>
-
-
 
             <!-- Contenedor para el mapa -->
             <div id="map" style="height: 300px; width: 100%;"></div>
