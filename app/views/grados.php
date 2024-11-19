@@ -92,11 +92,16 @@
                 </form>
             </div>
         </section>
+
         <section id="pie">
             <?php include_once "app/views/sections/footer.php"; ?>
         </section>
+        
         <?php include_once "app/views/sections/scripts.php"; ?>
         <script src="<?php echo URL; ?>public_html/customjs/grados.js"></script>
+
+    </div>
+
 </body>
 
 </html>

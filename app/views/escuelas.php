@@ -143,15 +143,18 @@
                     <button type="submit" class="btn btn-primary"><i class="bi bi-hdd"></i> Guardar</button>
                 </form>
             </div>
+
         </section>
+
         <section id="pie">
             <?php include_once "app/views/sections/footer.php"; ?>
         </section>
+
     </div>
+
     <?php include_once "app/views/sections/scripts.php"; ?>
     <script src="<?php echo URL; ?>public_html/customjs/escuelas.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWwqxbdlZ1vNfD5TUTTcIs0I8QFbljJ8k&callback=initMap" async defer></script>
-
 
 </body>
 
