@@ -49,12 +49,19 @@
                     </select>
                 </div>
 
-                <div class="col-auto d-flex filtroresponsables d-none">
-                    <label class="col-form-label mx-3" for="autoSizingInput">Alumno</label>
-                    <select name="id_alumno" id="id_alumno" class="form-select">
+                <div class="col-auto d-flex filtroparentesco d-none">
+                    <label class="col-form-label mx-3" for="parentesco">Parentesco</label>
+                    <select name="parentesco" id="parentesco" class="form-select">
+                        <option value="0">Seleccione</option>
+                        <option value="1">Alumno</option>
+                        <option value="2">Responsable</option>
                     </select>
                 </div>
 
+                <!-- Contenedor dinámico para cargar select adicionales -->
+                <div id="contenedor-dinamico" class="row"></div>
+
+                
                 <div class="col-auto">
                     <button type="button" class="btn btn-dark btncolor" id="btnViewReport">Ver Reporte</button>
                 </div>
