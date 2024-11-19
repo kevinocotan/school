@@ -83,4 +83,14 @@ class escuelas extends BaseDeDatos
         ";
         return $this->executeQuery($query);
     }
+
+    public function getEscuelaActual($id_school)
+    {
+        $query = "SELECT id_school, nombre, direccion, email, foto, latitud, longitud 
+              FROM escuelas 
+              WHERE id_school = '{$id_school}' 
+              LIMIT 1";
+
+        return $this->executeQuery($query);
+    }
 }

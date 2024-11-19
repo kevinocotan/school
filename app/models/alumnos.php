@@ -142,10 +142,11 @@ class Alumnos extends BaseDeDatos
 
     // app/models/alumnos.php
 
+    // app/models/alumnos.php
     public function getAlumnoActual($id_usr)
     {
         $query = "SELECT a.id_alumno, a.nombre_completo, a.direccion, a.telefono, a.email, a.foto, 
-              a.genero, a.latitud, a.longitud, a.id_usr, b.nombre_grado, c.nombre_seccion, 
+              a.genero, a.latitud, a.longitud, a.id_usr, a.id_school, b.nombre_grado, c.nombre_seccion, 
               d.nombre AS nombre_escuela, u.nombres, u.apellidos, u.usuario, u.tipo AS tipo_usuario, 
               u.foto AS foto_usuario 
               FROM alumnos a 
