@@ -160,18 +160,15 @@ function crearTabla() {
     objDatos.recordsFilter = objDatos.records.map((item) => item);
   } else {
     objDatos.recordsFilter = objDatos.records.filter((item) => {
-      const { nombre_completo, nombre_padre, parentesco } = item;
+      const { alumno, responsable, parentesco } = item;
       if (
-        nombre_completo
-          .toUpperCase()
-          .search(objDatos.filter.toLocaleUpperCase()) != -1
+        alumno.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) != -1
       ) {
         return item;
       }
       if (
-        nombre_padre
-          .toUpperCase()
-          .search(objDatos.filter.toLocaleUpperCase()) != -1
+        responsable.toUpperCase().search(objDatos.filter.toLocaleUpperCase()) !=
+        -1
       ) {
         return item;
       }
@@ -181,7 +178,6 @@ function crearTabla() {
       ) {
         return item;
       }
-
     });
   }
 
@@ -195,8 +191,8 @@ function crearTabla() {
       html += `
                     <tr>
                     <td>${index + 1}</td>
-                    <td>${item.nombre_completo}</td>
-                    <td>${item.nombre_padre}</td>
+                    <td>${item.alumno}</td>
+                    <td>${item.responsable}</td>
                     <td>${item.parentesco}</td>
                     <td>
                         <button type="button" class="btn btn-dark btncolor" onclick="editarPadrealumno(${
