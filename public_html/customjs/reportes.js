@@ -172,12 +172,12 @@ function verReporte() {
       if (idParentesco.value === "1") {
         const alumnosDinamico =
           document.querySelector("#alumnos-dinamico").value;
-        frameReporte.src = `${BASE_API}reportes/getReporteParentesco?id_alumno=${alumnosDinamico}`;
+        frameReporte.src = `${BASE_API}reportes/getReporteParentescoAlumno?id_alumno=${alumnosDinamico}`;
       } else if (idParentesco.value === "2") {
         const responsablesDinamico = document.querySelector(
           "#responsables-dinamico"
         ).value;
-        frameReporte.src = `${BASE_API}reportes/getReporteResponsables?id_responsable=${responsablesDinamico}`;
+        frameReporte.src = `${BASE_API}reportes/getReporteParentescoPadre?id_padre=${responsablesDinamico}`;
       }
       break;
   }

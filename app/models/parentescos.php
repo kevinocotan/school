@@ -32,6 +32,20 @@ class Parentescos extends BaseDeDatos
         return $this->executeQuery($query);
     }
 
+    public function getParentescosByPadre($idPadre)
+    {
+        $query = "SELECT a.id_padre_alumno, a.parentesco, b.nombre_completo AS alumno, c.nombre AS responsable
+                  FROM padresalumnos a
+                  INNER JOIN alumnos b ON a.id_alumno = b.id_alumno
+                  INNER JOIN padres c ON a.id_padre = c.id_padre
+                  WHERE c.id_padre = '{$idPadre}'
+                  ORDER BY a.id_padre_alumno;";
+
+        return $this->executeQuery($query);
+    }
+
+
+
     public function getParentescoByName($nombre)
     {
         return $this->executeQuery("SELECT id_padre_alumno, parentesco, id_alumno, id_padre FROM padresalumnos WHERE parentesco='{$nombre}'");
