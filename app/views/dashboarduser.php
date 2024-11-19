@@ -61,7 +61,7 @@ if (!empty($datosEscuela)) {
                 <!-- Mostrar imagen de la escuela -->
                 <div class="escuela-imagen" style="text-align: center; margin-top: 20px; ">
                     <?php if (!empty($datosEscuela[0]["foto"])): ?>
-                        <img src="<?php echo $datosEscuela[0]["foto"]; ?>" alt="Imagen de <?php echo $nombreEscuela; ?>" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        <img src="<?php echo $datosEscuela[0]["foto"]; ?>" alt="Imagen de <?php echo $nombreEscuela; ?>" style="max-width: 100%; height: auto; max-height: 200px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                     <?php else: ?>
                         <p>No hay imagen disponible para esta escuela.</p>
                     <?php endif; ?>
