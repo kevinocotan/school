@@ -2,19 +2,92 @@
 
 include_once "app/models/escuelas.php";
 include_once "app/models/alumnos.php";
+include_once "app/models/parentescos.php";
 include_once "vendor/autoload.php";
 
 class ReportesController extends Controller
 {
     private $escuela;
     private $alumno;
+    private $parentesco;
+
 
     public function __construct($parametro)
     {
         $this->escuela = new Escuelas();
         $this->alumno = new Alumnos(); // Incluye la lógica de alumnos
+        $this->parentesco = new Parentescos(); // Instancia el modelo
+
         parent::__construct("reportes", $parametro, true);
     }
+
+    public function getReporteParentesco()
+    {
+        $idAlumno = $_GET['id_alumno'] ?? 0;
+
+        // Obtener datos del modelo, ya sea todos o filtrados
+        $registros = ($idAlumno == 0)
+            ? $this->parentesco->getAll()
+            : $this->parentesco->getParentescosByAlumno($idAlumno);
+
+        // Encabezado del PDF
+        $htmlHeader = '<div style="text-align: center;">
+        <img src="public_html/images/school.jpg" style="width:100px; height: auto;">
+        <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte de Parentescos</h3>
+        <h3 style="margin: 5px 0 0; font-size: 20px;">Datos Generales de Parentescos</h3>
+    </div>';
+
+        // Generar tabla HTML con los registros
+        $html = "<table style='width: 100%; border-collapse: collapse;'>
+    <thead>
+        <tr style='background-color: #ddd;'>
+            ```php
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Código</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Responsable</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Parentesco</th>
+            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Alumno</th>
+        </tr>
+    </thead>
+    <tbody>";
+
+        if (!empty($registros)) {
+            foreach ($registros as $key => $value) {
+                $html .= "<tr>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>" . ($key + 1) . "</td>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["responsable"]}</td>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["parentesco"]}</td>";
+                $html .= "<td style='border: 1px solid #999; text-align: center;'>{$value["alumno"]}</td>";
+                $html .= "</tr>";
+            }
+        } else {
+            $html .= "<tr><td colspan='4' style='text-align:center;'>No se encontraron resultados</td></tr>";
+        }
+
+        $html .= "</tbody></table>";
+
+        // Pie del PDF
+        $htmlFooter = '<div style="text-align: center;">
+        <p style="font-size: 12px;">Página {PAGENO} de {nb}</p>
+        <p style="font-size: 12px;">© 2024 MyControl School. Todos los derechos reservados.</p>
+    </div>';
+
+        // Configuración de MPDF
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'Letter',
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 70,
+            'margin_header' => 10,
+            'margin_footer' => 10,
+            'orientation' => 'P',
+        ]);
+        $mpdf->SetHTMLHeader($htmlHeader);
+        $mpdf->SetHTMLFooter($htmlFooter);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
     public function getReporteEscuela()
     {
         $pageNumber = 1;
@@ -140,6 +213,4 @@ class ReportesController extends Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
-
-
 }

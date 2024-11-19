@@ -3,6 +3,7 @@
 const btnViewReport = document.querySelector("#btnViewReport");
 const idSchool = document.querySelector("#id_school");
 const idAlumno = document.querySelector("#id_alumno");
+const idResponsable = document.querySelector("#id_responsable");
 const frameReporte = document.querySelector("#framereporte");
 const filtro = document.querySelector("#filtro");
 const API = new Api();
@@ -18,27 +19,22 @@ function eventListener() {
 //Funciones
 
 function mostrarFiltro() {
-  // Ocultar todos los filtros primero
+  // Ocultar todos los filtros
   document
-    .querySelectorAll(".filtroescuelas")
-    .forEach((item) => item.classList.add("d-none"));
-  document
-    .querySelectorAll(".filtroalumnos")
+    .querySelectorAll(".filtroescuelas, .filtroalumnos, .filtroresponsables")
     .forEach((item) => item.classList.add("d-none"));
 
   // Mostrar el filtro correspondiente
   switch (filtro.value) {
-    case "1": // Filtro por Escuela
-      document
-        .querySelectorAll(".filtroescuelas")
-        .forEach((item) => item.classList.remove("d-none"));
+    case "1":
+      document.querySelector(".filtroescuelas").classList.remove("d-none");
       break;
-    case "2": // Filtro por Alumno
-      document
-        .querySelectorAll(".filtroalumnos")
-        .forEach((item) => item.classList.remove("d-none"));
+    case "2":
+      document.querySelector(".filtroalumnos").classList.remove("d-none");
       break;
-    default:
+    case "3":
+      cargarAlumnos(); // Load students for parentesco filter
+      document.querySelector(".filtroresponsables").classList.remove("d-none");
       break;
   }
 }
@@ -47,24 +43,15 @@ function cargarDatos() {
   API.get("escuelas/getAll")
     .then((data) => {
       if (data.success) {
-        idSchool.innerHTML = "";
-        const optionEscuela = document.createElement("option");
-        optionEscuela.value = "0";
-        optionEscuela.textContent = "Todos";
-        idSchool.append(optionEscuela);
-        data.records.forEach((item, index) => {
+        idSchool.innerHTML = "<option value='0'>Todos </option>";
+        data.records.forEach((item) => {
           const { id_school, nombre } = item;
-          const optionEscuela = document.createElement("option");
-          optionEscuela.value = id_school;
-          optionEscuela.textContent = nombre;
-          idSchool.append(optionEscuela);
+          idSchool.innerHTML += `<option value="${id_school}">${nombre}</option>`;
         });
       }
       cargarAlumnos();
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+    .catch(console.error);
 }
 
 function cargarAlumnos() {
@@ -76,7 +63,7 @@ function cargarAlumnos() {
         optionAlumno.value = "0";
         optionAlumno.textContent = "Todos";
         idAlumno.append(optionAlumno);
-        data.records.forEach((item, index) => {
+        data.records.forEach((item) => {
           const { id_alumno, nombre_completo } = item;
           const optionAlumno = document.createElement("option");
           optionAlumno.value = id_alumno;
@@ -90,16 +77,16 @@ function cargarAlumnos() {
     });
 }
 
-
 function verReporte() {
   switch (filtro.value) {
-    case "1": // Reporte por escuela
+    case "1":
       frameReporte.src = `${BASE_API}reportes/getReporteEscuela?id_school=${idSchool.value}`;
       break;
-    case "2": // Reporte por alumno
+    case "2":
       frameReporte.src = `${BASE_API}reportes/getReporteAlumno?id_alumno=${idAlumno.value}`;
       break;
-    default:
+    case "3":
+      frameReporte.src = `${BASE_API}reportes/getReporteParentesco?id_alumno=${idAlumno.value}`;
       break;
   }
 }

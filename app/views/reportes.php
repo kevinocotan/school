@@ -33,6 +33,7 @@
                     <select name="filtro" id="filtro" class="form-select">
                         <option value="1">Por Escuela</option>
                         <option value="2">Por Alumnos</option>
+                        <option value="3">Por Parentesco</option>
                     </select>
                 </div>
 
@@ -44,6 +45,12 @@
 
                 <div class="col-auto d-flex filtroalumnos d-none">
                     <label class="col-form-label mx-3" for="autoSizingInput">Alumnos</label>
+                    <select name="id_alumno" id="id_alumno" class="form-select">
+                    </select>
+                </div>
+
+                <div class="col-auto d-flex filtroresponsables d-none">
+                    <label class="col-form-label mx-3" for="autoSizingInput">Alumno</label>
                     <select name="id_alumno" id="id_alumno" class="form-select">
                     </select>
                 </div>
