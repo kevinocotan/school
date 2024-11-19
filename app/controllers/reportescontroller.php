@@ -25,9 +25,9 @@ class ReportesController extends Controller
     {
         $idAlumno = $_GET['id_alumno'] ?? 0;
 
-        // Obtener datos del modelo, ya sea todos o filtrados
+        // Obtener datos del modelo
         $registros = ($idAlumno == 0)
-            ? $this->parentesco->getAll()
+            ? $this->parentesco->getAll() // Si es "Todos", obtener todos los parentescos
             : $this->parentesco->getParentescosByAlumno($idAlumno);
 
         // Encabezado del PDF
@@ -35,20 +35,19 @@ class ReportesController extends Controller
         <img src="public_html/images/school.jpg" style="width:100px; height: auto;">
         <h3 style="margin: 5px 0 0; font-size: 20px;">Reporte de Parentescos</h3>
         <h3 style="margin: 5px 0 0; font-size: 20px;">Datos Generales de Parentescos</h3>
-    </div>';
+        </div>';
 
         // Generar tabla HTML con los registros
         $html = "<table style='width: 100%; border-collapse: collapse;'>
-    <thead>
-        <tr style='background-color: #ddd;'>
-            ```php
-            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Código</th>
-            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Responsable</th>
-            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Parentesco</th>
-            <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Alumno</th>
-        </tr>
-    </thead>
-    <tbody>";
+        <thead>
+            <tr style='background-color: #ddd;'>
+                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Código</th>
+                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Responsable</th>
+                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Parentesco</th>
+                <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Alumno</th>
+            </tr>
+        </thead>
+        <tbody>";
 
         if (!empty($registros)) {
             foreach ($registros as $key => $value) {
@@ -69,7 +68,7 @@ class ReportesController extends Controller
         $htmlFooter = '<div style="text-align: center;">
         <p style="font-size: 12px;">Página {PAGENO} de {nb}</p>
         <p style="font-size: 12px;">© 2024 MyControl School. Todos los derechos reservados.</p>
-    </div>';
+        </div>';
 
         // Configuración de MPDF
         $mpdf = new \Mpdf\Mpdf([
@@ -87,6 +86,7 @@ class ReportesController extends Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output();
     }
+
 
 
     public function getReporteParentescoPadre()
@@ -109,7 +109,6 @@ class ReportesController extends Controller
         $html = "<table style='width: 100%; border-collapse: collapse;'>
     <thead>
         <tr style='background-color: #ddd;'>
-            ```php
             <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Código</th>
             <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Responsable</th>
             <th style='padding: 10px; border: 1px solid #999; text-align: center;'>Parentesco</th>

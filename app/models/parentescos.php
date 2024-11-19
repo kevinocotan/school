@@ -11,14 +11,19 @@ class Parentescos extends BaseDeDatos
 
     public function getAll()
     {
-        $query = "SELECT a.id_padre_alumno, a.parentesco, b.nombre_completo, c.nombre AS nombre_padre
-              FROM padresalumnos a
-              INNER JOIN alumnos b ON a.id_alumno = b.id_alumno
-              INNER JOIN padres c ON a.id_padre = c.id_padre
-              ORDER BY a.id_padre_alumno;";
+        $query = "SELECT 
+                    a.id_padre_alumno, 
+                    a.parentesco, 
+                    b.nombre_completo AS alumno, 
+                    c.nombre AS responsable
+                  FROM padresalumnos a
+                  INNER JOIN alumnos b ON a.id_alumno = b.id_alumno
+                  INNER JOIN padres c ON a.id_padre = c.id_padre
+                  ORDER BY a.id_padre_alumno;";
 
         return $this->executeQuery($query);
     }
+
 
     public function getParentescosByAlumno($idAlumno)
     {

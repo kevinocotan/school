@@ -59,7 +59,7 @@
                 </div>
 
                 <!-- Contenedor dinámico para cargar select adicionales -->
-                <div id="contenedor-dinamico" class="row"></div>
+                <div id="contenedor-dinamico" class="col-auto d-flex row"></div>
 
                 
                 <div class="col-auto">
