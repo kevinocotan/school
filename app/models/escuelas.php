@@ -93,4 +93,32 @@ class escuelas extends BaseDeDatos
 
         return $this->executeQuery($query);
     }
+
+    public function getEscuelasMapa($ids)
+    {
+        $id_school = $ids['id_escuela'];
+        $query = "SELECT 
+                    e.foto AS foto_escuela,
+                    e.latitud AS latitud_escuela,
+                    e.longitud AS longitud_escuela
+                  FROM 
+                    escuelas e
+                  WHERE
+                    e.id_school = $id_school";
+        return $this->executeQuery($query);
+    }
+
+    public function getAlumnosescuMapa($ids)
+    {
+        $id_school = $ids['id_escuela'];
+        $query = "SELECT 
+                    a.nombre_completo AS nombre_alumno,
+                    a.latitud AS latitud_alumno,
+                    a.longitud AS longitud_alumno
+                FROM 
+                    alumnos a
+                WHERE
+                    a.id_school = $id_school";
+        return $this->executeQuery($query);
+    }
 }

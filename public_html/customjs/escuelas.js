@@ -284,6 +284,25 @@ function mostrarDatosForm(record) {
   actualizarMarcadorMapa(parseFloat(latitud), parseFloat(longitud));
 }
 
+function mostrarEscuela(id) {
+  API.get("escuelamapa/getEscuelasMapa?id_escuela="+id).then(
+      data => {
+          if (data.success) {
+              const urlImagen = data.records[0].foto_escuela;
+              console.log(data.alum)
+              window.location.href = "escuelamapa?url_imagen=" + encodeURIComponent(urlImagen)+"&latitud="+data.records[0].latitud_escuela+"&longitud="+data.records[0].longitud_escuela+"&alumnos="+JSON.stringify(data.alum);
+          } else {
+              console.log("Error al recuperar los registros");
+          }
+      }
+  ).catch(
+      error => {
+          console.error("Error en la llamada:", error);
+      }
+  );
+}
+
+
 /* PARA MAPA */
 
 function actualizarMarcadorMapa(latitud, longitud) {
