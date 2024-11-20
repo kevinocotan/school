@@ -97,16 +97,23 @@ class escuelas extends BaseDeDatos
     public function getEscuelasMapa($ids)
     {
         $id_school = $ids['id_escuela'];
+        // Consulta corregida con INNER JOIN para obtener los datos de los alumnos
         $query = "SELECT 
                     e.foto AS foto_escuela,
                     e.latitud AS latitud_escuela,
-                    e.longitud AS longitud_escuela
+                    e.longitud AS longitud_escuela,
+                    e.nombre AS nombre_escuela,
+                    a.nombre_completo AS nombre_alumno,
+                    a.latitud AS latitud_alumno,
+                    a.longitud AS longitud_alumno
                   FROM 
-                    escuelas e
+                    escuelas e 
+                  LEFT JOIN alumnos a ON e.id_school = a.id_school 
                   WHERE
                     e.id_school = $id_school";
         return $this->executeQuery($query);
     }
+
 
     public function getAlumnosescuMapa($ids)
     {

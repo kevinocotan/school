@@ -285,13 +285,20 @@ function mostrarEscuela(id) {
       if (data.success) {
         const urlImagen = data.records[0].foto_escuela;
         const escuelaData = {
+          nombre_escuela: data.records[0].nombre_escuela, // Nombre de la escuela
           url_imagen: urlImagen,
           latitud: data.records[0].latitud_escuela,
           longitud: data.records[0].longitud_escuela,
-          alumnos: data.alum,
+          alumnos: data.records.map((record) => ({
+            nombre_alumno: record.nombre_alumno,
+            latitud_alumno: record.latitud_alumno,
+            longitud_alumno: record.longitud_alumno,
+          })), // Extraer información de los alumnos
         };
-        // Guardar datos en localStorage
+
+        // Guardar datos de la escuela y los alumnos en localStorage
         localStorage.setItem("escuelaData", JSON.stringify(escuelaData));
+
         // Redirigir sin pasar datos sensibles en la URL
         window.location.href = "escuelamapa";
       } else {

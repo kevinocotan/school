@@ -1,52 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "app/views/sections/css.php"; ?>
-    <link rel="stylesheet" href="<?php echo URL; ?>public_html/css/menulateral.css">
-    <link rel="stylesheet" href="<?php echo URL; ?>public_html/css/menuprincipal.css">
-    <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/school.jpg" type="image/x-icon">
-    <title>Escuela-alumnos</title>
+    <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
+    <title>Detalle de Escuela - MyControl School</title>
 </head>
 
 <body>
-    <section id="menu">
-        <?php
-        if ($_SESSION["tipo"] == "Administrador") {
-            include_once "app/views/sections/menulateral.php";
-        } else {
-            include_once "app/views/sections/menulateraluser.php";
-        }
-        ?>
-    </section>
 
-    <div class="content">
-        <div>
-            <h4 class="welcomestext text-end">Bienvenido/a: <?php echo $_SESSION["nuser"]; ?> </h4>
-        </div>
-        <section id="contenido">
-            <!-- Imagen cargada dinámicamente con JavaScript -->
-            <img id="imagenEscuela" class="img-fluid" alt="Imagen de la Escuela" width="300" style="display: block; margin: 0 auto;">
+    <div class="main container" id="main">
+        <!-- Todos los elementos del encabezado -->
+        <section id="encabezado">
+            <?php include_once "app/views/sections/header.php"; ?>
         </section>
 
-        <div>
-            <p>El marcador de la escuela es <span style="color: blue;">azul</span>.</p>
-            <p>Los marcadores de los alumnos son <span style="color: red;">rojos</span>.</p>
-        </div>
-        <br>
+        <!-- Opciones de menu -->
+        <section id="menu">
+            <?php include_once "app/views/sections/menu.php"; ?>
+        </section>
+
+        <!-- Contenido principal -->
+        <section id="contenido">
+            <!-- Nombre de la escuela -->
+            <h2 id="nombreEscuela" style="text-align: center; color: #333; font-size: 24px; margin-bottom: 16px;"></h2>
+
+            <!-- Imagen de la escuela -->
+            <img id="imagenEscuela" class="img-fluid" alt="Imagen de la Escuela" style="display: block; margin: 0 auto; max-width: 300px; height: auto; max-height: 200px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+            <br>
+
+            <!-- Tabla de alumnos -->
+            <table id="tablaAlumnos" class="table table-bordered" style="margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th>Nombre del Alumno</th>
+                        <th>Latitud</th>
+                        <th>Longitud</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Los datos de los alumnos se agregarán dinámicamente aquí -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Mapa de la escuela y alumnos -->
         <section id="mapa">
             <div id="map" style="height: 400px; max-width: 800px; margin: 0 auto;"></div>
         </section>
+
+        <!-- Pie de página -->
         <section id="pie">
             <?php include_once "app/views/sections/footer.php"; ?>
         </section>
     </div>
+
     <?php include_once "app/views/sections/scripts.php"; ?>
     <script src="<?php echo URL; ?>public_html/customjs/escuelas.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWwqxbdlZ1vNfD5TUTTcIs0I8QFbljJ8k&callback=initMap" async defer></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Asegúrate de que los datos de la escuela existan
@@ -56,9 +71,24 @@
                 return;
             }
 
+            // Cargar nombre de la escuela
+            const nombreEscuela = document.getElementById('nombreEscuela');
+            nombreEscuela.textContent = escuelaData.nombre_escuela || "Nombre de la escuela no disponible";
+
             // Cargar imagen
             const imagenEscuela = document.getElementById('imagenEscuela');
             imagenEscuela.src = escuelaData.url_imagen;
+
+            // Cargar alumnos en la tabla
+            const tablaAlumnos = document.getElementById('tablaAlumnos').getElementsByTagName('tbody')[0];
+            const alumnos = escuelaData.alumnos || [];
+
+            alumnos.forEach((alumno) => {
+                const row = tablaAlumnos.insertRow();
+                row.insertCell(0).textContent = alumno.nombre_alumno || "Nombre no disponible";
+                row.insertCell(1).textContent = alumno.latitud_alumno || "No disponible";
+                row.insertCell(2).textContent = alumno.longitud_alumno || "No disponible";
+            });
 
             // Espera a que Google Maps esté listo antes de inicializar el mapa
             const checkGoogleMaps = setInterval(() => {
