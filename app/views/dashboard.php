@@ -76,17 +76,19 @@
                                 latitud,
                                 longitud,
                                 direccion,
-                                nombre_escuela
+                                nombre_escuela,
+                                imagen
                             } = item;
                             const coords = {
                                 lat: parseFloat(latitud),
-                                lng: parseFloat(longitud)
+                                lng: parseFloat(longitud),
                             };
 
                             // Define el ícono según el tipo
-                            const icon = tipo === 'escuela' ?
-                                'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' :
-                                'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+                            const icon =
+                                tipo === "escuela" ?
+                                "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" :
+                                "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
 
                             // Crear un marcador
                             const marker = new google.maps.Marker({
@@ -97,9 +99,19 @@
                             });
 
                             // Definir el contenido del marcador
-                            const content = tipo === 'escuela' ?
-                                `<strong>${nombre}</strong><br>Dirección: ${direccion}` :
-                                `<strong>${nombre}</strong><br>Escuela: ${nombre_escuela}`;
+                            let content = tipo === "escuela" ?
+                                `<img src="${imagen}" alt="Imagen de la escuela" style="display: block; margin: 0 auto; max-width: 100%; height: auto; max-height: 50px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"> <br>` :
+                                "";
+
+                            // Si hay una imagen de la escuela, agregarla al contenido del marcador y luego el nombre y la dirección
+                            content += `<strong>${nombre}</strong><br>`;
+
+                            if (tipo === "escuela") {
+                                content += `Dirección: ${direccion}`;
+                            } else {
+                                content += `Escuela: ${nombre_escuela}`;
+                            }
+
 
                             // Información al hacer clic en el marcador
                             const infoWindow = new google.maps.InfoWindow({

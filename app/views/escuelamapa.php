@@ -26,13 +26,12 @@
         <!-- Contenido principal -->
         <section id="contenido">
             <!-- Nombre de la escuela -->
-            <h2 id="nombreEscuela" style="text-align: center; color: #333; font-size: 24px; margin-bottom: 16px;"></h2>
+            <h2 id="nombreEscuela" style="text-align: center; font-size: 24px; margin-bottom: 16px;"></h2>
 
             <!-- Imagen de la escuela -->
             <img id="imagenEscuela" class="img-fluid" alt="Imagen de la Escuela" style="display: block; margin: 0 auto; max-width: 100%; height: auto; max-height: 150px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
             <br>
             <!-- Mapa de la escuela y alumnos -->
-
             <section id="mapa">
                 <div id="map" style="height: 400px; max-width: 800px; margin: 0 auto;"></div>
             </section>
@@ -49,7 +48,6 @@
                 </div>
             </div>
 
-
             <!-- Tabla de alumnos -->
             <table id="tablaAlumnos" class="table table-bordered" style="margin-top: 20px;">
                 <thead>
@@ -64,7 +62,6 @@
                 </tbody>
             </table>
         </section>
-
 
         <!-- Pie de página -->
         <section id="pie">
@@ -125,11 +122,20 @@
             });
 
             // Marcador de la escuela
-            new google.maps.Marker({
+            const schoolMarker = new google.maps.Marker({
                 position: schoolLocation,
                 map: map,
                 title: "Escuela",
                 icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+            });
+
+            // Crear el InfoWindow para la escuela
+            const schoolInfoWindow = new google.maps.InfoWindow({
+                content: `<strong>${data.nombre_escuela}</strong>`,
+            });
+
+            schoolMarker.addListener("click", () => {
+                schoolInfoWindow.open(map, schoolMarker);
             });
 
             // Marcadores de los alumnos
@@ -140,14 +146,22 @@
                     lng: parseFloat(alumno.longitud_alumno),
                 };
 
-                new google.maps.Marker({
+                const alumnoMarker = new google.maps.Marker({
                     position: alumnoLocation,
                     map: map,
                     title: alumno.nombre_alumno,
                     icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
                 });
-            });
 
+                // Crear el InfoWindow para el alumno
+                const alumnoInfoWindow = new google.maps.InfoWindow({
+                    content: `<strong>${alumno.nombre_alumno}</strong>`,
+                });
+
+                alumnoMarker.addListener("click", () => {
+                    alumnoInfoWindow.open(map, alumnoMarker);
+                });
+            });
         }
     </script>
 </body>

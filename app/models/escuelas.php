@@ -65,6 +65,7 @@ class escuelas extends BaseDeDatos
                 e.direccion AS direccion,
                 e.latitud AS latitud,
                 e.longitud AS longitud,
+                e.foto AS imagen,  -- Agregar columna de imagen aquí
                 NULL AS id_alumno,
                 NULL AS nombre_escuela
             FROM escuelas e
@@ -76,6 +77,7 @@ class escuelas extends BaseDeDatos
                 NULL AS direccion,
                 a.latitud AS latitud,
                 a.longitud AS longitud,
+                NULL AS imagen,  -- Los alumnos no tienen imagen
                 a.id_alumno AS id_alumno,
                 e.nombre AS nombre_escuela
             FROM alumnos a
@@ -83,6 +85,7 @@ class escuelas extends BaseDeDatos
         ";
         return $this->executeQuery($query);
     }
+
 
     public function getEscuelaActual($id_school)
     {
