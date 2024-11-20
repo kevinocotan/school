@@ -1,7 +1,9 @@
 
-Vista Usuario Administrador:
+Login:
 
 ![image](https://github.com/user-attachments/assets/4b458280-9de2-493f-99e1-55c5ce9d5535)
+
+Vista Usuario Administrador:
 
 ![image](https://github.com/user-attachments/assets/039974a6-14c9-42c0-a346-19c6a6d68b57)
 
