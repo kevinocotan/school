@@ -74,6 +74,9 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWwqxbdlZ1vNfD5TUTTcIs0I8QFbljJ8k&callback=initMap" async defer></script>
 
     <script>
+        // Variable global para almacenar la referencia al InfoWindow abierto
+        let currentInfoWindow = null;
+
         document.addEventListener("DOMContentLoaded", function() {
             // Asegúrate de que los datos de la escuela existan
             const escuelaData = JSON.parse(localStorage.getItem("escuelaData"));
@@ -131,11 +134,18 @@
 
             // Crear el InfoWindow para la escuela
             const schoolInfoWindow = new google.maps.InfoWindow({
-                content: `<strong>${data.nombre_escuela}</strong>`,
+                content: `<strong>Escuela: ${data.nombre_escuela}</strong>`,
             });
 
             schoolMarker.addListener("click", () => {
+                // Cerrar el InfoWindow anterior, si está abierto
+                if (currentInfoWindow) {
+                    currentInfoWindow.close();
+                }
+                // Abrir el InfoWindow de la escuela
                 schoolInfoWindow.open(map, schoolMarker);
+                // Actualizar la referencia al InfoWindow actual
+                currentInfoWindow = schoolInfoWindow;
             });
 
             // Marcadores de los alumnos
@@ -155,11 +165,18 @@
 
                 // Crear el InfoWindow para el alumno
                 const alumnoInfoWindow = new google.maps.InfoWindow({
-                    content: `<strong>${alumno.nombre_alumno}</strong>`,
+                    content: `<strong>Alumno: ${alumno.nombre_alumno}</strong>`,
                 });
 
                 alumnoMarker.addListener("click", () => {
+                    // Cerrar el InfoWindow anterior, si está abierto
+                    if (currentInfoWindow) {
+                        currentInfoWindow.close();
+                    }
+                    // Abrir el InfoWindow del alumno
                     alumnoInfoWindow.open(map, alumnoMarker);
+                    // Actualizar la referencia al InfoWindow actual
+                    currentInfoWindow = alumnoInfoWindow;
                 });
             });
         }
