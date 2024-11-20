@@ -53,7 +53,6 @@
                             <th>Email</th>
                             <th>Latitud</th>
                             <th>Longitud</th>
-
                             <th>&nbsp;</th>
                         </thead>
                         <tbody>
@@ -64,6 +63,7 @@
                             <td>40º 42' 46'</td>
                             <td>74º 0' 21''</td>
                             <td>
+                                <button type="button" class="btn btn-dark btncolor"><i class="ri-zoom-in-line"></i></button>
                                 <button type="button" class="btn btn-dark btncolor"><i class="ri-edit-fill"></i></button>
                                 <button type="button" class="btn btn-danger btncolor"><i class="ri-delete-bin-7-line"></i></button>
                             </td>

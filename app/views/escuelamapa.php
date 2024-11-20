@@ -28,7 +28,8 @@
             <h4 class="welcomestext text-end">Bienvenido/a: <?php echo $_SESSION["nuser"]; ?> </h4>
         </div>
         <section id="contenido">
-            <img src="<?php echo isset($_GET['url_imagen']) ? $_GET['url_imagen'] : ''; ?>" class="img-fluid" alt="Imagen de la Escuela" width="300" style="display: block; margin: 0 auto;">
+            <!-- Imagen cargada dinámicamente con JavaScript -->
+            <img id="imagenEscuela" class="img-fluid" alt="Imagen de la Escuela" width="300" style="display: block; margin: 0 auto;">
         </section>
 
         <div>
@@ -45,46 +46,65 @@
     </div>
     <?php include_once "app/views/sections/scripts.php"; ?>
     <script src="<?php echo URL; ?>public_html/customjs/escuelas.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWwqxbdlZ1vNfD5TUTTcIs0I8QFbljJ8k&callback=initMap" async defer></script>
     <script>
-        function initMap() {
-            var latitud_escuela = <?php echo isset($_GET['latitud']) ? $_GET['latitud'] : ''; ?>;
-            var longitud_escuela = <?php echo isset($_GET['longitud']) ? $_GET['longitud'] : ''; ?>;
+        document.addEventListener("DOMContentLoaded", function() {
+            // Asegúrate de que los datos de la escuela existan
+            const escuelaData = JSON.parse(localStorage.getItem("escuelaData"));
+            if (!escuelaData) {
+                console.error("No se encontraron datos de la escuela en localStorage");
+                return;
+            }
 
-            var schoolLocation = {
-                lat: parseFloat(latitud_escuela),
-                lng: parseFloat(longitud_escuela)
+            // Cargar imagen
+            const imagenEscuela = document.getElementById('imagenEscuela');
+            imagenEscuela.src = escuelaData.url_imagen;
+
+            // Espera a que Google Maps esté listo antes de inicializar el mapa
+            const checkGoogleMaps = setInterval(() => {
+                if (typeof google !== 'undefined' && google.maps) {
+                    clearInterval(checkGoogleMaps);
+                    initMap(escuelaData);
+                }
+            }, 100);
+        });
+
+        function initMap(data) {
+            const schoolLocation = {
+                lat: parseFloat(data.latitud),
+                lng: parseFloat(data.longitud),
             };
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 8,
-                center: schoolLocation
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: schoolLocation,
             });
 
-            var marker = new google.maps.Marker({
+            // Marcador de la escuela
+            new google.maps.Marker({
                 position: schoolLocation,
                 map: map,
-                title: 'Escuela',
-                icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                title: "Escuela",
+                icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
             });
 
-            var alumnos = <?php echo isset($_GET['alumnos']) ? $_GET['alumnos'] : '[]'; ?>;
-            for (var i = 0; i < alumnos.length; i++) {
-                var alumno = alumnos[i];
-                var alumnoLocation = {
+            // Marcadores de los alumnos
+            const alumnos = data.alumnos || [];
+            alumnos.forEach((alumno) => {
+                const alumnoLocation = {
                     lat: parseFloat(alumno.latitud_alumno),
-                    lng: parseFloat(alumno.longitud_alumno)
+                    lng: parseFloat(alumno.longitud_alumno),
                 };
 
-                var markerAlumno = new google.maps.Marker({
+                new google.maps.Marker({
                     position: alumnoLocation,
                     map: map,
                     title: alumno.nombre_alumno,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                    icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
                 });
-            }
+            });
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPKvPHu2qiRwMbrwzolMEjzLP7RIRnU0I&callback=initMap" async defer></script>
 </body>
 
 </html>

@@ -86,7 +86,6 @@ function cargarDatos() {
     });
 }
 
-
 function crearPaginacion() {
   pagination.innerHTML = "";
   const elAnterior = document.createElement("li");
@@ -167,12 +166,13 @@ function crearTabla() {
       html += `
                     <tr>
                     <td>${item.id_school}</td>
-                    <td onclick="mostrarEscuela(${item.id_school})">${item.nombre}</td>
+                    <td>${item.nombre}</td>
                     <td>${item.direccion}</td>
                     <td>${item.email}</td>
                     <td>${item.latitud}</td>
                     <td>${item.longitud}</td>
                     <td>
+                        <button type="button" class="btn btn-dark btncolor" onclick="mostrarEscuela(${item.id_school})"><i class="ri-zoom-in-line"></i></button>
                         <button type="button" class="btn btn-dark btncolor" onclick="editarEscuela(${item.id_school})"><i class="ri-edit-fill"></i></button>
                         <button type="button" class="btn btn-danger btncolor" onclick="eliminarEscuela(${item.id_school})"><i class="ri-delete-bin-7-line"></i></button>
                     </td>
@@ -265,15 +265,8 @@ function aplicarFiltro(element) {
 }
 
 function mostrarDatosForm(record) {
-  const {
-    id_school,
-    nombre,
-    direccion,
-    email,
-    latitud,
-    longitud,
-    foto
-  } = record;
+  const { id_school, nombre, direccion, email, latitud, longitud, foto } =
+    record;
   document.querySelector("#id_school").value = id_school;
   document.querySelector("#nombre").value = nombre;
   document.querySelector("#direccion").value = direccion;
@@ -284,26 +277,33 @@ function mostrarDatosForm(record) {
   actualizarMarcadorMapa(parseFloat(latitud), parseFloat(longitud));
 }
 
+/* PARA MOSTRAR EL DETALLE DE ESCUELAS */
+
 function mostrarEscuela(id) {
-  API.get("escuelamapa/getEscuelasMapa?id_escuela="+id).then(
-      data => {
-          if (data.success) {
-              const urlImagen = data.records[0].foto_escuela;
-              console.log(data.alum)
-              window.location.href = "escuelamapa?url_imagen=" + encodeURIComponent(urlImagen)+"&latitud="+data.records[0].latitud_escuela+"&longitud="+data.records[0].longitud_escuela+"&alumnos="+JSON.stringify(data.alum);
-          } else {
-              console.log("Error al recuperar los registros");
-          }
+  API.get("escuelamapa/getEscuelasMapa?id_escuela=" + id)
+    .then((data) => {
+      if (data.success) {
+        const urlImagen = data.records[0].foto_escuela;
+        const escuelaData = {
+          url_imagen: urlImagen,
+          latitud: data.records[0].latitud_escuela,
+          longitud: data.records[0].longitud_escuela,
+          alumnos: data.alum,
+        };
+        // Guardar datos en localStorage
+        localStorage.setItem("escuelaData", JSON.stringify(escuelaData));
+        // Redirigir sin pasar datos sensibles en la URL
+        window.location.href = "escuelamapa";
+      } else {
+        console.log("Error al recuperar los registros");
       }
-  ).catch(
-      error => {
-          console.error("Error en la llamada:", error);
-      }
-  );
+    })
+    .catch((error) => {
+      console.error("Error en la llamada:", error);
+    });
 }
 
-
-/* PARA MAPA */
+/* PARA MAPA CRUD*/
 
 function actualizarMarcadorMapa(latitud, longitud) {
   if (map && marker) {
@@ -354,6 +354,8 @@ function guardarCoordenadas() {
   console.log("Latitud:", latitud);
   console.log("Longitud:", longitud);
 }
+
+/* PARA MAPA DASHBOARD */
 
 function cargarMapaConEscuelasYAlumnos() {
   fetch("escuelas/getEscuelasYAlumnos")
