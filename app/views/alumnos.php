@@ -49,7 +49,7 @@
                 <div id="contentTable">
                     <table class="table overflow-auto">
                         <thead class="table-dark">
-                            <th>Código</th>
+                            <th>Código de Alumno</th>
                             <th>Alumno</th>
                             <th>Dirección</th>
                             <th>Teléfono</th>

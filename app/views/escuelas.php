@@ -45,7 +45,7 @@
                 </div>
 
                 <div id="contentTable">
-                    <table class="table">
+                    <table id="tablaEscuelas" class="table table-bordered">
                         <thead class="table-dark">
                             <th>Código de Escuela</th>
                             <th>Escuela</th>
