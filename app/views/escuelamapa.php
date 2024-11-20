@@ -29,8 +29,26 @@
             <h2 id="nombreEscuela" style="text-align: center; color: #333; font-size: 24px; margin-bottom: 16px;"></h2>
 
             <!-- Imagen de la escuela -->
-            <img id="imagenEscuela" class="img-fluid" alt="Imagen de la Escuela" style="display: block; margin: 0 auto; max-width: 300px; height: auto; max-height: 200px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+            <img id="imagenEscuela" class="img-fluid" alt="Imagen de la Escuela" style="display: block; margin: 0 auto; max-width: 100%; height: auto; max-height: 150px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
             <br>
+            <!-- Mapa de la escuela y alumnos -->
+
+            <section id="mapa">
+                <div id="map" style="height: 400px; max-width: 800px; margin: 0 auto;"></div>
+            </section>
+
+            <!-- Leyenda -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="color-box color-blue"></div>
+                    <span>Escuelas</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box color-red"></div>
+                    <span>Alumnos</span>
+                </div>
+            </div>
+
 
             <!-- Tabla de alumnos -->
             <table id="tablaAlumnos" class="table table-bordered" style="margin-top: 20px;">
@@ -47,10 +65,6 @@
             </table>
         </section>
 
-        <!-- Mapa de la escuela y alumnos -->
-        <section id="mapa">
-            <div id="map" style="height: 400px; max-width: 800px; margin: 0 auto;"></div>
-        </section>
 
         <!-- Pie de página -->
         <section id="pie">
@@ -85,7 +99,7 @@
 
             alumnos.forEach((alumno) => {
                 const row = tablaAlumnos.insertRow();
-                row.insertCell(0).textContent = alumno.nombre_alumno || "Nombre no disponible";
+                row.insertCell(0).textContent = alumno.nombre_alumno || "Sin alumnos registrados a esta escuela";
                 row.insertCell(1).textContent = alumno.latitud_alumno || "No disponible";
                 row.insertCell(2).textContent = alumno.longitud_alumno || "No disponible";
             });
@@ -133,6 +147,7 @@
                     icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
                 });
             });
+
         }
     </script>
 </body>

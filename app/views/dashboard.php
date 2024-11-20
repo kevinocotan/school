@@ -8,41 +8,6 @@
     <?php include_once "app/views/sections/css.php"; ?>
     <link rel="shortcut icon" href="<?php echo URL; ?>public_html/images/logotransparente.png" type="image/x-icon">
     <title>Escuelas - MyControl School</title>
-
-    <style>
-        #map {
-            height: 600px;
-            width: 100%;
-        }
-
-        .legend {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-
-        .legend-item .color-box {
-            width: 15px;
-            height: 15px;
-            margin-right: 5px;
-            border-radius: 3px;
-        }
-
-        .color-red {
-            background-color: red;
-        }
-
-        .color-blue {
-            background-color: blue;
-        }
-    </style>
 </head>
 
 <body>
