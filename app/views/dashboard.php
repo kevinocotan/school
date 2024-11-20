@@ -47,6 +47,7 @@
     <!-- Script principal -->
     <script>
         let map;
+        let infoWindowActual = null; // Variable para almacenar el InfoWindow actual
 
         // Inicializa el mapa de Google
         function initMap() {
@@ -112,14 +113,20 @@
                                 content += `Escuela: ${nombre_escuela}`;
                             }
 
-
                             // Información al hacer clic en el marcador
                             const infoWindow = new google.maps.InfoWindow({
                                 content: content,
                             });
 
                             marker.addListener("click", () => {
+                                // Si ya hay un InfoWindow abierto, ciérralo antes de abrir uno nuevo
+                                if (infoWindowActual) {
+                                    infoWindowActual.close();
+                                }
+                                // Abre el nuevo InfoWindow
                                 infoWindow.open(map, marker);
+                                // Actualiza la referencia al InfoWindow actual
+                                infoWindowActual = infoWindow;
                             });
                         });
                     } else {
