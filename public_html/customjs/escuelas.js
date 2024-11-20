@@ -280,7 +280,7 @@ function mostrarDatosForm(record) {
 /* PARA MOSTRAR EL DETALLE DE ESCUELAS */
 
 function mostrarEscuela(id) {
-  API.get("escuelamapa/getEscuelasMapa?id_escuela=" + id)
+  API.get("escueladetalle/getEscuelasMapa?id_escuela=" + id)
     .then((data) => {
       if (data.success) {
         const urlImagen = data.records[0].foto_escuela;
@@ -300,7 +300,7 @@ function mostrarEscuela(id) {
         localStorage.setItem("escuelaData", JSON.stringify(escuelaData));
 
         // Redirigir sin pasar datos sensibles en la URL
-        window.location.href = "escuelamapa";
+        window.location.href = "escueladetalle";
       } else {
         console.log("Error al recuperar los registros");
       }

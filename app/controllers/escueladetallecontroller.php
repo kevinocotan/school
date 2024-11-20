@@ -1,11 +1,11 @@
 <?php
 include_once "app/models/escuelas.php"; 
 
-class EscuelaMapaController extends Controller {
+class EscuelaDetalleController extends Controller {
     private $escuela;
     public function __construct($parametro) {
         $this->escuela=new escuelas();
-        parent::__construct("escuelamapa",$parametro,true);
+        parent::__construct("escueladetalle",$parametro,true);
     }
 
     public function getEscuelasMapa() {
