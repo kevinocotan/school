@@ -35,15 +35,18 @@ El sistema utiliza el modelo MVC, cuenta con un diseño responsive, animaciones 
 
 ### 1. Dashboard
 - Vista general del sistema.
+
 ![Dashboard](https://github.com/user-attachments/assets/97636dac-dd03-4fd4-912d-d3dba5344a9f)
 
 ### 2. Opciones de Personalización
 #### Tema Oscuro
 - Opciones de visualización adaptables.
+
 ![Tema Oscuro](https://github.com/user-attachments/assets/b78e4efa-e179-486a-82f3-909b2de198c3)
 
 #### Menú Minimizado
 - Interfaz optimizada para diferentes resoluciones.
+
 ![Menú Minimizado](https://github.com/user-attachments/assets/cde70196-229c-4ec7-ae2a-0adb79b9e3df)
 
 ---
@@ -52,6 +55,7 @@ El sistema utiliza el modelo MVC, cuenta con un diseño responsive, animaciones 
 
 ### 1. Lista de Usuarios
 - Lista de usuarios registrados.
+  
 ![Usuarios](https://github.com/user-attachments/assets/867c5ac3-19c6-41b3-96a8-0983e4c1c615)
 
 #### Agregar Usuario
@@ -66,6 +70,7 @@ El sistema utiliza el modelo MVC, cuenta con un diseño responsive, animaciones 
 
 ### 1. Administración Completa
 - Administración completa de las escuelas.
+
 ![Escuelas](https://github.com/user-attachments/assets/9030e9d4-ceec-40af-8ba6-1f1dcbae2263)
 
 #### Agregar Escuela
@@ -86,6 +91,7 @@ El sistema utiliza el modelo MVC, cuenta con un diseño responsive, animaciones 
 
 ### 1. Administración de Padres
 - Lista de padres vinculados a los alumnos.
+
 ![Padres](https://github.com/user-attachments/assets/6923dee9-258c-4fd4-bcc7-b74d0d2ef5b7)
 
 #### Agregar Padre
@@ -103,6 +109,7 @@ El sistema utiliza el modelo MVC, cuenta con un diseño responsive, animaciones 
 
 ### 1. Administración Estudiantil
 - Administración de información estudiantil.
+
 ![Alumnos](https://github.com/user-attachments/assets/5164edc5-5b02-4631-a812-cdfd589c5ec0)
 
 #### Agregar Alumno
@@ -130,6 +137,7 @@ El sistema utiliza el modelo MVC, cuenta con un diseño responsive, animaciones 
 
 ### Interfaz Simplificada
 - Interfaz simplificada y funciones limitadas según el rol asignado.
+
 ![Vista Usuario Normal](https://github.com/user-attachments/assets/0da04da5-c218-4c9e-8df0-5e08ddcb709b)
 
 ---
